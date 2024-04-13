@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://blad2cr366pdi"]
+[gd_scene load_steps=41 format=3 uid="uid://blad2cr366pdi"]
 
 [ext_resource type="Texture2D" uid="uid://df7vwan6xfokh" path="res://art/enemies/Octopus/death/1.png" id="1_5wudi"]
 [ext_resource type="Texture2D" uid="uid://8c3gta7vrp0n" path="res://art/enemies/Octopus/idle/1.png" id="1_6pr10"]
@@ -27,6 +27,9 @@
 [ext_resource type="Texture2D" uid="uid://bm66ahlib4yap" path="res://art/enemies/Octopus/move/4.png" id="16_3osqx"]
 [ext_resource type="Texture2D" uid="uid://clj0ahiwas727" path="res://art/enemies/Octopus/move/5.png" id="17_pte06"]
 [ext_resource type="Texture2D" uid="uid://dppswjpheci4r" path="res://art/enemies/Octopus/move/6.png" id="18_honfh"]
+[ext_resource type="Script" path="res://scripts/state-machine/state-machine.gd" id="28_ey5cx"]
+[ext_resource type="Script" path="res://scripts/state-machine/idle.gd" id="29_tcn0f"]
+[ext_resource type="Script" path="res://scripts/state-machine/move.gd" id="30_kg4b5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b2rtg"]
 animations = [{
@@ -340,6 +343,16 @@ libraries = {
 "": SubResource("AnimationLibrary_ndm8s")
 }
 
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("28_ey5cx")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="State Machine"]
+script = ExtResource("29_tcn0f")
+
+[node name="Move" type="Node" parent="State Machine"]
+script = ExtResource("30_kg4b5")
+
 [node name="Player Detection" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 2
@@ -347,5 +360,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player Detection"]
 shape = SubResource("CircleShape2D_qn41x")
 
-[connection signal="body_entered" from="Player Detection" to="." method="_on_player_detection_body_entered"]
-[connection signal="body_exited" from="Player Detection" to="." method="_on_player_detection_body_exited"]
+[connection signal="body_entered" from="Player Detection" to="State Machine/Idle" method="_on_player_detection_body_entered"]
+[connection signal="body_entered" from="Player Detection" to="State Machine/Move" method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="Player Detection" to="State Machine/Idle" method="_on_player_detection_body_exited"]
+[connection signal="body_exited" from="Player Detection" to="State Machine/Move" method="_on_player_detection_body_exited"]
