@@ -1,0 +1,231 @@
+[gd_scene load_steps=14 format=3 uid="uid://cdueccuslp4js"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_ciru4"]
+[ext_resource type="Texture2D" uid="uid://bwycwdfpchkf0" path="res://art/ui/play-btn.png" id="1_nhhxu"]
+[ext_resource type="Texture2D" uid="uid://cu7c43em5q3kb" path="res://art/ui/play-press.png" id="2_51r55"]
+[ext_resource type="Texture2D" uid="uid://d3frh1r8wnjdl" path="res://art/ui/load-btn.png" id="3_n0js1"]
+[ext_resource type="Texture2D" uid="uid://yj78vfs58sda" path="res://art/ui/load-press.png" id="4_r7wv8"]
+[ext_resource type="Texture2D" uid="uid://ddhlckwdkagr" path="res://art/ui/quit-btn.png" id="5_ba5ug"]
+[ext_resource type="Texture2D" uid="uid://dcprpugk7kdc4" path="res://art/ui/quit-press.png" id="6_jhnhj"]
+
+[sub_resource type="GDScript" id="GDScript_8jbsn"]
+script/source = "extends CanvasLayer
+func _ready():
+	#get_viewport().size = DisplayServer.screen_get_size()
+	pass
+"
+
+[sub_resource type="Animation" id="Animation_132kw"]
+resource_name = "play"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/HBoxContainer/Play:texture_normal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_nhhxu")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/HBoxContainer/Play:texture_pressed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_51r55")]
+}
+
+[sub_resource type="Animation" id="Animation_7jorh"]
+resource_name = "load"
+length = 0.6
+step = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/HBoxContainer/Load:texture_normal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_n0js1")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/HBoxContainer/Load:texture_pressed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_r7wv8")]
+}
+
+[sub_resource type="Animation" id="Animation_ce0tj"]
+resource_name = "quit"
+length = 0.6
+step = 0.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/HBoxContainer/Quit:texture_normal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_ba5ug")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/HBoxContainer/Quit:texture_pressed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_jhnhj")]
+}
+
+[sub_resource type="Animation" id="Animation_rbjxw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/HBoxContainer/Play:texture_normal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_nhhxu")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/HBoxContainer/Play:texture_pressed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_51r55")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/HBoxContainer/Load:texture_normal")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_n0js1")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/HBoxContainer/Load:texture_pressed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_r7wv8")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/HBoxContainer/Quit:texture_normal")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_ba5ug")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/HBoxContainer/Quit:texture_pressed")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_jhnhj")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_awo4t"]
+_data = {
+"RESET": SubResource("Animation_rbjxw"),
+"load": SubResource("Animation_7jorh"),
+"play": SubResource("Animation_132kw"),
+"quit": SubResource("Animation_ce0tj")
+}
+
+[node name="Main Menu" type="Node2D"]
+script = ExtResource("1_ciru4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = SubResource("GDScript_8jbsn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="TouchScreenButton" parent="CanvasLayer/HBoxContainer"]
+position = Vector2(-60, -60)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("1_nhhxu")
+texture_pressed = ExtResource("2_51r55")
+
+[node name="Load" type="TouchScreenButton" parent="CanvasLayer/HBoxContainer"]
+position = Vector2(-60, 0)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("3_n0js1")
+texture_pressed = ExtResource("4_r7wv8")
+
+[node name="Quit" type="TouchScreenButton" parent="CanvasLayer/HBoxContainer"]
+position = Vector2(-60, 60)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("5_ba5ug")
+texture_pressed = ExtResource("6_jhnhj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_awo4t")
+}
+
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]

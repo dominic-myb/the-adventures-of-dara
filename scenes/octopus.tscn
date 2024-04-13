@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://blad2cr366pdi"]
+
+[node name="Octopus" type="CharacterBody2D"]
