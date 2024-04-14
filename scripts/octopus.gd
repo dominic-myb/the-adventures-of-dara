@@ -5,12 +5,12 @@ var speed := 100.0
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	$AnimationPlayer.play("idle")
-func _process(delta):
+func _process(_delta):
 	if in_range:
 		$AnimationPlayer.play("move")
 	else:
 		$AnimationPlayer.play("idle")
-func _physics_process(delta):
+func _physics_process(_delta):
 	_follow_player()
 	move_and_slide()
 func _follow_player():
