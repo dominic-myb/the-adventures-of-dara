@@ -15,10 +15,19 @@ run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Game="*res://game/game.gd"
+Utils="*res://game/utils.gd"
+
 [display]
 
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input_devices]
 
