@@ -1,0 +1,340 @@
+[gd_scene load_steps=34 format=3 uid="uid://cssscertc0ftw"]
+
+[ext_resource type="Texture2D" uid="uid://d3i21btl8ieil" path="res://art/enemies/Shark/Attack/1.png" id="1_57ssq"]
+[ext_resource type="Texture2D" uid="uid://bwioufafjresj" path="res://art/enemies/Shark/Idle/1.png" id="1_grjqt"]
+[ext_resource type="Script" path="res://scripts/shark.gd" id="1_yecgm"]
+[ext_resource type="Texture2D" uid="uid://b6uo0v3ulc5c5" path="res://art/enemies/Shark/Idle/2.png" id="2_d1lmh"]
+[ext_resource type="Texture2D" uid="uid://sh0rronn5q7o" path="res://art/enemies/Shark/Attack/2.png" id="2_xyt7t"]
+[ext_resource type="Texture2D" uid="uid://deg42pitn8aqa" path="res://art/enemies/Shark/Attack/3.png" id="3_3oigo"]
+[ext_resource type="Texture2D" uid="uid://bbwlcekar2gtb" path="res://art/enemies/Shark/Idle/3.png" id="3_gnerh"]
+[ext_resource type="Texture2D" uid="uid://c2aa7yqla86ss" path="res://art/enemies/Shark/Attack/4.png" id="4_hbp7u"]
+[ext_resource type="Texture2D" uid="uid://o30whdfjda4n" path="res://art/enemies/Shark/Idle/4.png" id="4_nsv4q"]
+[ext_resource type="Texture2D" uid="uid://c2ssjv8fucsex" path="res://art/enemies/Shark/Attack/5.png" id="5_quj20"]
+[ext_resource type="Texture2D" uid="uid://bn8v2y8ll4un0" path="res://art/enemies/Shark/Attack/6.png" id="6_7ati2"]
+[ext_resource type="Texture2D" uid="uid://dp33uu4e2lf8q" path="res://art/enemies/Shark/Death/1.png" id="7_88ufe"]
+[ext_resource type="Texture2D" uid="uid://ck6mhvleqs0bd" path="res://art/enemies/Shark/Death/2.png" id="8_so7xu"]
+[ext_resource type="Texture2D" uid="uid://3ta6v22lrukf" path="res://art/enemies/Shark/Death/3.png" id="9_2nnng"]
+[ext_resource type="Texture2D" uid="uid://c2f6g14lklqlp" path="res://art/enemies/Shark/Death/4.png" id="10_pcpsd"]
+[ext_resource type="Texture2D" uid="uid://b14ynf3laspne" path="res://art/enemies/Shark/Death/5.png" id="11_wevdk"]
+[ext_resource type="Texture2D" uid="uid://uydqokca6d07" path="res://art/enemies/Shark/Death/6.png" id="12_e7xyp"]
+[ext_resource type="Texture2D" uid="uid://bkpjonngpiqfh" path="res://art/enemies/Shark/Hurt/1.png" id="13_jfyau"]
+[ext_resource type="Texture2D" uid="uid://dnbxxtaujdptm" path="res://art/enemies/Shark/Hurt/2.png" id="14_qffxq"]
+[ext_resource type="Texture2D" uid="uid://vheisw8haq3d" path="res://art/enemies/Shark/Walk/1.png" id="19_dfto8"]
+[ext_resource type="Texture2D" uid="uid://d03nlbs6tee83" path="res://art/enemies/Shark/Walk/2.png" id="20_bslbi"]
+[ext_resource type="Texture2D" uid="uid://bu3501iteigxq" path="res://art/enemies/Shark/Walk/3.png" id="21_br0hm"]
+[ext_resource type="Texture2D" uid="uid://bmueqfot2xhop" path="res://art/enemies/Shark/Walk/4.png" id="22_dc0fa"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e3b4y"]
+radius = 8.0
+height = 72.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gjdu6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_57ssq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xyt7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3oigo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hbp7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_quj20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7ati2")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_88ufe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_so7xu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2nnng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pcpsd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_wevdk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_e7xyp")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_jfyau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_qffxq")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_grjqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_d1lmh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gnerh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nsv4q")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_dfto8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_bslbi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_br0hm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_dc0fa")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_t20mq"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_85qg3"]
+resource_name = "move"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"move"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_b2b5i"]
+resource_name = "death"
+length = 1.2
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"death"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_ndytv"]
+resource_name = "hurt"
+length = 0.4
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hurt"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_l3aol"]
+resource_name = "attack"
+length = 1.2
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_ac2qr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vmapi"]
+_data = {
+"RESET": SubResource("Animation_ac2qr"),
+"attack": SubResource("Animation_l3aol"),
+"death": SubResource("Animation_b2b5i"),
+"hurt": SubResource("Animation_ndytv"),
+"idle": SubResource("Animation_t20mq"),
+"move": SubResource("Animation_85qg3")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rg1n2"]
+radius = 456.53
+
+[node name="Shark" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_yecgm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_e3b4y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gjdu6")
+animation = &"idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vmapi")
+}
+autoplay = "idle"
+
+[node name="Player Detection" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player Detection"]
+shape = SubResource("CircleShape2D_rg1n2")
+
+[connection signal="body_entered" from="Player Detection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="Player Detection" to="." method="_on_player_detection_body_exited"]
