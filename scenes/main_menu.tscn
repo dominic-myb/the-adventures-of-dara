@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cdueccuslp4js"]
+[gd_scene load_steps=15 format=3 uid="uid://cdueccuslp4js"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_ciru4"]
 [ext_resource type="Texture2D" uid="uid://bwycwdfpchkf0" path="res://art/ui/play-btn.png" id="1_nhhxu"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://yj78vfs58sda" path="res://art/ui/load-press.png" id="4_r7wv8"]
 [ext_resource type="Texture2D" uid="uid://ddhlckwdkagr" path="res://art/ui/quit-btn.png" id="5_ba5ug"]
 [ext_resource type="Texture2D" uid="uid://dcprpugk7kdc4" path="res://art/ui/quit-press.png" id="6_jhnhj"]
+[ext_resource type="PackedScene" uid="uid://df8m47f0v3cc" path="res://scenes/main_menu_bg.tscn" id="8_55apw"]
 
 [sub_resource type="GDScript" id="GDScript_8jbsn"]
 script/source = "extends CanvasLayer
@@ -220,6 +221,8 @@ position = Vector2(-60, 60)
 scale = Vector2(2, 2)
 texture_normal = ExtResource("5_ba5ug")
 texture_pressed = ExtResource("6_jhnhj")
+
+[node name="MainMenuBG" parent="." instance=ExtResource("8_55apw")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

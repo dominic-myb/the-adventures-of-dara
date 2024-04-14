@@ -1,9 +1,9 @@
 extends Node2D
 
 func _ready():
-	#Utils.saveGame()
-	#Utils.loadGame()
-	pass
+	Utils.saveGame()
+	Utils.loadGame()
+	
 func _on_play_pressed():
 	get_node("AnimationPlayer").play("play")
 	await get_node("AnimationPlayer").animation_finished
@@ -12,9 +12,10 @@ func _on_play_pressed():
 func _on_load_pressed():
 	get_node("AnimationPlayer").play("load")
 	await get_node("AnimationPlayer").animation_finished
-	#add here the scene for load game
+	Utils.loadGame()
 
 func _on_quit_pressed():
 	get_node("AnimationPlayer").play("quit")
 	await get_node("AnimationPlayer").animation_finished
+	Utils.saveGame()
 	get_tree().quit()

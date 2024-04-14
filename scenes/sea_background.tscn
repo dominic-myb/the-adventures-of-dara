@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://nbkde1u3ffkf"]
+
+[ext_resource type="Texture2D" uid="uid://v7w1m6cnq4l8" path="res://art/tilesets/background.png" id="1_w27tk"]
+[ext_resource type="Texture2D" uid="uid://cw6i3lv5wmf2" path="res://art/tilesets/midground.png" id="2_ij8la"]
+
+[node name="Sea Background" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(2880, 0)
+
+[node name="Back" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(1440, -1280)
+scale = Vector2(10, 10)
+texture = ExtResource("1_w27tk")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(4800, 0)
+
+[node name="Mid" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(2400, -1280)
+scale = Vector2(5, 5)
+texture = ExtResource("2_ij8la")
