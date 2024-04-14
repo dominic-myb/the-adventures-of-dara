@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://c6ilxjr5r7ma6"]
+
+[ext_resource type="Script" path="res://scripts/projectiles/projectile_1.gd" id="1_vhgee"]
+[ext_resource type="Texture2D" uid="uid://concw1sb1q4vu" path="res://art/projectiles/water_attack3.png" id="1_yffk2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncoq0"]
+atlas = ExtResource("1_yffk2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i65wn"]
+atlas = ExtResource("1_yffk2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mxwe"]
+atlas = ExtResource("1_yffk2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57yei"]
+atlas = ExtResource("1_yffk2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4t4q8"]
+atlas = ExtResource("1_yffk2")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6f478"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncoq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i65wn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mxwe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57yei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4t4q8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jrue6"]
+radius = 9.0
+height = 18.0
+
+[node name="Projectile1" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_vhgee")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6f478")
+frame = 2
+frame_progress = 0.0793245
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_jrue6")
