@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 func _ready():
 	Utils.saveGame()
@@ -13,6 +13,7 @@ func _on_load_pressed():
 	get_node("AnimationPlayer").play("load")
 	await get_node("AnimationPlayer").animation_finished
 	Utils.loadGame()
+	get_tree().change_scene_to_file("res://scenes/world_sea.tscn")
 
 func _on_quit_pressed():
 	get_node("AnimationPlayer").play("quit")
