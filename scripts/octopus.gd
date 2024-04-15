@@ -55,8 +55,8 @@ func on_attack_cooldown(delta):
 		can_attack = true
 		cd_timer = 0.0
 
-func take_damage(damage):
-	health -= damage
+func take_damage(amount):
+	health -= amount
 	print_debug(health)
 	if health <= 0: death()
 	else: return health
