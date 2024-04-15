@@ -1,86 +1,344 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwsustwt2rmb7"]
+[gd_scene load_steps=33 format=3 uid="uid://cwsustwt2rmb7"]
 
-[ext_resource type="Texture2D" uid="uid://34k75mlqi02r" path="res://art/enemies/Big Shark/attack.png" id="1_h5a05"]
-[ext_resource type="Texture2D" uid="uid://dwmt8p2wfy7sg" path="res://art/enemies/Big Shark/hurt.png" id="2_ecb44"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_17ow0"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kfbm3"]
-atlas = ExtResource("1_h5a05")
-region = Rect2(0, 0, 159, 133)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pibfl"]
-atlas = ExtResource("1_h5a05")
-region = Rect2(159, 0, 159, 133)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qrf0r"]
-atlas = ExtResource("1_h5a05")
-region = Rect2(318, 0, 159, 133)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dl8nf"]
-atlas = ExtResource("1_h5a05")
-region = Rect2(477, 0, 159, 133)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cqkb3"]
-atlas = ExtResource("2_ecb44")
-region = Rect2(0, 0, 169, 107)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ctfdp"]
-atlas = ExtResource("2_ecb44")
-region = Rect2(169, 0, 169, 107)
+[ext_resource type="Texture2D" uid="uid://62knino2asm4" path="res://art/enemies/Big Shark/attack/1.png" id="1_hanys"]
+[ext_resource type="Script" path="res://scripts/big_shark.gd" id="1_hll6e"]
+[ext_resource type="Texture2D" uid="uid://bq0auxg023uom" path="res://art/enemies/Big Shark/attack/2.png" id="2_si8is"]
+[ext_resource type="Texture2D" uid="uid://dpf4ridqty28m" path="res://art/enemies/Big Shark/attack/3.png" id="3_c6lrt"]
+[ext_resource type="Texture2D" uid="uid://bbq363me5nind" path="res://art/enemies/Big Shark/attack/4.png" id="4_n4o87"]
+[ext_resource type="Texture2D" uid="uid://crtaq34a3pwwm" path="res://art/enemies/Big Shark/death/1.png" id="5_8panc"]
+[ext_resource type="Texture2D" uid="uid://bj6hterdpk247" path="res://art/enemies/Big Shark/death/2.png" id="6_cjab2"]
+[ext_resource type="Texture2D" uid="uid://cevauxgp3rie8" path="res://art/enemies/Big Shark/death/3.png" id="7_12kyw"]
+[ext_resource type="Texture2D" uid="uid://dxdvupls5840v" path="res://art/enemies/Big Shark/death/4.png" id="8_mmcmc"]
+[ext_resource type="Texture2D" uid="uid://daju5m5xf4v0y" path="res://art/enemies/Big Shark/death/5.png" id="9_g6vff"]
+[ext_resource type="Texture2D" uid="uid://uab455o40n0c" path="res://art/enemies/Big Shark/hurt/1.png" id="10_86h1o"]
+[ext_resource type="Texture2D" uid="uid://mua8p78flcl1" path="res://art/enemies/Big Shark/hurt/2.png" id="11_etlqn"]
+[ext_resource type="Texture2D" uid="uid://dx2oji1j064dl" path="res://art/enemies/Big Shark/Idle/1.png" id="12_lrn1m"]
+[ext_resource type="Texture2D" uid="uid://7ymu1ixla8r2" path="res://art/enemies/Big Shark/Idle/2.png" id="13_5luq0"]
+[ext_resource type="Texture2D" uid="uid://p8mce1i7usj2" path="res://art/enemies/Big Shark/Idle/3.png" id="14_u1ag5"]
+[ext_resource type="Texture2D" uid="uid://b0ehban6q056g" path="res://art/enemies/Big Shark/Idle/4.png" id="15_ugo76"]
+[ext_resource type="Texture2D" uid="uid://ck7wt5be6pw68" path="res://art/enemies/Big Shark/walk/1.png" id="16_gkqs1"]
+[ext_resource type="Texture2D" uid="uid://2tnp631udmef" path="res://art/enemies/Big Shark/walk/2.png" id="17_uk43f"]
+[ext_resource type="Texture2D" uid="uid://bhk6ba5pwdhnv" path="res://art/enemies/Big Shark/walk/3.png" id="18_0rpk8"]
+[ext_resource type="Texture2D" uid="uid://cyc78ihl6h03i" path="res://art/enemies/Big Shark/walk/4.png" id="19_nfdot"]
+[ext_resource type="Texture2D" uid="uid://bd2vqlbegbdcr" path="res://art/enemies/Big Shark/walk/5.png" id="20_poduv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_02mib"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kfbm3")
+"texture": ExtResource("1_hanys")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pibfl")
+"texture": ExtResource("2_si8is")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qrf0r")
+"texture": ExtResource("3_c6lrt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dl8nf")
+"texture": ExtResource("4_n4o87")
 }],
 "loop": true,
 "name": &"attack",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_8panc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cjab2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_12kyw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mmcmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_g6vff")
+}],
 "loop": true,
 "name": &"death",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cqkb3")
+"texture": ExtResource("10_86h1o")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ctfdp")
+"texture": ExtResource("11_etlqn")
 }],
 "loop": true,
 "name": &"hurt",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_lrn1m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_5luq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_u1ag5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ugo76")
+}],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_gkqs1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_uk43f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_0rpk8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_nfdot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_poduv")
+}],
 "loop": true,
 "name": &"move",
 "speed": 5.0
 }]
 
-[node name="Big Shark" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_17ow0"]
+radius = 37.0
+height = 166.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_17ow0")
+[sub_resource type="Animation" id="Animation_rbe66"]
+resource_name = "attack"
+length = 0.8
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_2dktl"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_82dbj"]
+resource_name = "move"
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"move"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_n53ob"]
+resource_name = "hurt"
+length = 0.4
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"hurt"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_un75k"]
+resource_name = "death"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"death"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_2wddm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lw0yc"]
+_data = {
+"RESET": SubResource("Animation_2wddm"),
+"attack": SubResource("Animation_rbe66"),
+"death": SubResource("Animation_un75k"),
+"hurt": SubResource("Animation_n53ob"),
+"idle": SubResource("Animation_2dktl"),
+"move": SubResource("Animation_82dbj")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gmfcf"]
+radius = 435.415
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0jufj"]
+radius = 47.0
+height = 102.0
+
+[node name="Big Shark" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_hll6e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_02mib")
-animation = &"attack"
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(24, 6)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_17ow0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lw0yc")
+}
+autoplay = "idle"
+
+[node name="Player Detection" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player Detection"]
+shape = SubResource("CircleShape2D_gmfcf")
+
+[node name="Damage Area" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage Area"]
+position = Vector2(83, 22)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_0jufj")
+
+[connection signal="body_entered" from="Player Detection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="Player Detection" to="." method="_on_player_detection_body_exited"]
+[connection signal="body_entered" from="Damage Area" to="." method="_on_damage_area_body_entered"]
+[connection signal="body_exited" from="Damage Area" to="." method="_on_damage_area_body_exited"]
