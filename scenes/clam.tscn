@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://mmvsfp78js8d"]
+
+[ext_resource type="Script" path="res://scenes/clam.gd" id="1_1tl6i"]
+[ext_resource type="Texture2D" uid="uid://dddne107c2ctl" path="res://art/npc/clam.png" id="1_gm62y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btqoa"]
+atlas = ExtResource("1_gm62y")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgmdc"]
+atlas = ExtResource("1_gm62y")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ucbwy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btqoa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgmdc")
+}],
+"loop": true,
+"name": &"interact",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dcfdd"]
+radius = 57.4543
+
+[node name="Clam" type="Area2D"]
+collision_layer = 64
+collision_mask = 2
+script = ExtResource("1_1tl6i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ucbwy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+shape = SubResource("CircleShape2D_dcfdd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
