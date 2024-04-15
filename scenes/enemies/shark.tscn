@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cssscertc0ftw"]
+[gd_scene load_steps=35 format=3 uid="uid://cssscertc0ftw"]
 
 [ext_resource type="Texture2D" uid="uid://d3i21btl8ieil" path="res://art/enemies/Shark/Attack/1.png" id="1_57ssq"]
 [ext_resource type="Texture2D" uid="uid://bwioufafjresj" path="res://art/enemies/Shark/Idle/1.png" id="1_grjqt"]
@@ -122,11 +122,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_t20mq"]
-resource_name = "idle"
-length = 0.8
-loop_mode = 1
-step = 0.2
+[sub_resource type="Animation" id="Animation_ac2qr"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -146,16 +143,15 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_85qg3"]
-resource_name = "move"
-length = 0.8
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_l3aol"]
+resource_name = "attack"
+length = 1.2
 step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -167,7 +163,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"move"]
+"values": [&"attack"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -176,10 +172,10 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [0, 1, 2, 3, 4, 5]
 }
 
 [sub_resource type="Animation" id="Animation_b2b5i"]
@@ -240,37 +236,11 @@ tracks/1/keys = {
 "values": [0, 1]
 }
 
-[sub_resource type="Animation" id="Animation_l3aol"]
-resource_name = "attack"
-length = 1.2
+[sub_resource type="Animation" id="Animation_t20mq"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
 step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"attack"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-
-[sub_resource type="Animation" id="Animation_ac2qr"]
-length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -290,10 +260,40 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_85qg3"]
+resource_name = "move"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [&"move"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vmapi"]
@@ -307,7 +307,11 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rg1n2"]
-radius = 456.53
+radius = 277.002
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tpnvf"]
+radius = 4.0
+height = 52.0
 
 [node name="Shark" type="CharacterBody2D"]
 collision_layer = 4
@@ -336,5 +340,16 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player Detection"]
 shape = SubResource("CircleShape2D_rg1n2")
 
+[node name="Damage Area" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage Area"]
+position = Vector2(27, 2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_tpnvf")
+
 [connection signal="body_entered" from="Player Detection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="Player Detection" to="." method="_on_player_detection_body_exited"]
+[connection signal="body_entered" from="Damage Area" to="." method="_on_damage_area_body_entered"]
+[connection signal="body_exited" from="Damage Area" to="." method="_on_damage_area_body_exited"]

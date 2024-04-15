@@ -1,26 +1,37 @@
 extends CharacterBody2D
 var player : CharacterBody2D
 var in_range : bool
-var speed := 100.0
 var in_damage_area : bool
-var can_attack : = true
+var can_attack := true
+var is_alive := true
+var is_hurt := false
+var speed := 100.0
 var attack_cd = 3.0
 var cd_timer = 0.0
 var health = Game.enemy_hp
 var damage = Game.enemy_damage
-var is_alive := true
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	$AnimationPlayer.play("idle")
 
 func _process(_delta):
+	#if not player.active:
+		#return
 	if is_alive:
+		if is_hurt:
+			$AnimationPlayer.play("hurt")
+			await $AnimationPlayer.animation_finished
+			is_hurt = false
 		if can_attack and in_damage_area:
 			sprite_position(velocity.x)
 			await on_enemy_attack($AnimationPlayer)
 		$AnimationPlayer.play("move" if in_range else "idle")
-
+	else:
+		$AnimationPlayer.play("death")
+		await $AnimationPlayer.animation_finished
 func _physics_process(delta):
+	#if not player.active:
+		#return
 	if is_alive:
 		if not can_attack:
 			on_attack_cooldown(delta)
@@ -56,15 +67,13 @@ func on_attack_cooldown(delta):
 		cd_timer = 0.0
 
 func take_damage(amount):
+	is_hurt = true
 	health -= amount
-	print_debug(health)
 	if health <= 0: death()
 	else: return health
 
 func death():
 	is_alive = false
-	$AnimationPlayer.play("death")
-	await  $AnimationPlayer.animation_finished
 	Game.player_exp += 10
 	Utils.saveGame()
 	self.queue_free()
@@ -77,11 +86,9 @@ func _on_player_detection_body_exited(body):
 	if body.is_in_group("Player"):
 		in_range = false
 
-
 func _on_damage_area_body_entered(body):
 	if body.is_in_group("Player"):
 		in_damage_area = true
-
 
 func _on_damage_area_body_exited(body):
 	if body.is_in_group("Player"):

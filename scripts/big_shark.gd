@@ -8,12 +8,18 @@ var can_attack = true
 var speed = 100
 var attack_cd = 0.0
 var cd_timer = 0.0
+var is_hurt := false
+var damage = Game.enemy_damage * 2
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	$AnimationPlayer.play("idle")
 
 func _process(_delta):
 	if is_alive:
+		if is_hurt:
+			$AnimationPlayer.play("hurt")
+			await $AnimationPlayer.animation_finished
+			is_hurt = false
 		if can_attack and in_damage_area:
 			await on_enemy_attack($AnimationPlayer)
 		$AnimationPlayer.play("move" if in_range else "idle")
@@ -57,8 +63,9 @@ func on_attack_cooldown(delta):
 		can_attack = true
 		cd_timer = 0.0
 
-func take_damage(damage):
-	health -= damage
+func take_damage(amount):
+	is_hurt = true
+	health -= amount
 	if health <= 0: death()
 	else: return health
 
@@ -79,6 +86,7 @@ func _on_player_detection_body_exited(body):
 func _on_damage_area_body_entered(body):
 	if body.is_in_group("Player"):
 		in_damage_area = true
+		player.take_damage(damage)
 
 func _on_damage_area_body_exited(body):
 	if body.is_in_group("Player"):

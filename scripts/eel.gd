@@ -8,6 +8,7 @@ var attack_cd = 3.0
 var cd_timer = 0
 var health = Game.enemy_hp
 var is_alive := true
+var is_hurt := false
 
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
@@ -15,6 +16,10 @@ func _ready():
 
 func _process(_delta):
 	if is_alive:
+		if is_hurt:
+			$AnimationPlayer.play("hurt")
+			await $AnimationPlayer.animation_finished
+			is_hurt = false
 		if can_attack and in_damage_area:
 			await on_enemy_attack($AnimationPlayer)
 		if in_range:
@@ -55,6 +60,7 @@ func on_enemy_attack(anim: AnimationPlayer):
 	can_attack = false
 
 func take_damage(damage):
+	is_hurt = true
 	health -= damage
 	if health <= 0: death()
 	else: return health
