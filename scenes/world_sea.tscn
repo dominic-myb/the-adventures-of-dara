@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://jd52mao54vxa" path="res://scenes/player.tscn" id="1_cl1xs"]
 [ext_resource type="Texture2D" uid="uid://d2wmqv5x6syit" path="res://art/tilesets/tiles.png" id="1_h3ypg"]
-[ext_resource type="PackedScene" uid="uid://blad2cr366pdi" path="res://scenes/octopus.tscn" id="2_324mf"]
+[ext_resource type="PackedScene" uid="uid://blad2cr366pdi" path="res://scenes/enemies/octopus.tscn" id="2_324mf"]
 [ext_resource type="Script" path="res://scripts/joystick.gd" id="4_5a8fq"]
-[ext_resource type="PackedScene" uid="uid://cs2qglsg4nsf3" path="res://scenes/eel.tscn" id="4_xus66"]
+[ext_resource type="PackedScene" uid="uid://cs2qglsg4nsf3" path="res://scenes/enemies/eel.tscn" id="4_xus66"]
 [ext_resource type="Texture2D" uid="uid://dc5n3dcmgba01" path="res://art/ui/joystick-outer.png" id="5_lbebd"]
-[ext_resource type="PackedScene" uid="uid://cssscertc0ftw" path="res://scenes/shark.tscn" id="5_rbf0b"]
+[ext_resource type="PackedScene" uid="uid://cssscertc0ftw" path="res://scenes/enemies/shark.tscn" id="5_rbf0b"]
 [ext_resource type="Texture2D" uid="uid://bnwfjc1cha5mi" path="res://art/ui/joystick-inner.png" id="6_ul52k"]
 [ext_resource type="Script" path="res://scripts/joystick-inner.gd" id="7_3jpta"]
 [ext_resource type="PackedScene" uid="uid://nbkde1u3ffkf" path="res://scenes/sea_background.tscn" id="8_0bn21"]
@@ -2138,10 +2138,10 @@ limit_bottom = 0
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Octopus" parent="Enemies" instance=ExtResource("2_324mf")]
-position = Vector2(1841, -208)
+position = Vector2(1772, -250)
 
 [node name="Eel" parent="Enemies" instance=ExtResource("4_xus66")]
-position = Vector2(649, -131)
+position = Vector2(766, -187)
 
 [node name="Shark" parent="Enemies" instance=ExtResource("5_rbf0b")]
 position = Vector2(1402, -970)

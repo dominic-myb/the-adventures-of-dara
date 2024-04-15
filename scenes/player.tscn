@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://jd52mao54vxa"]
+[gd_scene load_steps=52 format=3 uid="uid://jd52mao54vxa"]
 
 [ext_resource type="Texture2D" uid="uid://b5aax1i40hp78" path="res://art/player/dara_death.png" id="1_isvhe"]
 [ext_resource type="Script" path="res://scripts/player_sea.gd" id="1_pa4xk"]
@@ -461,6 +461,9 @@ _data = {
 "move": SubResource("Animation_2u3ag")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qh32"]
+size = Vector2(20, 67)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 collision_mask = 3
@@ -487,3 +490,11 @@ position = Vector2(45, 0)
 [node name="Sprite2D" type="Sprite2D" parent="Aim/Marker2D"]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("7_fqfew")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_1qh32")

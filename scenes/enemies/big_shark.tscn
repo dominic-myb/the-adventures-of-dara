@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=3 uid="uid://cwsustwt2rmb7"]
+
+[ext_resource type="Texture2D" uid="uid://34k75mlqi02r" path="res://art/enemies/Big Shark/attack.png" id="1_h5a05"]
+[ext_resource type="Texture2D" uid="uid://dwmt8p2wfy7sg" path="res://art/enemies/Big Shark/hurt.png" id="2_ecb44"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_17ow0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfbm3"]
+atlas = ExtResource("1_h5a05")
+region = Rect2(0, 0, 159, 133)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pibfl"]
+atlas = ExtResource("1_h5a05")
+region = Rect2(159, 0, 159, 133)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrf0r"]
+atlas = ExtResource("1_h5a05")
+region = Rect2(318, 0, 159, 133)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dl8nf"]
+atlas = ExtResource("1_h5a05")
+region = Rect2(477, 0, 159, 133)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqkb3"]
+atlas = ExtResource("2_ecb44")
+region = Rect2(0, 0, 169, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctfdp"]
+atlas = ExtResource("2_ecb44")
+region = Rect2(169, 0, 169, 107)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_02mib"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfbm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pibfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrf0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dl8nf")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqkb3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctfdp")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[node name="Big Shark" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_17ow0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_02mib")
+animation = &"attack"
