@@ -40,7 +40,9 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="Projectile"
 2d_physics/layer_5="Items"
+2d_physics/layer_6="player_hurtbox"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true
