@@ -1,15 +1,11 @@
-extends State
 class_name Idle
-var in_range: bool
+extends State
+
 func Enter():
-	$"../../AnimationPlayer".play("idle")
+	pass
 func Update(delta):
-	if in_range:
-		Transitioned.emit(self, "move")
+	pass
 func Physics_Update(delta):
 	pass
-
-
 func _on_player_detection_body_entered(body):
-	if body.is_in_group("Player"):
-		in_range = true
+	pass

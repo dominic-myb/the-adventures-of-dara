@@ -3,19 +3,22 @@
 [ext_resource type="Script" path="res://scenes/clam.gd" id="1_1tl6i"]
 [ext_resource type="Texture2D" uid="uid://dddne107c2ctl" path="res://art/npc/clam.png" id="1_gm62y"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_btqoa"]
-atlas = ExtResource("1_gm62y")
-region = Rect2(128, 0, 128, 128)
+[sub_resource type="CircleShape2D" id="CircleShape2D_dcfdd"]
+radius = 33.0151
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cgmdc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nwd4"]
 atlas = ExtResource("1_gm62y")
-region = Rect2(0, 0, 128, 128)
+region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ucbwy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3yja"]
+atlas = ExtResource("1_gm62y")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_byqtj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_btqoa")
+"texture": SubResource("AtlasTexture_2nwd4")
 }],
 "loop": true,
 "name": &"default",
@@ -23,26 +26,21 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cgmdc")
+"texture": SubResource("AtlasTexture_j3yja")
 }],
 "loop": true,
 "name": &"interact",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dcfdd"]
-radius = 57.4543
-
 [node name="Clam" type="Area2D"]
 collision_layer = 64
 collision_mask = 2
 script = ExtResource("1_1tl6i")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_ucbwy")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 12)
+position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_dcfdd")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_byqtj")

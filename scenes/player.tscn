@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dew3puq6241wt" path="res://art/player/dara_attack.png" id="2_4vi7q"]
 [ext_resource type="Texture2D" uid="uid://c75ebqtkrjrh7" path="res://art/player/dara_hurt.png" id="2_qnqi8"]
 [ext_resource type="Texture2D" uid="uid://c6vylv6ywocat" path="res://art/player/dara_move.png" id="4_adsrw"]
-[ext_resource type="Texture2D" uid="uid://b3yulltlt4nda" path="res://art/ui/attack-btn.png" id="7_fqfew"]
+[ext_resource type="Texture2D" uid="uid://b3yulltlt4nda" path="res://art/ui/buttons/attack-btn.png" id="7_fqfew"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_emyft"]
 atlas = ExtResource("2_4vi7q")
@@ -466,7 +466,6 @@ size = Vector2(20, 67)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
-collision_mask = 3
 script = ExtResource("1_pa4xk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -492,7 +491,7 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("7_fqfew")
 
 [node name="Hurtbox" type="Area2D" parent="."]
-collision_layer = 32
+collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]

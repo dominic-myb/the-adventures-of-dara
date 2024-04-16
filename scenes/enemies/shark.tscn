@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cssscertc0ftw"]
+[gd_scene load_steps=41 format=3 uid="uid://cssscertc0ftw"]
 
 [ext_resource type="Texture2D" uid="uid://d3i21btl8ieil" path="res://art/enemies/Shark/Attack/1.png" id="1_57ssq"]
 [ext_resource type="Texture2D" uid="uid://bwioufafjresj" path="res://art/enemies/Shark/Idle/1.png" id="1_grjqt"]
@@ -23,6 +23,12 @@
 [ext_resource type="Texture2D" uid="uid://d03nlbs6tee83" path="res://art/enemies/Shark/Walk/2.png" id="20_bslbi"]
 [ext_resource type="Texture2D" uid="uid://bu3501iteigxq" path="res://art/enemies/Shark/Walk/3.png" id="21_br0hm"]
 [ext_resource type="Texture2D" uid="uid://bmueqfot2xhop" path="res://art/enemies/Shark/Walk/4.png" id="22_dc0fa"]
+[ext_resource type="Script" path="res://scripts/state-machine/state-machine.gd" id="24_mqhnx"]
+[ext_resource type="Script" path="res://scripts/state-machine/idle.gd" id="25_fpdrg"]
+[ext_resource type="Script" path="res://scripts/state-machine/move.gd" id="26_vpi2s"]
+[ext_resource type="Script" path="res://scripts/state-machine/attack.gd" id="27_tnlcj"]
+[ext_resource type="Script" path="res://scripts/state-machine/death.gd" id="28_q8x6u"]
+[ext_resource type="Script" path="res://scripts/state-machine/hurt.gd" id="29_3qa82"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e3b4y"]
 radius = 8.0
@@ -348,6 +354,24 @@ collision_mask = 2
 position = Vector2(27, 2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_tpnvf")
+
+[node name="State Machine" type="Node" parent="."]
+script = ExtResource("24_mqhnx")
+
+[node name="Idle" type="Node" parent="State Machine"]
+script = ExtResource("25_fpdrg")
+
+[node name="Move" type="Node" parent="State Machine"]
+script = ExtResource("26_vpi2s")
+
+[node name="Attack" type="Node" parent="State Machine"]
+script = ExtResource("27_tnlcj")
+
+[node name="Death" type="Node" parent="State Machine"]
+script = ExtResource("28_q8x6u")
+
+[node name="Hurt" type="Node" parent="State Machine"]
+script = ExtResource("29_3qa82")
 
 [connection signal="body_entered" from="Player Detection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="Player Detection" to="." method="_on_player_detection_body_exited"]

@@ -52,7 +52,7 @@ height = 18.0
 
 [node name="Projectile1" type="CharacterBody2D"]
 collision_layer = 8
-collision_mask = 4
+collision_mask = 5
 script = ExtResource("1_vhgee")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

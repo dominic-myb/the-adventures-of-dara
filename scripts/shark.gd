@@ -41,7 +41,7 @@ func follow_player():
 
 func on_enemy_attack(anim : AnimationPlayer):
 	anim.play("attack")
-	await  anim.animation_finished
+	await anim.animation_finished
 	can_attack = false
 
 func on_attack_cooldown(delta):
@@ -53,7 +53,7 @@ func on_attack_cooldown(delta):
 func take_damage(amount):
 	is_hurt = true
 	health -= amount
-	if health <= 0: death()
+	if health <= 0: await death()
 	else: return health
 
 func death():

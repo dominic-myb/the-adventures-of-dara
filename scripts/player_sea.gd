@@ -1,12 +1,12 @@
 extends CharacterBody2D
 class_name Player
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-const PROJECTILE_PATH = preload("res://projectiles/projectile_1.tscn")
+const PROJECTILE_PATH = preload("res://projectiles/projectile_2.tscn")
 @onready var player = %Player
 @onready var joystick = $"../../CanvasLayer/HBoxContainer/Joystick"
-var speed = 600.0
+var speed := 600.0
 var is_moving: bool
-var is_pressed = false
+var is_pressed := false
 var is_hurt := false
 func _ready():
 	$AnimationPlayer.play("idle")
@@ -64,8 +64,6 @@ func player_attack():
 func take_damage(damage):
 	is_hurt = true
 	Game.player_hp -= damage
-	print_debug(Game.player_hp)
-	
 	if Game.player_hp <= 0: death()
 
 func death():

@@ -27,8 +27,9 @@ func calculate_vector():
 	if abs((global_position.y - parent.global_position.y)) >= deadzone:
 		parent.vector_pos.y = (global_position.y - parent.global_position.y)/max_length
 
-func _on_joystick_button_pressed():
+func _on_button_pressed():
 	pressing = true
 
-func _on_joystick_button_released():
+
+func _on_button_released():
 	pressing = false
