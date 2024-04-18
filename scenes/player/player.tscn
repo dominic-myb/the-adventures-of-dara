@@ -1,12 +1,12 @@
 [gd_scene load_steps=52 format=3 uid="uid://jd52mao54vxa"]
 
 [ext_resource type="Texture2D" uid="uid://b5aax1i40hp78" path="res://art/player/dara_death.png" id="1_isvhe"]
-[ext_resource type="Script" path="res://scripts/player_sea.gd" id="1_pa4xk"]
+[ext_resource type="Script" path="res://scripts/player/player_sea.gd" id="1_pa4xk"]
 [ext_resource type="Texture2D" uid="uid://b8pg1fxyuma2x" path="res://art/player/dara_idle.png" id="1_u5xla"]
 [ext_resource type="Texture2D" uid="uid://dew3puq6241wt" path="res://art/player/dara_attack.png" id="2_4vi7q"]
 [ext_resource type="Texture2D" uid="uid://c75ebqtkrjrh7" path="res://art/player/dara_hurt.png" id="2_qnqi8"]
 [ext_resource type="Texture2D" uid="uid://c6vylv6ywocat" path="res://art/player/dara_move.png" id="4_adsrw"]
-[ext_resource type="Texture2D" uid="uid://b3yulltlt4nda" path="res://art/ui/buttons/attack-btn.png" id="7_fqfew"]
+[ext_resource type="Texture2D" uid="uid://bk45quo4quqej" path="res://art/ui/buttons/attack-btn.png" id="7_fqfew"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_emyft"]
 atlas = ExtResource("2_4vi7q")

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://w8wj1dysn4c5" path="res://art/enemies/Octopus/death/1.png" id="1_5wudi"]
 [ext_resource type="Texture2D" uid="uid://8c3gta7vrp0n" path="res://art/enemies/Octopus/idle/1.png" id="1_6pr10"]
 [ext_resource type="Texture2D" uid="uid://cndq5n76s5etu" path="res://art/enemies/Octopus/attack/1.png" id="1_pf1wf"]
-[ext_resource type="Script" path="res://scripts/octopus.gd" id="1_qdmp6"]
+[ext_resource type="Script" path="res://scripts/enemies/octopus.gd" id="1_qdmp6"]
 [ext_resource type="Texture2D" uid="uid://dh3ebrs32m7if" path="res://art/enemies/Octopus/idle/2.png" id="2_1rvvf"]
 [ext_resource type="Texture2D" uid="uid://r74uus200kgd" path="res://art/enemies/Octopus/attack/2.png" id="2_u3jcx"]
 [ext_resource type="Texture2D" uid="uid://c5hgk45dqwpnt" path="res://art/enemies/Octopus/death/2.png" id="2_w3866"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://c0654klhsntls" path="res://art/enemies/Octopus/move/4.png" id="16_3osqx"]
 [ext_resource type="Texture2D" uid="uid://xjln2j2t7jg8" path="res://art/enemies/Octopus/move/5.png" id="17_pte06"]
 [ext_resource type="Texture2D" uid="uid://b04v0sd4jvlx8" path="res://art/enemies/Octopus/move/6.png" id="18_honfh"]
+
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b2rtg"]
 animations = [{

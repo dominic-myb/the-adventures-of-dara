@@ -1,9 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://27cass0s6w5w"]
 
-[ext_resource type="Texture2D" uid="uid://dc5n3dcmgba01" path="res://art/ui/joystick/joystick-outer.png" id="1_bj7bl"]
-[ext_resource type="Script" path="res://scripts/joystick.gd" id="1_p0dvt"]
-[ext_resource type="Texture2D" uid="uid://bnwfjc1cha5mi" path="res://art/ui/joystick/joystick-inner.png" id="2_xbptv"]
-[ext_resource type="Script" path="res://scripts/joystick-inner.gd" id="4_ui5d1"]
+[ext_resource type="Texture2D" uid="uid://b2fm1iluk8piy" path="res://art/ui/joystick/joystick-outer.png" id="1_bj7bl"]
+[ext_resource type="Script" path="res://scripts/ui/joystick.gd" id="1_p0dvt"]
+[ext_resource type="Texture2D" uid="uid://cwdp8wh4bsdyh" path="res://art/ui/joystick/joystick-inner.png" id="2_xbptv"]
+[ext_resource type="Script" path="res://scripts/ui/joystick-inner.gd" id="4_ui5d1"]
+
 
 [node name="Joystick" type="Node2D"]
 position = Vector2(158, 96)

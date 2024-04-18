@@ -1,11 +1,10 @@
 extends CharacterBody2D
 class_name Player
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-const PROJECTILE_PATH = preload("res://projectiles/projectile_2.tscn")
-@onready var player = %Player
+const PROJECTILE_PATH = preload("res://scenes/projectiles/projectile_2.tscn")
 @onready var joystick = $"../../CanvasLayer/HBoxContainer/Joystick"
 var speed := 600.0
-var is_moving: bool
+var is_moving : bool
 var is_pressed := false
 var is_hurt := false
 func _ready():
