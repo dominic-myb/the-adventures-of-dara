@@ -336,7 +336,7 @@ frame = 3
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_2jmaf")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="EelAnimPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_v1jmp")
 }
@@ -350,7 +350,7 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_0pti3")
 
 [node name="Damage Area" type="Area2D" parent="."]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Damage Area"]
