@@ -1,7 +1,10 @@
 extends CharacterBody2D
 var speed := 300
+@onready var sprite = $ProjSprite
+@onready var col = $ProjCol
+
 func _ready():
-	$AnimatedSprite2D.play("default")
+	sprite.play("default")
 
 func _physics_process(delta):
 	var collision_info = move_and_collide(velocity.normalized() * delta * speed)

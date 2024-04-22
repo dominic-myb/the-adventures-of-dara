@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://rishwjjydq18"]
+[gd_scene load_steps=15 format=3 uid="uid://rishwjjydq18"]
 
 [ext_resource type="PackedScene" uid="uid://jd52mao54vxa" path="res://scenes/player/player.tscn" id="1_cl1xs"]
 [ext_resource type="Texture2D" uid="uid://d2wmqv5x6syit" path="res://art/tilesets/tiles.png" id="1_h3ypg"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cs2qglsg4nsf3" path="res://scenes/enemies/eel.tscn" id="4_xus66"]
 [ext_resource type="Texture2D" uid="uid://b2fm1iluk8piy" path="res://art/ui/joystick/joystick-outer.png" id="5_lbebd"]
 [ext_resource type="PackedScene" uid="uid://cssscertc0ftw" path="res://scenes/enemies/shark.tscn" id="5_rbf0b"]
+[ext_resource type="PackedScene" uid="uid://byv6e7qn3q74u" path="res://scenes/enemies/big_shark.tscn" id="6_6ltfb"]
 [ext_resource type="Texture2D" uid="uid://cwdp8wh4bsdyh" path="res://art/ui/joystick/joystick-inner.png" id="6_ul52k"]
 [ext_resource type="Script" path="res://scripts/ui/joystick-inner.gd" id="7_3jpta"]
 [ext_resource type="PackedScene" uid="uid://nbkde1u3ffkf" path="res://scenes/parallaxBG/sea_background.tscn" id="8_0bn21"]
@@ -2147,6 +2148,9 @@ position = Vector2(766, -187)
 
 [node name="Shark" parent="Enemies" instance=ExtResource("5_rbf0b")]
 position = Vector2(1402, -970)
+
+[node name="Big Shark" parent="Enemies" instance=ExtResource("6_6ltfb")]
+position = Vector2(3377, -1070)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

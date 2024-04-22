@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkx5m0635mwsd"]
+
+[ext_resource type="Script" path="res://scripts/puzzle/tile.gd" id="1_qturg"]
+[ext_resource type="Texture2D" uid="uid://b7ifmio8agisk" path="res://art/package-icon/ICON.png" id="2_ncu54"]
+[ext_resource type="FontFile" uid="uid://bln4h5ovw22av" path="res://font/manaspc.ttf" id="3_dhtaq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1dlq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.101961, 0.101961, 0.101961, 1)
+
+[node name="Tile" type="TextureButton"]
+script = ExtResource("1_qturg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("2_ncu54")
+hframes = 4
+vframes = 4
+
+[node name="Number" type="Control" parent="Sprite2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Sprite2D/Number"]
+layout_mode = 1
+mouse_filter = 2
+color = Color(0, 0, 0, 0.196078)
+
+[node name="Label" type="Label" parent="Sprite2D/Number"]
+layout_mode = 1
+offset_right = 48.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("3_dhtaq")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Border" type="Panel" parent="."]
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 64.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u1dlq")
+
+[connection signal="pressed" from="." to="." method="_on_tile_pressed"]
