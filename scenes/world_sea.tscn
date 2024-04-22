@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 [gd_scene load_steps=15 format=3 uid="uid://rishwjjydq18"]
+=======
+<<<<<<< Updated upstream
+[gd_scene load_steps=14 format=3 uid="uid://rishwjjydq18"]
+=======
+[gd_scene load_steps=32 format=3 uid="uid://rishwjjydq18"]
+>>>>>>> Stashed changes
+>>>>>>> aa0b159a17e4eb7b19b0d2d819600b25f0cf40d0
 
 [ext_resource type="PackedScene" uid="uid://jd52mao54vxa" path="res://scenes/player/player.tscn" id="1_cl1xs"]
 [ext_resource type="Texture2D" uid="uid://d2wmqv5x6syit" path="res://art/tilesets/tiles.png" id="1_h3ypg"]
@@ -7,10 +15,29 @@
 [ext_resource type="PackedScene" uid="uid://cs2qglsg4nsf3" path="res://scenes/enemies/eel.tscn" id="4_xus66"]
 [ext_resource type="Texture2D" uid="uid://b2fm1iluk8piy" path="res://art/ui/joystick/joystick-outer.png" id="5_lbebd"]
 [ext_resource type="PackedScene" uid="uid://cssscertc0ftw" path="res://scenes/enemies/shark.tscn" id="5_rbf0b"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://byv6e7qn3q74u" path="res://scenes/enemies/big_shark.tscn" id="6_6ltfb"]
+=======
+<<<<<<< Updated upstream
+>>>>>>> aa0b159a17e4eb7b19b0d2d819600b25f0cf40d0
 [ext_resource type="Texture2D" uid="uid://cwdp8wh4bsdyh" path="res://art/ui/joystick/joystick-inner.png" id="6_ul52k"]
 [ext_resource type="Script" path="res://scripts/ui/joystick-inner.gd" id="7_3jpta"]
 [ext_resource type="PackedScene" uid="uid://nbkde1u3ffkf" path="res://scenes/parallaxBG/sea_background.tscn" id="8_0bn21"]
+=======
+[ext_resource type="Texture2D" uid="uid://bnwfjc1cha5mi" path="res://art/ui/joystick/joystick-inner.png" id="6_ul52k"]
+[ext_resource type="PackedScene" uid="uid://cwsustwt2rmb7" path="res://scenes/enemies/big_shark.tscn" id="6_woxnq"]
+[ext_resource type="Script" path="res://scripts/joystick-inner.gd" id="7_3jpta"]
+[ext_resource type="Script" path="res://scripts/npc/clam.gd" id="7_kus0x"]
+[ext_resource type="PackedScene" uid="uid://nbkde1u3ffkf" path="res://scenes/sea_background.tscn" id="8_0bn21"]
+[ext_resource type="Texture2D" uid="uid://dddne107c2ctl" path="res://art/npc/clam.png" id="8_rhdx8"]
+[ext_resource type="PackedScene" uid="uid://c1oc354gcnuyy" path="res://scenes/interaction/interaction_area.tscn" id="9_i1o5n"]
+[ext_resource type="Texture2D" uid="uid://0f3fecgxye5n" path="res://art/ui/buttons/close-btn-1.png" id="12_kaqbp"]
+[ext_resource type="Texture2D" uid="uid://2mc121abrxjq" path="res://art/ui/buttons/close-btn-2.png" id="13_tgh4q"]
+[ext_resource type="Texture2D" uid="uid://cs7gv8wwgeg1f" path="res://art/ui/buttons/up-normal.png" id="14_l82js"]
+[ext_resource type="Texture2D" uid="uid://m5w7bkb12b0g" path="res://art/ui/buttons/up-pressed.png" id="15_xot4f"]
+[ext_resource type="Texture2D" uid="uid://cdhfeehbj53jv" path="res://art/ui/uiBG/text_bg.png" id="19_lcmba"]
+[ext_resource type="Script" path="res://scripts/interaction/InteractManager.gd" id="19_tlakr"]
+>>>>>>> Stashed changes
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pyda4"]
 texture = ExtResource("1_h3ypg")
@@ -2118,7 +2145,83 @@ texture = ExtResource("1_h3ypg")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_pyda4")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lynjc"]
+atlas = ExtResource("8_rhdx8")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nvko"]
+atlas = ExtResource("8_rhdx8")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_acxvq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lynjc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nvko")
+}],
+"loop": true,
+"name": &"interact",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bqr48"]
+radius = 50.2195
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_fwurb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x5ydt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_xot4f")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_l82js")
+}],
+"loop": true,
+"name": &"unpressed",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kb3lt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_tgh4q")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_kaqbp")
+}],
+"loop": true,
+"name": &"unpressed",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_h8dew"]
+resource_name = "interact_press"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xy1p7"]
+_data = {
+"interact_press": SubResource("Animation_h8dew")
+}
 
 [node name="World Sea" type="Node2D"]
 
@@ -2144,38 +2247,144 @@ limit_bottom = 0
 position = Vector2(1772, -250)
 
 [node name="Eel" parent="Enemies" instance=ExtResource("4_xus66")]
-position = Vector2(766, -187)
+position = Vector2(422, -790)
 
 [node name="Shark" parent="Enemies" instance=ExtResource("5_rbf0b")]
-position = Vector2(1402, -970)
+position = Vector2(746, -185)
 
+<<<<<<< HEAD
 [node name="Big Shark" parent="Enemies" instance=ExtResource("6_6ltfb")]
 position = Vector2(3377, -1070)
 
+=======
+<<<<<<< Updated upstream
+=======
+[node name="Big Shark" parent="Enemies" instance=ExtResource("6_woxnq")]
+position = Vector2(1714, -755)
+
+[node name="Npc" type="Node2D" parent="."]
+
+[node name="Clam" type="Node2D" parent="Npc"]
+position = Vector2(195, -463)
+script = ExtResource("7_kus0x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Npc/Clam"]
+sprite_frames = SubResource("SpriteFrames_acxvq")
+
+[node name="InteractionArea" parent="Npc/Clam" node_paths=PackedStringArray("anim") instance=ExtResource("9_i1o5n")]
+anim = NodePath("../AnimatedSprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc/Clam/InteractionArea"]
+shape = SubResource("CircleShape2D_bqr48")
+
+>>>>>>> Stashed changes
+>>>>>>> aa0b159a17e4eb7b19b0d2d819600b25f0cf40d0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+[node name="LeftControls" type="HBoxContainer" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Joystick" type="Node2D" parent="CanvasLayer/HBoxContainer"]
+[node name="Joystick" type="Node2D" parent="CanvasLayer/LeftControls"]
 position = Vector2(148, 513)
 script = ExtResource("4_5a8fq")
 
-[node name="Outer" type="Sprite2D" parent="CanvasLayer/HBoxContainer/Joystick"]
+[node name="Outer" type="Sprite2D" parent="CanvasLayer/LeftControls/Joystick"]
 texture = ExtResource("5_lbebd")
 
-[node name="Inner" type="Sprite2D" parent="CanvasLayer/HBoxContainer/Joystick"]
+[node name="Inner" type="Sprite2D" parent="CanvasLayer/LeftControls/Joystick"]
 texture = ExtResource("6_ul52k")
 script = ExtResource("7_3jpta")
 
-[node name="Button" type="TouchScreenButton" parent="CanvasLayer/HBoxContainer/Joystick"]
+[node name="Button" type="TouchScreenButton" parent="CanvasLayer/LeftControls/Joystick"]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(-53, -54)
 scale = Vector2(107, 108)
 texture_normal = SubResource("CanvasTexture_fwurb")
 
+[node name="RightControls" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(3, 3)
+
+[node name="Buttons" type="Control" parent="CanvasLayer/RightControls"]
+layout_mode = 2
+
+[node name="InteractAnim" type="AnimatedSprite2D" parent="CanvasLayer/RightControls/Buttons"]
+position = Vector2(-27, -29)
+sprite_frames = SubResource("SpriteFrames_x5ydt")
+animation = &"pressed"
+
+[node name="Interact" type="Button" parent="CanvasLayer/RightControls/Buttons/InteractAnim"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 9.0
+offset_bottom = 9.0
+
+[node name="AttackAnim" type="AnimatedSprite2D" parent="CanvasLayer/RightControls/Buttons"]
+position = Vector2(-57, -29)
+sprite_frames = SubResource("SpriteFrames_kb3lt")
+animation = &"unpressed"
+
+[node name="Attack" type="Button" parent="CanvasLayer/RightControls/Buttons/AttackAnim"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 9.0
+offset_bottom = 9.0
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -79.0
+offset_right = 128.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QuestBox" type="Node2D" parent="CanvasLayer/CenterContainer"]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer/QuestBox"]
+offset_right = 256.0
+offset_bottom = 158.0
+texture = ExtResource("19_lcmba")
+stretch_mode = 5
+
+[node name="Accept" type="Button" parent="CanvasLayer/CenterContainer/QuestBox/TextureRect"]
+layout_mode = 0
+
+[node name="Exit" type="Button" parent="CanvasLayer/CenterContainer/QuestBox/TextureRect"]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 114.0
+offset_right = 117.0
+offset_bottom = 114.0
+
 [node name="Sea Background" parent="." instance=ExtResource("8_0bn21")]
 
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/Joystick/Button" to="CanvasLayer/HBoxContainer/Joystick/Inner" method="_on_button_pressed"]
-[connection signal="released" from="CanvasLayer/HBoxContainer/Joystick/Button" to="CanvasLayer/HBoxContainer/Joystick/Inner" method="_on_button_released"]
+[node name="EnemySpawn" type="Node2D" parent="."]
+
+[node name="InteractManager" type="Node" parent="."]
+script = ExtResource("19_tlakr")
+
+[node name="ControlsVisibilityManager" type="Node" parent="."]
+
+[node name="ButtonAnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xy1p7")
+}
+
+[connection signal="body_entered" from="Npc/Clam/InteractionArea" to="InteractManager" method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="Npc/Clam/InteractionArea" to="InteractManager" method="_on_interaction_area_body_exited"]
+[connection signal="pressed" from="CanvasLayer/LeftControls/Joystick/Button" to="CanvasLayer/LeftControls/Joystick/Inner" method="_on_button_pressed"]
+[connection signal="released" from="CanvasLayer/LeftControls/Joystick/Button" to="CanvasLayer/LeftControls/Joystick/Inner" method="_on_button_released"]

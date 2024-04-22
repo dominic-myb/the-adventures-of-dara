@@ -1,4 +1,5 @@
 extends CharacterBody2D
+<<<<<<< HEAD
 @onready var sprite = $PlayerSprite
 @onready var anim = $PlayerAnim
 @onready var col = $PlayerCol
@@ -12,6 +13,19 @@ const PROJECTILE_PATH = preload("res://scenes/projectiles/projectile_2.tscn")
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var movespeed := 600.0
 var is_moving := false
+=======
+class_name Player
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+const PROJECTILE_PATH = preload("res://scenes/projectiles/projectile_2.tscn")
+<<<<<<< Updated upstream:scripts/player/player_sea.gd
+@onready var joystick = $"../../CanvasLayer/HBoxContainer/Joystick"
+=======
+@onready var player = %Player
+@onready var joystick = $"../../CanvasLayer/LeftControls/Joystick"
+>>>>>>> Stashed changes:scripts/player_sea.gd
+var speed := 600.0
+var is_moving : bool
+>>>>>>> aa0b159a17e4eb7b19b0d2d819600b25f0cf40d0
 var is_pressed := false
 var is_hurt := false
 

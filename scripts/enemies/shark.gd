@@ -11,16 +11,27 @@ var attack_cd := 3.0
 var cd_timer := 0.0
 var health = Game.enemy_hp
 var is_hurt := false
+@onready var anim = $SharkAnimPlayer
+@onready var sprite = $SharkSprite
+@onready var col = $SharkCol
+@onready var damage_col = $DamageArea/CollisionShape2D
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	anim.play("idle")
+<<<<<<< HEAD
 
+=======
+>>>>>>> aa0b159a17e4eb7b19b0d2d819600b25f0cf40d0
 func _process(_delta):
 	if is_hurt:
 		anim.play("hurt")
 		await anim.animation_finished
 		is_hurt = false
+<<<<<<< HEAD
 	if can_attack and in_attack_area:
+=======
+	if can_attack and in_damage_area:
+>>>>>>> aa0b159a17e4eb7b19b0d2d819600b25f0cf40d0
 		await on_enemy_attack(anim)
 	anim.play("move" if in_range else "idle")
 
@@ -56,7 +67,9 @@ func on_attack_cooldown(delta):
 func take_damage(amount):
 	is_hurt = true
 	health -= amount
-	if health <= 0: await death()
+	if health <= 0: 
+		print_debug("death")
+		await death()
 	else: return health
 
 func death():
@@ -67,10 +80,17 @@ func death():
 func sprite_position(pos: float):
 	if pos > 0: 
 		sprite.flip_h = false
+<<<<<<< HEAD
 		attack_col.position.x = 27
 	elif pos < 0: 
 		sprite.flip_h = true
 		attack_col.position.x = -27
+=======
+		damage_col.position.x = 27
+	elif pos < 0: 
+		sprite.flip_h = true
+		damage_col.position.x = -27
+>>>>>>> aa0b159a17e4eb7b19b0d2d819600b25f0cf40d0
 
 func _on_player_detection_body_entered(body):
 	if body.is_in_group("Player"):

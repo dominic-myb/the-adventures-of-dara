@@ -13,14 +13,20 @@ var in_attack_area : bool
 var can_attack := true
 var is_alive := true
 var is_hurt := false
+@onready var anim = $EelAnimPlayer
 
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
+<<<<<<< HEAD
 	await idle(anim)
+=======
+	anim.play("idle")
+>>>>>>> aa0b159a17e4eb7b19b0d2d819600b25f0cf40d0
 
 func _process(_delta):
 	if is_alive:
 		if is_hurt:
+<<<<<<< HEAD
 			await hurt(anim)
 		if can_attack and in_attack_area:
 			await on_enemy_attack(anim)
@@ -28,6 +34,17 @@ func _process(_delta):
 			await move(anim)
 		if not in_range:
 			await idle(anim)
+=======
+			anim.play("hurt")
+			await anim.animation_finished
+			is_hurt = false
+		if can_attack and in_damage_area:
+			await on_enemy_attack(anim)
+		if in_range:
+			anim.play("move")
+		else:
+			anim.play("idle")
+>>>>>>> aa0b159a17e4eb7b19b0d2d819600b25f0cf40d0
 
 func _physics_process(delta):
 	if is_alive:
@@ -59,6 +76,10 @@ func on_attack_cooldown(delta):
 		cd_timer = 0.0
 
 func on_enemy_attack(_anim: AnimationPlayer):
+<<<<<<< HEAD
+=======
+	velocity = Vector2.ZERO
+>>>>>>> aa0b159a17e4eb7b19b0d2d819600b25f0cf40d0
 	_anim.play("attack")
 	await _anim.animation_finished
 	can_attack = false
@@ -84,9 +105,15 @@ func hurt(_anim : AnimationPlayer):
 
 func death(_anim : AnimationPlayer):
 	is_alive = false
+<<<<<<< HEAD
 	attack_col.disabled = true
 	_anim.play("death")
 	await _anim.animation_finished
+=======
+	$"Damage Area/CollisionShape2D".disabled = true
+	anim.play("death")
+	await anim.animation_finished
+>>>>>>> aa0b159a17e4eb7b19b0d2d819600b25f0cf40d0
 	Game.player_exp += 10
 	self.queue_free()
 	

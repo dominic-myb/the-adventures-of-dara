@@ -431,7 +431,11 @@ frame = 3
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_2jmaf")
 
+<<<<<<< HEAD
 [node name="EelAnim" type="AnimationPlayer" parent="."]
+=======
+[node name="EelAnimPlayer" type="AnimationPlayer" parent="."]
+>>>>>>> aa0b159a17e4eb7b19b0d2d819600b25f0cf40d0
 libraries = {
 "": SubResource("AnimationLibrary_v1jmp")
 }
@@ -444,7 +448,11 @@ collision_mask = 2
 [node name="PDCol" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_0pti3")
 
+<<<<<<< HEAD
 [node name="AttackArea" type="Area2D" parent="."]
+=======
+[node name="Damage Area" type="Area2D" parent="."]
+>>>>>>> aa0b159a17e4eb7b19b0d2d819600b25f0cf40d0
 collision_layer = 0
 collision_mask = 2
 

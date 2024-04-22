@@ -240,20 +240,35 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
+<<<<<<< HEAD
 [node name="Play" type="TouchScreenButton" parent="CanvasLayer/ButtonsContainer"]
 position = Vector2(-60, -60)
+=======
+[node name="Play" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer"]
+position = Vector2(-70, -60)
+>>>>>>> aa0b159a17e4eb7b19b0d2d819600b25f0cf40d0
 scale = Vector2(2, 2)
 texture_normal = ExtResource("1_nhhxu")
 texture_pressed = ExtResource("2_51r55")
 
+<<<<<<< HEAD
 [node name="Load" type="TouchScreenButton" parent="CanvasLayer/ButtonsContainer"]
 position = Vector2(-60, 0)
+=======
+[node name="Load" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer"]
+position = Vector2(-70, 0)
+>>>>>>> aa0b159a17e4eb7b19b0d2d819600b25f0cf40d0
 scale = Vector2(2, 2)
 texture_normal = ExtResource("3_n0js1")
 texture_pressed = ExtResource("4_r7wv8")
 
+<<<<<<< HEAD
 [node name="Quit" type="TouchScreenButton" parent="CanvasLayer/ButtonsContainer"]
 position = Vector2(-60, 60)
+=======
+[node name="Quit" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer"]
+position = Vector2(-70, 60)
+>>>>>>> aa0b159a17e4eb7b19b0d2d819600b25f0cf40d0
 scale = Vector2(2, 2)
 texture_normal = ExtResource("5_ba5ug")
 texture_pressed = ExtResource("6_jhnhj")
