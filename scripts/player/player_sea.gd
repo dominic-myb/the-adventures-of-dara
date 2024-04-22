@@ -2,7 +2,12 @@ extends CharacterBody2D
 class_name Player
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 const PROJECTILE_PATH = preload("res://scenes/projectiles/projectile_2.tscn")
+<<<<<<< Updated upstream:scripts/player/player_sea.gd
 @onready var joystick = $"../../CanvasLayer/HBoxContainer/Joystick"
+=======
+@onready var player = %Player
+@onready var joystick = $"../../CanvasLayer/LeftControls/Joystick"
+>>>>>>> Stashed changes:scripts/player_sea.gd
 var speed := 600.0
 var is_moving : bool
 var is_pressed := false
