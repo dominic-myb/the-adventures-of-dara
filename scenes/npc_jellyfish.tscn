@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjfyyc03bxlkl"]
+
+[ext_resource type="Script" path="res://scripts/npc_jellyfish.gd" id="1_460qm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pft3i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1nja6"]
+radius = 64.7765
+
+[node name="Jellyfish" type="CharacterBody2D"]
+script = ExtResource("1_460qm")
+
+[node name="JCol" type="CollisionShape2D" parent="."]
+
+[node name="JSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pft3i")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+
+[node name="IACol" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_1nja6")

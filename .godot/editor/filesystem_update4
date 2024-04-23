@@ -1,0 +1,15 @@
+res://scenes/main_menu.tscn
+res://scripts/game_manager/main_menu.gd
+res://scenes/npc_clam.tscn
+res://scenes/world_sea.tscn
+res://scripts/npc_clam.gd
+res://scenes/player.tscn
+res://scenes/npc_jellyfish.tscn
+res://scripts/npc_jellyfish.gd
+res://scenes/projectiles/projectile_1.tscn
+res://scripts/projectiles/projectile_1.gd
+res://scenes/projectiles/projectile_2.tscn
+res://scripts/projectiles/projectile_2.gd
+res://scenes/attack_button.tscn
+res://scenes/mine.tscn
+res://scripts/mine.gd

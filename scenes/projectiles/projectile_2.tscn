@@ -62,10 +62,12 @@ collision_layer = 8
 collision_mask = 5
 script = ExtResource("1_l2ydj")
 
-[node name="ProjSprite" type="AnimatedSprite2D" parent="."]
+[node name="ProjectileSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8gpb0")
+frame = 2
+frame_progress = 0.298301
 
-[node name="ProjCol" type="CollisionShape2D" parent="."]
+[node name="ProjectileCol" type="CollisionShape2D" parent="."]
 position = Vector2(6, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_bki34")

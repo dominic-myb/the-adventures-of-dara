@@ -1,0 +1,14 @@
+Node2D
+CodeEdit
+Timer
+CollisionShape2D
+Area2D
+AnimatedSprite2D
+CharacterBody2D
+HBoxContainer
+TouchScreenButton
+Node
+Button
+TextureRect
+Control
+VBoxContainer

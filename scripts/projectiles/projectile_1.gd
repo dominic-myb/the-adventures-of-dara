@@ -1,7 +1,11 @@
 extends CharacterBody2D
-var speed := 300
+
+var speed : float = 300.0
+@onready var projectile_sprite = $ProjectileSprite
+
 func _ready():
-	$AnimatedSprite2D.play("default")
+	projectile_sprite.play("default")
+
 
 func _physics_process(delta):
 	var collision_info = move_and_collide(velocity.normalized() * delta * speed)
@@ -9,5 +13,7 @@ func _physics_process(delta):
 		var collider = collision_info.get_collider()
 		if collider.has_method("take_damage"):
 			collider.take_damage(Game.player_damage)
+		else:
+			queue_free()
 		queue_free()
 

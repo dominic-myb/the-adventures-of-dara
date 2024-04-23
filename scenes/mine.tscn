@@ -1,0 +1,126 @@
+[gd_scene load_steps=18 format=3 uid="uid://cof5m6lvl1p75"]
+
+[ext_resource type="Script" path="res://scripts/mine.gd" id="1_sogg8"]
+[ext_resource type="Texture2D" uid="uid://cig8xq0xdyi7w" path="res://art/enemies/Mines/mine.png" id="1_v7pos"]
+[ext_resource type="Texture2D" uid="uid://divge4p11v3a2" path="res://art/enemies/Mines/explosion.png" id="3_3e50s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5kh8"]
+atlas = ExtResource("3_3e50s")
+region = Rect2(0, 0, 60, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3uee"]
+atlas = ExtResource("3_3e50s")
+region = Rect2(60, 0, 60, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps32g"]
+atlas = ExtResource("3_3e50s")
+region = Rect2(120, 0, 60, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7idqa"]
+atlas = ExtResource("3_3e50s")
+region = Rect2(180, 0, 60, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wh5b"]
+atlas = ExtResource("3_3e50s")
+region = Rect2(240, 0, 60, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it7gv"]
+atlas = ExtResource("3_3e50s")
+region = Rect2(300, 0, 60, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4j2w"]
+atlas = ExtResource("3_3e50s")
+region = Rect2(360, 0, 60, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_va6ya"]
+atlas = ExtResource("3_3e50s")
+region = Rect2(420, 0, 60, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sajpl"]
+atlas = ExtResource("3_3e50s")
+region = Rect2(480, 0, 60, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2buy"]
+atlas = ExtResource("3_3e50s")
+region = Rect2(540, 0, 60, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aumkd"]
+atlas = ExtResource("3_3e50s")
+region = Rect2(600, 0, 60, 82)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3s2r5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_v7pos")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5kh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3uee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ps32g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7idqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wh5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it7gv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4j2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_va6ya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sajpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2buy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aumkd")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uon8q"]
+radius = 15.0333
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n4xd3"]
+radius = 15.0333
+
+[node name="Mine" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_sogg8")
+
+[node name="MineSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3s2r5")
+animation = &"explode"
+
+[node name="MineCol" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_uon8q")
+
+[node name="MineTrigger" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 6
+
+[node name="MTCol" type="CollisionShape2D" parent="MineTrigger"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_n4xd3")
+
+[connection signal="body_entered" from="MineTrigger" to="." method="_on_mine_trigger_body_entered"]

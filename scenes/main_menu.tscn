@@ -1,15 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://cdueccuslp4js"]
+[gd_scene load_steps=14 format=3 uid="uid://cdueccuslp4js"]
 
-[ext_resource type="Script" path="res://scripts/game manager/main_menu.gd" id="1_ciru4"]
-[ext_resource type="Texture2D" uid="uid://dpf63p5tmbx8" path="res://art/ui/buttons/play-btn.png" id="1_nhhxu"]
-[ext_resource type="Texture2D" uid="uid://bps83vs5amjch" path="res://art/ui/buttons/play-press.png" id="2_51r55"]
-[ext_resource type="Texture2D" uid="uid://2xon7e8qyuwv" path="res://art/ui/buttons/load-btn.png" id="3_n0js1"]
-[ext_resource type="Texture2D" uid="uid://drsynwt2ljliy" path="res://art/ui/buttons/load-press.png" id="4_r7wv8"]
-[ext_resource type="Texture2D" uid="uid://vaetqib754kj" path="res://art/ui/buttons/quit-btn.png" id="5_ba5ug"]
-[ext_resource type="Texture2D" uid="uid://c3bbu42ds1dbf" path="res://art/ui/buttons/quit-press.png" id="6_jhnhj"]
-[ext_resource type="PackedScene" uid="uid://ol6a0nbsjo6l" path="res://scenes/parallaxBG/main_menu_bg.tscn" id="8_55apw"]
-[ext_resource type="FontFile" uid="uid://bln4h5ovw22av" path="res://font/manaspc.ttf" id="8_p0i2c"]
-[ext_resource type="PackedScene" uid="uid://djutrhqtrvw4q" path="res://scenes/ui/settings.tscn" id="10_3uvom"]
+[ext_resource type="Script" path="res://scripts/game_manager/main_menu.gd" id="1_ciru4"]
+[ext_resource type="Texture2D" uid="uid://c7hfxu58vp8sj" path="res://art/ui/buttons/play-btn.png" id="1_nhhxu"]
+[ext_resource type="Texture2D" uid="uid://e34nxsqduq5o" path="res://art/ui/buttons/play-press.png" id="2_51r55"]
+[ext_resource type="Texture2D" uid="uid://d0v7v8w0tf4qw" path="res://art/ui/buttons/option-btn.png" id="4_sl1t4"]
+[ext_resource type="Texture2D" uid="uid://bus2pscu7h4bw" path="res://art/ui/buttons/quit-btn.png" id="5_ba5ug"]
+[ext_resource type="Texture2D" uid="uid://dpndw6km13xa" path="res://art/ui/buttons/option-pressed.png" id="5_lf4xc"]
+[ext_resource type="Texture2D" uid="uid://bfefjr0f6tjbe" path="res://art/ui/buttons/quit-press.png" id="6_jhnhj"]
+[ext_resource type="Texture2D" uid="uid://bkmvgf2n2um8x" path="res://art/ui/title-screen2.png" id="8_15g16"]
+[ext_resource type="PackedScene" uid="uid://ctfmy3ewqm4dm" path="res://scenes/parallaxBG/main_menu_bg.tscn" id="8_55apw"]
 
 [sub_resource type="GDScript" id="GDScript_8jbsn"]
 script/source = "extends CanvasLayer
@@ -18,212 +17,58 @@ func _ready():
 	pass
 "
 
-[sub_resource type="Animation" id="Animation_rbjxw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ButtonsContainer/Play:texture_normal")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_nhhxu")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/ButtonsContainer/Play:texture_pressed")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_51r55")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/ButtonsContainer/Load:texture_normal")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_n0js1")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/ButtonsContainer/Load:texture_pressed")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_r7wv8")]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/ButtonsContainer/Quit:texture_normal")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("5_ba5ug")]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/ButtonsContainer/Quit:texture_pressed")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("6_jhnhj")]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasLayer/ButtonsContainer/Play:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-60, -60)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CanvasLayer/ButtonsContainer/Load:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-60, 0)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("CanvasLayer/ButtonsContainer/Quit:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-60, 60)]
-}
+[sub_resource type="SpriteFrames" id="SpriteFrames_qtcxy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nhhxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_51r55")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_nhhxu")
+}],
+"loop": false,
+"name": &"pressed",
+"speed": 5.0
+}]
 
-[sub_resource type="Animation" id="Animation_7jorh"]
-resource_name = "load"
-length = 0.6
-step = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ButtonsContainer/Load:texture_normal")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_n0js1")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/ButtonsContainer/Load:texture_pressed")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_r7wv8")]
-}
+[sub_resource type="SpriteFrames" id="SpriteFrames_wuor7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_sl1t4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lf4xc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sl1t4")
+}],
+"loop": false,
+"name": &"pressed",
+"speed": 5.0
+}]
 
-[sub_resource type="Animation" id="Animation_132kw"]
-resource_name = "play"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ButtonsContainer/Play:texture_normal")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_nhhxu")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/ButtonsContainer/Play:texture_pressed")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_51r55")]
-}
+[sub_resource type="SpriteFrames" id="SpriteFrames_xaso7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ba5ug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jhnhj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ba5ug")
+}],
+"loop": false,
+"name": &"pressed",
+"speed": 5.0
+}]
 
-[sub_resource type="Animation" id="Animation_ce0tj"]
-resource_name = "quit"
-length = 0.6
-step = 0.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ButtonsContainer/Quit:texture_normal")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("5_ba5ug")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/ButtonsContainer/Quit:texture_pressed")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("6_jhnhj")]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_awo4t"]
-_data = {
-"RESET": SubResource("Animation_rbjxw"),
-"load": SubResource("Animation_7jorh"),
-"play": SubResource("Animation_132kw"),
-"quit": SubResource("Animation_ce0tj")
-}
-
-[node name="Main Menu" type="Control"]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_ciru4")
@@ -231,7 +76,22 @@ script = ExtResource("1_ciru4")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = SubResource("GDScript_8jbsn")
 
-[node name="ButtonsContainer" type="VBoxContainer" parent="CanvasLayer"]
+[node name="GameTitle" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -288.0
+offset_top = 20.0
+offset_right = 16.0
+offset_bottom = 100.0
+grow_horizontal = 2
+scale = Vector2(2, 2)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_15g16")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -240,63 +100,62 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-<<<<<<< HEAD
-[node name="Play" type="TouchScreenButton" parent="CanvasLayer/ButtonsContainer"]
-position = Vector2(-60, -60)
-=======
-[node name="Play" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer"]
-position = Vector2(-70, -60)
->>>>>>> aa0b159a17e4eb7b19b0d2d819600b25f0cf40d0
+[node name="Play" type="AnimatedSprite2D" parent="CanvasLayer/VBoxContainer"]
 scale = Vector2(2, 2)
-texture_normal = ExtResource("1_nhhxu")
-texture_pressed = ExtResource("2_51r55")
+sprite_frames = SubResource("SpriteFrames_qtcxy")
+animation = &"pressed"
 
-<<<<<<< HEAD
-[node name="Load" type="TouchScreenButton" parent="CanvasLayer/ButtonsContainer"]
-position = Vector2(-60, 0)
-=======
-[node name="Load" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer"]
-position = Vector2(-70, 0)
->>>>>>> aa0b159a17e4eb7b19b0d2d819600b25f0cf40d0
-scale = Vector2(2, 2)
-texture_normal = ExtResource("3_n0js1")
-texture_pressed = ExtResource("4_r7wv8")
-
-<<<<<<< HEAD
-[node name="Quit" type="TouchScreenButton" parent="CanvasLayer/ButtonsContainer"]
-position = Vector2(-60, 60)
-=======
-[node name="Quit" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer"]
-position = Vector2(-70, 60)
->>>>>>> aa0b159a17e4eb7b19b0d2d819600b25f0cf40d0
-scale = Vector2(2, 2)
-texture_normal = ExtResource("5_ba5ug")
-texture_pressed = ExtResource("6_jhnhj")
-
-[node name="Version" type="Label" parent="CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+[node name="PlayButton" type="Button" parent="CanvasLayer/VBoxContainer/Play"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -72.0
-offset_top = -32.0
-offset_right = -17.9999
-offset_bottom = -9.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("8_p0i2c")
-text = "v.1.0"
+offset_left = -39.5
+offset_top = -16.0
+offset_right = -39.5
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
 
-[node name="Settings" parent="CanvasLayer" instance=ExtResource("10_3uvom")]
+[node name="Options" type="AnimatedSprite2D" parent="CanvasLayer/VBoxContainer"]
+position = Vector2(0, 70)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_wuor7")
+animation = &"pressed"
+
+[node name="OptionsButton" type="Button" parent="CanvasLayer/VBoxContainer/Options"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -39.5
+offset_top = -16.0
+offset_right = -39.5
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Quit" type="AnimatedSprite2D" parent="CanvasLayer/VBoxContainer"]
+position = Vector2(0, 140)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_xaso7")
+animation = &"pressed"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/VBoxContainer/Quit"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -39.5
+offset_top = -16.0
+offset_right = -39.5
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MainMenuBG" parent="." instance=ExtResource("8_55apw")]
 
-[node name="ButtonsAnim" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_awo4t")
-}
-
-[connection signal="pressed" from="CanvasLayer/ButtonsContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="CanvasLayer/ButtonsContainer/Load" to="." method="_on_load_pressed"]
-[connection signal="pressed" from="CanvasLayer/ButtonsContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Play/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Options/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Quit/QuitButton" to="." method="_on_quit_button_pressed"]

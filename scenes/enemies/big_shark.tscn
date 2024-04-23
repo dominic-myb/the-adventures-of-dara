@@ -1,26 +1,26 @@
 [gd_scene load_steps=33 format=3 uid="uid://byv6e7qn3q74u"]
 
-[ext_resource type="Texture2D" uid="uid://ddh6738k0kolh" path="res://art/enemies/Big Shark/attack/1.png" id="1_hanys"]
+[ext_resource type="Texture2D" uid="uid://b6by38oimgd1s" path="res://art/enemies/Big Shark/attack/1.png" id="1_hanys"]
 [ext_resource type="Script" path="res://scripts/enemies/big_shark.gd" id="1_hll6e"]
-[ext_resource type="Texture2D" uid="uid://x5ub4dbumg2j" path="res://art/enemies/Big Shark/attack/2.png" id="2_si8is"]
-[ext_resource type="Texture2D" uid="uid://cnnak4ki2fadl" path="res://art/enemies/Big Shark/attack/3.png" id="3_c6lrt"]
-[ext_resource type="Texture2D" uid="uid://dvkeyfor4vy52" path="res://art/enemies/Big Shark/attack/4.png" id="4_n4o87"]
-[ext_resource type="Texture2D" uid="uid://b3y0jcgm0uu6t" path="res://art/enemies/Big Shark/death/1.png" id="5_8panc"]
-[ext_resource type="Texture2D" uid="uid://ofbdk0hb2yqb" path="res://art/enemies/Big Shark/death/2.png" id="6_cjab2"]
-[ext_resource type="Texture2D" uid="uid://bbjglhkbak330" path="res://art/enemies/Big Shark/death/3.png" id="7_12kyw"]
-[ext_resource type="Texture2D" uid="uid://2yqecrdpwvcl" path="res://art/enemies/Big Shark/death/4.png" id="8_mmcmc"]
-[ext_resource type="Texture2D" uid="uid://dki63km1e76h1" path="res://art/enemies/Big Shark/death/5.png" id="9_g6vff"]
-[ext_resource type="Texture2D" uid="uid://c0jhnxg18ham8" path="res://art/enemies/Big Shark/hurt/1.png" id="10_86h1o"]
-[ext_resource type="Texture2D" uid="uid://c5ju7sg1oqns4" path="res://art/enemies/Big Shark/hurt/2.png" id="11_etlqn"]
-[ext_resource type="Texture2D" uid="uid://cvg3tfnultlsk" path="res://art/enemies/Big Shark/Idle/1.png" id="12_lrn1m"]
-[ext_resource type="Texture2D" uid="uid://pjjdh03bwefp" path="res://art/enemies/Big Shark/Idle/2.png" id="13_5luq0"]
-[ext_resource type="Texture2D" uid="uid://bod2hqpjnsi4f" path="res://art/enemies/Big Shark/Idle/3.png" id="14_u1ag5"]
-[ext_resource type="Texture2D" uid="uid://d1q1i4mr1byv5" path="res://art/enemies/Big Shark/Idle/4.png" id="15_ugo76"]
-[ext_resource type="Texture2D" uid="uid://varccps1sden" path="res://art/enemies/Big Shark/walk/1.png" id="16_gkqs1"]
-[ext_resource type="Texture2D" uid="uid://ceehupqo07jc3" path="res://art/enemies/Big Shark/walk/2.png" id="17_uk43f"]
-[ext_resource type="Texture2D" uid="uid://bbdmhyxdp6m8s" path="res://art/enemies/Big Shark/walk/3.png" id="18_0rpk8"]
-[ext_resource type="Texture2D" uid="uid://gm5d4ihmh4w3" path="res://art/enemies/Big Shark/walk/4.png" id="19_nfdot"]
-[ext_resource type="Texture2D" uid="uid://5yvogt5m8rb6" path="res://art/enemies/Big Shark/walk/5.png" id="20_poduv"]
+[ext_resource type="Texture2D" uid="uid://bldibr5uwutw6" path="res://art/enemies/Big Shark/attack/2.png" id="2_si8is"]
+[ext_resource type="Texture2D" uid="uid://wio6xqbh410s" path="res://art/enemies/Big Shark/attack/3.png" id="3_c6lrt"]
+[ext_resource type="Texture2D" uid="uid://4ng1ta6r8yd" path="res://art/enemies/Big Shark/attack/4.png" id="4_n4o87"]
+[ext_resource type="Texture2D" uid="uid://82jl7lfcfh0v" path="res://art/enemies/Big Shark/death/1.png" id="5_8panc"]
+[ext_resource type="Texture2D" uid="uid://b6cem47te2gom" path="res://art/enemies/Big Shark/death/2.png" id="6_cjab2"]
+[ext_resource type="Texture2D" uid="uid://cicwdi8arxuv3" path="res://art/enemies/Big Shark/death/3.png" id="7_12kyw"]
+[ext_resource type="Texture2D" uid="uid://dl2qbaumg1f1g" path="res://art/enemies/Big Shark/death/4.png" id="8_mmcmc"]
+[ext_resource type="Texture2D" uid="uid://q6ieijynvxqk" path="res://art/enemies/Big Shark/death/5.png" id="9_g6vff"]
+[ext_resource type="Texture2D" uid="uid://ocwxqbj0tfxm" path="res://art/enemies/Big Shark/hurt/1.png" id="10_86h1o"]
+[ext_resource type="Texture2D" uid="uid://3cyey6bmstvp" path="res://art/enemies/Big Shark/hurt/2.png" id="11_etlqn"]
+[ext_resource type="Texture2D" uid="uid://c7o88d70nu28y" path="res://art/enemies/Big Shark/Idle/1.png" id="12_lrn1m"]
+[ext_resource type="Texture2D" uid="uid://b4cyjdcoxvf80" path="res://art/enemies/Big Shark/Idle/2.png" id="13_5luq0"]
+[ext_resource type="Texture2D" uid="uid://btfur6pcwta21" path="res://art/enemies/Big Shark/Idle/3.png" id="14_u1ag5"]
+[ext_resource type="Texture2D" uid="uid://chwyfepbt0w8j" path="res://art/enemies/Big Shark/Idle/4.png" id="15_ugo76"]
+[ext_resource type="Texture2D" uid="uid://4nq3qfc74gti" path="res://art/enemies/Big Shark/walk/1.png" id="16_gkqs1"]
+[ext_resource type="Texture2D" uid="uid://b0c5xj6vnw6ui" path="res://art/enemies/Big Shark/walk/2.png" id="17_uk43f"]
+[ext_resource type="Texture2D" uid="uid://rjxtsiujvx17" path="res://art/enemies/Big Shark/walk/3.png" id="18_0rpk8"]
+[ext_resource type="Texture2D" uid="uid://bej4bl1g3hrp6" path="res://art/enemies/Big Shark/walk/4.png" id="19_nfdot"]
+[ext_resource type="Texture2D" uid="uid://bjuj6ourc10nf" path="res://art/enemies/Big Shark/walk/5.png" id="20_poduv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_02mib"]
 animations = [{
@@ -323,22 +323,22 @@ libraries = {
 autoplay = "idle"
 
 [node name="PlayerDetection" type="Area2D" parent="."]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 2
 
 [node name="PDCol" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_gmfcf")
 
-[node name="AttackArea" type="Area2D" parent="."]
-collision_layer = 4
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 2
 
-[node name="AttackCol" type="CollisionShape2D" parent="AttackArea"]
+[node name="DACol" type="CollisionShape2D" parent="DamageArea"]
 position = Vector2(83, 22)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_0jufj")
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
-[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
-[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_damage_area_body_exited"]

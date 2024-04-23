@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ol6a0nbsjo6l"]
+[gd_scene load_steps=5 format=3 uid="uid://ctfmy3ewqm4dm"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu_bg.gd" id="1_ka0ac"]
-[ext_resource type="Texture2D" uid="uid://dsre4x5tiug4y" path="res://art/background/MainMenuBG/back.png" id="2_n0h4q"]
-[ext_resource type="Texture2D" uid="uid://ct2yjxuar3soi" path="res://art/background/MainMenuBG/middle.png" id="3_i8o6d"]
-[ext_resource type="Texture2D" uid="uid://dxkyksbnmicee" path="res://art/background/MainMenuBG/foregound-merged.png" id="4_llo4t"]
+[ext_resource type="Texture2D" uid="uid://c48q3m51yojcw" path="res://art/background/MainMenuBG/back.png" id="2_n0h4q"]
+[ext_resource type="Texture2D" uid="uid://cj5ioi8tyuio7" path="res://art/background/MainMenuBG/middle.png" id="3_i8o6d"]
+[ext_resource type="Texture2D" uid="uid://cojhc7rog8s7d" path="res://art/background/MainMenuBG/foregound-merged.png" id="4_llo4t"]
 
 [node name="MainMenuBG" type="ParallaxBackground"]
 script = ExtResource("1_ka0ac")

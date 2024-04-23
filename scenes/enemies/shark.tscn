@@ -327,11 +327,7 @@ shape = SubResource("CapsuleShape2D_e3b4y")
 sprite_frames = SubResource("SpriteFrames_gjdu6")
 animation = &"idle"
 
-<<<<<<< HEAD
 [node name="SharkAnim" type="AnimationPlayer" parent="."]
-=======
-[node name="SharkAnimPlayer" type="AnimationPlayer" parent="."]
->>>>>>> aa0b159a17e4eb7b19b0d2d819600b25f0cf40d0
 libraries = {
 "": SubResource("AnimationLibrary_vmapi")
 }
@@ -341,44 +337,19 @@ autoplay = "idle"
 collision_layer = 4
 collision_mask = 2
 
-<<<<<<< HEAD
 [node name="PDCol" type="CollisionShape2D" parent="PlayerDetection"]
-shape = SubResource("CircleShape2D_rg1n2")
-
-[node name="AttackArea" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 2
-
-[node name="AttackCol" type="CollisionShape2D" parent="AttackArea"]
-=======
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_rg1n2")
 
 [node name="DamageArea" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
->>>>>>> aa0b159a17e4eb7b19b0d2d819600b25f0cf40d0
+[node name="DACol" type="CollisionShape2D" parent="DamageArea"]
 position = Vector2(27, 2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_tpnvf")
 
-<<<<<<< HEAD
-[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
-[connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
-[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
-[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
-=======
-<<<<<<< Updated upstream
-[connection signal="body_entered" from="Player Detection" to="." method="_on_player_detection_body_entered"]
-[connection signal="body_exited" from="Player Detection" to="." method="_on_player_detection_body_exited"]
-[connection signal="body_entered" from="Damage Area" to="." method="_on_damage_area_body_entered"]
-[connection signal="body_exited" from="Damage Area" to="." method="_on_damage_area_body_exited"]
-=======
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_damage_area_body_exited"]
->>>>>>> Stashed changes
->>>>>>> aa0b159a17e4eb7b19b0d2d819600b25f0cf40d0
