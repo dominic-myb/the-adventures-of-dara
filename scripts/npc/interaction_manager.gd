@@ -1,25 +1,27 @@
 extends Node
-
 """
 + Create a signal conn for buttons to hide
 + Add a public method that hides the l&r buttons when conv is showing
 + Add Conversation, then mission
 + On Back BTN line_num -= 1
 + On Skip BTN line_num = 0 then is_showed = false
++ the lines should be based on npc class
++ create two methods in here one to hide and one to show, then just call on the npc childrens
 """
-const ICON = preload("res://art/package-icon/ICON.png")
-const CLAM = preload("res://art/npc/clam-pic.png")
+
 signal player_near
+#const ICON = preload("res://art/package-icon/ICON.png")
+#const CLAM = preload("res://art/npc/clam-pic.png")
 var is_showed : bool = false
 var line_num : int = 0
 var lines : Array[String] = [
 	"Hello, Dara",
 	"Hi, Clam"
 ]
-var picture : Array[Texture2D] = [
-	CLAM,
-	ICON
-]
+#var picture : Array[Texture2D] = [
+	#CLAM,
+	#ICON
+#]
 @onready var interact_btn = $"../CanvasLayer/RightButtonContainer/RightButtons/Interact"
 @onready var clam = $"../NPC/Clam"
 @onready var joystick_container = $"../CanvasLayer/JoystickContainer"
@@ -60,4 +62,4 @@ func line_controller(num : int):
 		line_num = 0
 	else:
 		lines_holder.text = lines[num]
-		picture_holder.texture = picture[num]
+		#picture_holder.texture = picture[num]
