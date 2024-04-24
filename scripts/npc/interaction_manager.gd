@@ -3,7 +3,9 @@ extends Node
 """
 + Create a signal conn for buttons to hide
 + Add a public method that hides the l&r buttons when conv is showing
-+  
++ Add Conversation, then mission
++ On Back BTN line_num -= 1
++ On Skip BTN line_num = 0 then is_showed = false
 """
 const ICON = preload("res://art/package-icon/ICON.png")
 const CLAM = preload("res://art/npc/clam-pic.png")

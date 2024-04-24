@@ -75,5 +75,3 @@ texture_pressed = ExtResource("6_jhnhj")
 [node name="MainMenuBG" parent="." instance=ExtResource("8_55apw")]
 
 [connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer2/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer2/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer2/Quit" to="." method="_on_quit_pressed"]

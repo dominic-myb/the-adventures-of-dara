@@ -1,5 +1,5 @@
 fc8a56933c4b1c8d796fdb8f7a9f9475
-::res://::1713919805
+::res://::1713930401
 export_presets.cfg::TextFile::-1::1713881540::0::1::::<><>::
 README.md::TextFile::-1::1713798333::0::1::::<><>::
 ::res://art/::1713885418
@@ -138,9 +138,11 @@ mine.png::CompressedTexture2D::5348783997079615878::1713883125::1713883171::1:::
 4.png::CompressedTexture2D::3270246088248508623::1713790730::1713790768::1::::<><>::
 ::res://art/items/::1713885417
 coin.png::CompressedTexture2D::2185907372053855997::1713790730::1713790768::1::::<><>::
-::res://art/npc/::1713927416
+::res://art/npc/::1713928090
 clam-pic.png::CompressedTexture2D::2473351952011730580::1713927416::1713927417::1::::<><>::
 clam.png::CompressedTexture2D::5483847522720192462::1713790730::1713790768::1::::<><>::
+idle.png::CompressedTexture2D::1490677235881814315::1713928050::1713928090::1::::<><>::
+talk.png::CompressedTexture2D::3424819240299183007::1713928048::1713928090::1::::<><>::
 ::res://art/package-icon/::1713885417
 background.png::CompressedTexture2D::5122420445283227805::1713790730::1713790768::1::::<><>::
 foreground.png::CompressedTexture2D::4815530691858489314::1713790730::1713790768::1::::<><>::
@@ -206,15 +208,15 @@ utils.gd::GDScript::-1::1713790732::0::1::::<>Node<>::
 ::res://savegame/::1713885418
 saved_game.gd::GDScript::-1::1713790732::0::1::::SavedGame<>Resource<>::
 saverloader.gd::GDScript::-1::1713790732::0::1::::SaverLoader<>Node<>::
-::res://scenes/::1713926942
+::res://scenes/::1713930380
 attack_button.tscn::PackedScene::4539809057999274610::1713919810::0::1::::<><>::uid://etl2m8gqionr::::res://art/ui/buttons/close-btn-1.png<>uid://bt3clb43umenj::::res://art/ui/buttons/close-btn-2.png
 joystick.tscn::PackedScene::58372479378814621::1713797098::0::1::::<><>::res://scripts/ui/joystick.gd<>uid://0mwtxhkdpfm4::::res://art/ui/joystick/joystick-outer.png<>uid://b7rcvhuxba5hx::::res://art/ui/joystick/joystick-inner.png<>res://scripts/ui/joystick_inner.gd
 main_menu.tscn::PackedScene::5024942029716319776::1713922924::0::1::::<><>::res://scripts/game_manager/main_menu.gd<>uid://c7hfxu58vp8sj::::res://art/ui/buttons/play-btn.png<>uid://e34nxsqduq5o::::res://art/ui/buttons/play-press.png<>uid://d0v7v8w0tf4qw::::res://art/ui/buttons/option-btn.png<>uid://bus2pscu7h4bw::::res://art/ui/buttons/quit-btn.png<>uid://dpndw6km13xa::::res://art/ui/buttons/option-pressed.png<>uid://bfefjr0f6tjbe::::res://art/ui/buttons/quit-press.png<>uid://bkmvgf2n2um8x::::res://art/ui/title-screen2.png<>uid://ctfmy3ewqm4dm::::res://scenes/parallaxBG/main_menu_bg.tscn
 mine.tscn::PackedScene::5767651652585394042::1713919833::0::1::::<><>::res://scripts/mine.gd<>uid://cig8xq0xdyi7w::::res://art/enemies/Mines/mine.png<>uid://divge4p11v3a2::::res://art/enemies/Mines/explosion.png
-npc_clam.tscn::PackedScene::5161725186996086809::1713925336::0::1::::<><>::uid://ckeofxvnaonri::::res://art/npc/clam.png<>res://scripts/npc_clam.gd
-npc_jellyfish.tscn::PackedScene::5416363060720161043::1713881404::0::1::::<><>::res://scripts/npc_jellyfish.gd
+npc_clam.tscn::PackedScene::5161725186996086809::1713930380::0::1::::<><>::uid://ckeofxvnaonri::::res://art/npc/clam.png<>res://scripts/npc/npc_clam.gd
+npc_jellyfish.tscn::PackedScene::5416363060720161043::1713930380::0::1::::<><>::res://scripts/npc/npc_jellyfish.gd<>uid://vidibe6hr0dj::::res://art/npc/idle.png<>uid://bo2ajja7dt040::::res://art/npc/talk.png
 player.tscn::PackedScene::475537473042560862::1713919810::0::1::::<><>::uid://b5aax1i40hp78::::res://art/player/dara_death.png<>res://scripts/player/player_sea.gd<>uid://b8pg1fxyuma2x::::res://art/player/dara_idle.png<>uid://dew3puq6241wt::::res://art/player/dara_attack.png<>uid://c75ebqtkrjrh7::::res://art/player/dara_hurt.png<>uid://c6vylv6ywocat::::res://art/player/dara_move.png<>uid://bpl33trwfxdat::::res://art/ui/buttons/attack-btn.png
-world_sea.tscn::PackedScene::2884163258659139742::1713926942::0::1::::<><>::uid://g1mbd2nxn3uo::::res://scenes/player.tscn<>uid://d2wmqv5x6syit::::res://art/tilesets/tiles.png<>uid://blad2cr366pdi::::res://scenes/enemies/octopus.tscn<>uid://cfsm4h2l24w5n::::res://scenes/npc_clam.tscn<>res://scripts/ui/joystick.gd<>uid://cs2qglsg4nsf3::::res://scenes/enemies/eel.tscn<>uid://0mwtxhkdpfm4::::res://art/ui/joystick/joystick-outer.png<>uid://cssscertc0ftw::::res://scenes/enemies/shark.tscn<>uid://b7rcvhuxba5hx::::res://art/ui/joystick/joystick-inner.png<>res://scripts/ui/joystick_inner.gd<>uid://cof5m6lvl1p75::::res://scenes/mine.tscn<>uid://nbkde1u3ffkf::::res://scenes/parallaxBG/sea_background.tscn<>uid://2j8rjgmd4vj2::::res://art/ui/buttons/up-normal.png<>uid://57pe78a1v10m::::res://art/ui/buttons/up-pressed.png<>uid://bps508vcw0e8h::::res://art/ui/buttons/down-normal.png<>uid://conidyasb0fwa::::res://art/ui/buttons/down-pressed.png<>uid://trxl6lei2o82::::res://art/ui/buttons/load-btn.png<>res://scripts/interaction_manager.gd<>uid://xch7i3e850gl::::res://art/ui/text-box.png<>uid://cif5ity5a6rbh::::res://art/ui/buttons/load-press.png<>uid://bph4vobtaswbg::::res://font/manaspc.ttf<>uid://b7ifmio8agisk::::res://art/package-icon/ICON.png
+world_sea.tscn::PackedScene::2884163258659139742::1713930380::0::1::::<><>::uid://g1mbd2nxn3uo::::res://scenes/player.tscn<>uid://d2wmqv5x6syit::::res://art/tilesets/tiles.png<>uid://blad2cr366pdi::::res://scenes/enemies/octopus.tscn<>uid://cfsm4h2l24w5n::::res://scenes/npc_clam.tscn<>res://scripts/ui/joystick.gd<>uid://cjfyyc03bxlkl::::res://scenes/npc_jellyfish.tscn<>uid://cs2qglsg4nsf3::::res://scenes/enemies/eel.tscn<>uid://0mwtxhkdpfm4::::res://art/ui/joystick/joystick-outer.png<>uid://cssscertc0ftw::::res://scenes/enemies/shark.tscn<>uid://b7rcvhuxba5hx::::res://art/ui/joystick/joystick-inner.png<>res://scripts/ui/joystick_inner.gd<>uid://cof5m6lvl1p75::::res://scenes/mine.tscn<>uid://nbkde1u3ffkf::::res://scenes/parallaxBG/sea_background.tscn<>uid://2j8rjgmd4vj2::::res://art/ui/buttons/up-normal.png<>uid://57pe78a1v10m::::res://art/ui/buttons/up-pressed.png<>uid://bps508vcw0e8h::::res://art/ui/buttons/down-normal.png<>uid://conidyasb0fwa::::res://art/ui/buttons/down-pressed.png<>uid://trxl6lei2o82::::res://art/ui/buttons/load-btn.png<>res://scripts/npc/interaction_manager.gd<>uid://xch7i3e850gl::::res://art/ui/text-box.png<>uid://cif5ity5a6rbh::::res://art/ui/buttons/load-press.png<>uid://bph4vobtaswbg::::res://font/manaspc.ttf<>uid://b7ifmio8agisk::::res://art/package-icon/ICON.png
 ::res://scenes/enemies/::1713885418
 big_shark.tscn::PackedScene::4116195939885333582::1713795384::0::1::::<><>::uid://b6by38oimgd1s::::res://art/enemies/Big Shark/attack/1.png<>res://scripts/enemies/big_shark.gd<>uid://bldibr5uwutw6::::res://art/enemies/Big Shark/attack/2.png<>uid://wio6xqbh410s::::res://art/enemies/Big Shark/attack/3.png<>uid://4ng1ta6r8yd::::res://art/enemies/Big Shark/attack/4.png<>uid://82jl7lfcfh0v::::res://art/enemies/Big Shark/death/1.png<>uid://b6cem47te2gom::::res://art/enemies/Big Shark/death/2.png<>uid://cicwdi8arxuv3::::res://art/enemies/Big Shark/death/3.png<>uid://dl2qbaumg1f1g::::res://art/enemies/Big Shark/death/4.png<>uid://q6ieijynvxqk::::res://art/enemies/Big Shark/death/5.png<>uid://ocwxqbj0tfxm::::res://art/enemies/Big Shark/hurt/1.png<>uid://3cyey6bmstvp::::res://art/enemies/Big Shark/hurt/2.png<>uid://c7o88d70nu28y::::res://art/enemies/Big Shark/Idle/1.png<>uid://b4cyjdcoxvf80::::res://art/enemies/Big Shark/Idle/2.png<>uid://btfur6pcwta21::::res://art/enemies/Big Shark/Idle/3.png<>uid://chwyfepbt0w8j::::res://art/enemies/Big Shark/Idle/4.png<>uid://4nq3qfc74gti::::res://art/enemies/Big Shark/walk/1.png<>uid://b0c5xj6vnw6ui::::res://art/enemies/Big Shark/walk/2.png<>uid://rjxtsiujvx17::::res://art/enemies/Big Shark/walk/3.png<>uid://bej4bl1g3hrp6::::res://art/enemies/Big Shark/walk/4.png<>uid://bjuj6ourc10nf::::res://art/enemies/Big Shark/walk/5.png
 eel.tscn::PackedScene::6092961544753321094::1713795399::0::1::::<><>::uid://bdf78mtam3u8f::::res://art/enemies/Eel/Attack/1.png<>res://scripts/enemies/eel.gd<>uid://bqfgwigs0ew1k::::res://art/enemies/Eel/Idle/1.png<>uid://dvm7m1c3juj81::::res://art/enemies/Eel/Attack/2.png<>uid://bfe7m7dp583ea::::res://art/enemies/Eel/Idle/2.png<>uid://6wwoj7o8sakd::::res://art/enemies/Eel/Attack/3.png<>uid://c46om33qxo6ie::::res://art/enemies/Eel/Idle/3.png<>uid://drjgn27atyydn::::res://art/enemies/Eel/Attack/4.png<>uid://c0uo2pi3ubfbq::::res://art/enemies/Eel/Idle/4.png<>uid://d246bhf8k5dkc::::res://art/enemies/Eel/Attack/5.png<>uid://dleiqpskoaw31::::res://art/enemies/Eel/Move/1.png<>uid://ts2ww57j7haw::::res://art/enemies/Eel/Move/2.png<>uid://dvsp8p5eqvsc7::::res://art/enemies/Eel/Attack/6.png<>uid://0ho0ls30guxi::::res://art/enemies/Eel/Move/3.png<>uid://cctrca4bqnk02::::res://art/enemies/Eel/Death/1.png<>uid://bap182w6lrcda::::res://art/enemies/Eel/Move/4.png<>uid://ciao0mbo2jgoy::::res://art/enemies/Eel/Death/2.png<>uid://dgwm1mw1wi33f::::res://art/enemies/Eel/Death/3.png<>uid://b4slcdkm0dvd2::::res://art/enemies/Eel/Move/5.png<>uid://hmwxbb3rd4kj::::res://art/enemies/Eel/Move/6.png<>uid://ci1k6nhlh2j1h::::res://art/enemies/Eel/Death/4.png<>uid://cb7tggo5xoo4w::::res://art/enemies/Eel/Death/5.png<>uid://elrgst3af3d0::::res://art/enemies/Eel/Death/6.png<>uid://c6dhbev21l8fk::::res://art/enemies/Eel/Hurt/1.png<>uid://bmji8xjnpwbi4::::res://art/enemies/Eel/Hurt/2.png
@@ -228,11 +230,8 @@ projectile_1.tscn::PackedScene::6965920002736806367::1713882077::0::1::::<><>::r
 projectile_2.tscn::PackedScene::2889542751678492012::1713919811::0::1::::<><>::res://scripts/projectiles/projectile_2.gd<>uid://bpamcdcm2joaq::::res://art/projectiles/water_attack2.png
 ::res://scenes/settings/::1713885418
 main_settings.tscn::PackedScene::5378771879496146658::1713798262::0::1::::<><>::
-::res://scripts/::1713926759
+::res://scripts/::1713930131
 mine.gd::GDScript::-1::1713885610::0::1::::<>CharacterBody2D<>::
-npc_clam.gd::GDScript::-1::1713921492::0::1::::<>CharacterBody2D<>::
-npc_jellyfish.gd::GDScript::-1::1713881403::0::1::::<>CharacterBody2D<>::
-interaction_manager.gd::GDScript::-1::1713926759::0::1::::<>Node<>::
 ::res://scripts/enemies/::1713920292
 big_shark.gd::GDScript::-1::1713919978::0::1::::<>CharacterBody2D<>::
 eel.gd::GDScript::-1::1713920292::0::1::::<>CharacterBody2D<>::
@@ -240,6 +239,11 @@ octopus.gd::GDScript::-1::1713796333::0::1::::<>CharacterBody2D<>::
 shark.gd::GDScript::-1::1713798071::0::1::::<>CharacterBody2D<>::
 ::res://scripts/game_manager/::1713919852
 main_menu.gd::GDScript::-1::1713919852::0::1::::<>Control<>::
+::res://scripts/npc/::1713930217
+interaction_manager.gd::GDScript::-1::1713928023::0::1::::<>Node<>::
+npc.gd::GDScript::-1::1713930091::0::1::::NPC<>Node<>::
+npc_clam.gd::GDScript::-1::1713930037::0::1::::<>CharacterBody2D<>::
+npc_jellyfish.gd::GDScript::-1::1713928512::0::1::::<>CharacterBody2D<>::
 ::res://scripts/player/::1713921159
 player_sea.gd::GDScript::-1::1713921159::0::1::::Player<>CharacterBody2D<>::
 ::res://scripts/projectiles/::1713919892

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cfsm4h2l24w5n"]
 
 [ext_resource type="Texture2D" uid="uid://ckeofxvnaonri" path="res://art/npc/clam.png" id="1_4q5wv"]
-[ext_resource type="Script" path="res://scripts/npc_clam.gd" id="1_ydwb0"]
+[ext_resource type="Script" path="res://scripts/npc/npc_clam.gd" id="1_ydwb0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tatwf"]
 atlas = ExtResource("1_4q5wv")
@@ -42,7 +42,7 @@ script = ExtResource("1_ydwb0")
 
 [node name="ClamSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2cvg6")
-animation = &"idle"
+animation = &"interact"
 
 [node name="ClamCol" type="CollisionShape2D" parent="."]
 position = Vector2(0, 20)

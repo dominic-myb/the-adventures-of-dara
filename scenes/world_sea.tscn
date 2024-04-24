@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://bhdd0odj6bjt3"]
+[gd_scene load_steps=28 format=3 uid="uid://bhdd0odj6bjt3"]
 
 [ext_resource type="PackedScene" uid="uid://g1mbd2nxn3uo" path="res://scenes/player.tscn" id="1_cl1xs"]
 [ext_resource type="Texture2D" uid="uid://d2wmqv5x6syit" path="res://art/tilesets/tiles.png" id="1_h3ypg"]
 [ext_resource type="PackedScene" uid="uid://blad2cr366pdi" path="res://scenes/enemies/octopus.tscn" id="2_324mf"]
 [ext_resource type="PackedScene" uid="uid://cfsm4h2l24w5n" path="res://scenes/npc_clam.tscn" id="3_klrnf"]
 [ext_resource type="Script" path="res://scripts/ui/joystick.gd" id="4_5a8fq"]
+[ext_resource type="PackedScene" uid="uid://cjfyyc03bxlkl" path="res://scenes/npc_jellyfish.tscn" id="4_od7lr"]
 [ext_resource type="PackedScene" uid="uid://cs2qglsg4nsf3" path="res://scenes/enemies/eel.tscn" id="4_xus66"]
 [ext_resource type="Texture2D" uid="uid://0mwtxhkdpfm4" path="res://art/ui/joystick/joystick-outer.png" id="5_lbebd"]
 [ext_resource type="PackedScene" uid="uid://cssscertc0ftw" path="res://scenes/enemies/shark.tscn" id="5_rbf0b"]
@@ -17,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bps508vcw0e8h" path="res://art/ui/buttons/down-normal.png" id="13_yra2r"]
 [ext_resource type="Texture2D" uid="uid://conidyasb0fwa" path="res://art/ui/buttons/down-pressed.png" id="14_kwdad"]
 [ext_resource type="Texture2D" uid="uid://trxl6lei2o82" path="res://art/ui/buttons/load-btn.png" id="17_t5bgc"]
-[ext_resource type="Script" path="res://scripts/interaction_manager.gd" id="17_tltue"]
+[ext_resource type="Script" path="res://scripts/npc/interaction_manager.gd" id="17_tltue"]
 [ext_resource type="Texture2D" uid="uid://xch7i3e850gl" path="res://art/ui/text-box.png" id="18_bu8xj"]
 [ext_resource type="Texture2D" uid="uid://cif5ity5a6rbh" path="res://art/ui/buttons/load-press.png" id="18_tkt55"]
 [ext_resource type="FontFile" uid="uid://bph4vobtaswbg" path="res://font/manaspc.ttf" id="19_4vkdo"]
@@ -2161,13 +2162,16 @@ limit_bottom = 0
 [node name="Clam" parent="NPC" instance=ExtResource("3_klrnf")]
 position = Vector2(205, -486)
 
+[node name="Jellyfish" parent="NPC" instance=ExtResource("4_od7lr")]
+position = Vector2(822, -184)
+
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Octopus" parent="Enemies" instance=ExtResource("2_324mf")]
 position = Vector2(1772, -250)
 
 [node name="Eel" parent="Enemies" instance=ExtResource("4_xus66")]
-position = Vector2(766, -187)
+position = Vector2(756, -821)
 
 [node name="Shark" parent="Enemies" instance=ExtResource("5_rbf0b")]
 position = Vector2(1402, -970)
@@ -2175,7 +2179,7 @@ position = Vector2(1402, -970)
 [node name="Mines" type="Node2D" parent="."]
 
 [node name="Mine" parent="Mines" instance=ExtResource("7_hjdv5")]
-position = Vector2(833, -123)
+position = Vector2(1319, -182)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -2232,6 +2236,7 @@ texture_pressed = ExtResource("14_kwdad")
 metadata/_edit_group_ = true
 
 [node name="Conversation" type="PanelContainer" parent="CanvasLayer"]
+visible = false
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
