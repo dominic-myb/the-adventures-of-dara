@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bhdd0odj6bjt3"]
+[gd_scene load_steps=27 format=3 uid="uid://bhdd0odj6bjt3"]
 
 [ext_resource type="PackedScene" uid="uid://g1mbd2nxn3uo" path="res://scenes/player.tscn" id="1_cl1xs"]
 [ext_resource type="Texture2D" uid="uid://d2wmqv5x6syit" path="res://art/tilesets/tiles.png" id="1_h3ypg"]
@@ -16,6 +16,12 @@
 [ext_resource type="Texture2D" uid="uid://57pe78a1v10m" path="res://art/ui/buttons/up-pressed.png" id="12_nxsnd"]
 [ext_resource type="Texture2D" uid="uid://bps508vcw0e8h" path="res://art/ui/buttons/down-normal.png" id="13_yra2r"]
 [ext_resource type="Texture2D" uid="uid://conidyasb0fwa" path="res://art/ui/buttons/down-pressed.png" id="14_kwdad"]
+[ext_resource type="Texture2D" uid="uid://trxl6lei2o82" path="res://art/ui/buttons/load-btn.png" id="17_t5bgc"]
+[ext_resource type="Script" path="res://scripts/interaction_manager.gd" id="17_tltue"]
+[ext_resource type="Texture2D" uid="uid://xch7i3e850gl" path="res://art/ui/text-box.png" id="18_bu8xj"]
+[ext_resource type="Texture2D" uid="uid://cif5ity5a6rbh" path="res://art/ui/buttons/load-press.png" id="18_tkt55"]
+[ext_resource type="FontFile" uid="uid://bph4vobtaswbg" path="res://font/manaspc.ttf" id="19_4vkdo"]
+[ext_resource type="Texture2D" uid="uid://b7ifmio8agisk" path="res://art/package-icon/ICON.png" id="20_uta1i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pyda4"]
 texture = ExtResource("1_h3ypg")
@@ -2125,6 +2131,13 @@ sources/0 = SubResource("TileSetAtlasSource_pyda4")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_fwurb"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dnlrj"]
+texture = ExtResource("18_bu8xj")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
 [node name="World Sea" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -2166,7 +2179,7 @@ position = Vector2(833, -123)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+[node name="JoystickContainer" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -2174,24 +2187,24 @@ offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
 
-[node name="Joystick" type="Node2D" parent="CanvasLayer/HBoxContainer"]
+[node name="Joystick" type="Node2D" parent="CanvasLayer/JoystickContainer"]
 position = Vector2(136, -80)
 script = ExtResource("4_5a8fq")
 
-[node name="Outer" type="Sprite2D" parent="CanvasLayer/HBoxContainer/Joystick"]
+[node name="Outer" type="Sprite2D" parent="CanvasLayer/JoystickContainer/Joystick"]
 texture = ExtResource("5_lbebd")
 
-[node name="Inner" type="Sprite2D" parent="CanvasLayer/HBoxContainer/Joystick"]
+[node name="Inner" type="Sprite2D" parent="CanvasLayer/JoystickContainer/Joystick"]
 texture = ExtResource("6_ul52k")
 script = ExtResource("7_3jpta")
 
-[node name="Button" type="TouchScreenButton" parent="CanvasLayer/HBoxContainer/Joystick"]
+[node name="Button" type="TouchScreenButton" parent="CanvasLayer/JoystickContainer/Joystick"]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(-53, -54)
 scale = Vector2(107, 108)
 texture_normal = SubResource("CanvasTexture_fwurb")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer"]
+[node name="RightButtonContainer" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -2202,25 +2215,99 @@ offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="RightButtons" type="Node2D" parent="CanvasLayer/HBoxContainer2"]
+[node name="RightButtons" type="Node2D" parent="CanvasLayer/RightButtonContainer"]
 position = Vector2(-245, -123)
 scale = Vector2(4, 4)
 
-[node name="Attack" type="TouchScreenButton" parent="CanvasLayer/HBoxContainer2/RightButtons"]
+[node name="Attack" type="TouchScreenButton" parent="CanvasLayer/RightButtonContainer/RightButtons"]
 texture_normal = ExtResource("11_v48a3")
 texture_pressed = ExtResource("12_nxsnd")
 action = "ui_accept"
 metadata/_edit_group_ = true
 
-[node name="Interact" type="TouchScreenButton" parent="CanvasLayer/HBoxContainer2/RightButtons"]
+[node name="Interact" type="TouchScreenButton" parent="CanvasLayer/RightButtonContainer/RightButtons"]
 position = Vector2(28, 0)
 texture_normal = ExtResource("13_yra2r")
 texture_pressed = ExtResource("14_kwdad")
 metadata/_edit_group_ = true
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer/HBoxContainer2/RightButtons"]
+[node name="Conversation" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -333.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxTexture_dnlrj")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Conversation"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="LinesCon" type="HBoxContainer" parent="CanvasLayer/Conversation/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Picture" type="TextureRect" parent="CanvasLayer/Conversation/MarginContainer/LinesCon"]
+layout_mode = 2
+texture = ExtResource("20_uta1i")
+stretch_mode = 5
+
+[node name="LinesHolder" type="Label" parent="CanvasLayer/Conversation/MarginContainer/LinesCon"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("19_4vkdo")
+theme_override_font_sizes/font_size = 35
+text = "Sample"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Conversation/MarginContainer/LinesCon"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="SkipBtn" type="TextureButton" parent="CanvasLayer/Conversation/MarginContainer/LinesCon/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = ExtResource("17_t5bgc")
+texture_pressed = ExtResource("18_tkt55")
+
+[node name="SkipBtn2" type="TextureButton" parent="CanvasLayer/Conversation/MarginContainer/LinesCon/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = ExtResource("17_t5bgc")
+texture_pressed = ExtResource("18_tkt55")
+
+[node name="SkipBtn3" type="TextureButton" parent="CanvasLayer/Conversation/MarginContainer/LinesCon/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = ExtResource("17_t5bgc")
+texture_pressed = ExtResource("18_tkt55")
+
+[node name="SkipBtn4" type="TextureButton" parent="CanvasLayer/Conversation/MarginContainer/LinesCon/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = ExtResource("17_t5bgc")
+texture_pressed = ExtResource("18_tkt55")
 
 [node name="Sea Background" parent="." instance=ExtResource("8_0bn21")]
 
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/Joystick/Button" to="CanvasLayer/HBoxContainer/Joystick/Inner" method="_on_button_pressed"]
-[connection signal="released" from="CanvasLayer/HBoxContainer/Joystick/Button" to="CanvasLayer/HBoxContainer/Joystick/Inner" method="_on_button_released"]
+[node name="InteractionManager" type="Node" parent="." groups=["interaction_manager"]]
+script = ExtResource("17_tltue")
+
+[connection signal="pressed" from="CanvasLayer/JoystickContainer/Joystick/Button" to="CanvasLayer/JoystickContainer/Joystick/Inner" method="_on_button_pressed"]
+[connection signal="released" from="CanvasLayer/JoystickContainer/Joystick/Button" to="CanvasLayer/JoystickContainer/Joystick/Inner" method="_on_button_released"]
+[connection signal="pressed" from="CanvasLayer/RightButtonContainer/RightButtons/Interact" to="InteractionManager" method="_on_interact_pressed"]
+[connection signal="pressed" from="CanvasLayer/Conversation/MarginContainer/LinesCon/VBoxContainer/SkipBtn" to="InteractionManager" method="_on_skip_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Conversation/MarginContainer/LinesCon/VBoxContainer/SkipBtn2" to="InteractionManager" method="_on_skip_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Conversation/MarginContainer/LinesCon/VBoxContainer/SkipBtn3" to="InteractionManager" method="_on_skip_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Conversation/MarginContainer/LinesCon/VBoxContainer/SkipBtn4" to="InteractionManager" method="_on_skip_btn_pressed"]

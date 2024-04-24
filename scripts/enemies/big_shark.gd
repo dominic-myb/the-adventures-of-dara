@@ -24,7 +24,6 @@ func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	big_shark_anim.play("idle")
 
-
 func _process(_delta):
 	if is_alive:
 		
@@ -41,7 +40,6 @@ func _process(_delta):
 		else:
 			big_shark_anim.play("idle")
 
-
 func _physics_process(delta):
 	if is_alive:
 		
@@ -55,7 +53,6 @@ func _physics_process(delta):
 			
 		move_and_slide()
 
-
 func sprite_position(pos : float):
 	#change the attack collider pos
 	if pos > 0:
@@ -64,7 +61,6 @@ func sprite_position(pos : float):
 	elif pos < 0:
 		big_shark_sprite.flip_h = true
 		area_dmg.position.x = -83
-
 
 func follow_player():
 	var direction = (player.global_position - self.global_position)
@@ -75,19 +71,16 @@ func follow_player():
 		velocity = Vector2.ZERO
 		#ADD PATROL METHOD
 
-
 func on_enemy_attack(anim : AnimationPlayer):
 	anim.play("attack")
 	await anim.animation_finished
 	can_attack = false
-
 
 func on_attack_cooldown(delta):
 	cd_timer += delta
 	if cd_timer >= attack_cd:
 		can_attack = true
 		cd_timer = 0.0
-
 
 func take_damage(amount):
 	is_hurt = true
@@ -96,29 +89,24 @@ func take_damage(amount):
 		await death(big_shark_anim)
 	return health
 
-
 func death(anim : AnimationPlayer):
 	is_alive = false
 	anim.play("death")
 	await anim.animation_finished
 	queue_free()
 
-
 func _on_player_detection_body_entered(body):
 	if body.is_in_group("Player"):
 		in_range = true
-
 
 func _on_player_detection_body_exited(body):
 	if body.is_in_group("Player"):
 		in_range = false
 
-
 func _on_damage_area_body_entered(body):
 	if body.is_in_group("Player"):
 		in_area_dmg = true
 		player.take_damage(damage)
-
 
 func _on_damage_area_body_exited(body):
 	if body.is_in_group("Player"):

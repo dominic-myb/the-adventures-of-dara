@@ -14,11 +14,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var player_anim = $PlayerAnim
 @onready var player_sprite = $PlayerSprite
 @onready var aim_position = $Aim/AimPosition
-@onready var joystick = $"../../CanvasLayer/HBoxContainer/Joystick"
+@onready var joystick = $"../../CanvasLayer/JoystickContainer/Joystick"
 
 func _ready():
 	player_anim.play("idle")
-
 
 func _physics_process(delta):
 	var direction = joystick.vector_pos.normalized()
@@ -28,7 +27,6 @@ func _physics_process(delta):
 	_gravity(delta)
 	_movement(direction, delta)
 	move_and_slide()
-
 
 func _process(_delta):
 	_sprite_position(velocity.x)
@@ -43,11 +41,9 @@ func _process(_delta):
 		player_anim.play("idle")
 		player_col.set_rotation_degrees(0)
 
-
 func _gravity(delta: float):
 	if not is_on_floor():
 		velocity.y += gravity * delta * 0.5
-
 
 func _movement(direction, _delta: float):
 	if direction:
@@ -59,7 +55,6 @@ func _movement(direction, _delta: float):
 		velocity.x = move_toward(velocity.x, 0, 10)
 		velocity.y = move_toward(0, velocity.y, 10)
 
-
 func _sprite_position(pos: float):
 	if pos > 0:
 		player_sprite.flip_h = false
@@ -67,7 +62,6 @@ func _sprite_position(pos: float):
 	elif pos < 0:
 		player_sprite.flip_h = true
 		player_col.set_rotation_degrees(-30)
-
 
 func _player_attack():
 	var direction = aim_position.global_position - self.position
@@ -77,12 +71,10 @@ func _player_attack():
 	projectile.velocity = direction * movespeed
 	projectile.rotation = atan2(direction.y, direction.x)
 
-
 func take_damage(damage):
 	is_hurt = true
 	Game.player_hp -= damage
 	if Game.player_hp <= 0: death()
-
 
 func death():
 	player_anim.play("death")

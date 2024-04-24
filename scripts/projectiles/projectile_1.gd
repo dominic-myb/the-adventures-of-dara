@@ -6,7 +6,6 @@ var speed : float = 300.0
 func _ready():
 	projectile_sprite.play("default")
 
-
 func _physics_process(delta):
 	var collision_info = move_and_collide(velocity.normalized() * delta * speed)
 	if collision_info:
@@ -16,4 +15,3 @@ func _physics_process(delta):
 		else:
 			queue_free()
 		queue_free()
-

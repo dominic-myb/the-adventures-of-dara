@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal player_near
+
 var in_range : bool = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -19,6 +21,7 @@ func _process(_delta):
 func _on_interaction_area_body_entered(body):
 	if body.is_in_group("Player"):
 		in_range = true
+		emit_signal("player_near")
 
 func _on_interaction_area_body_exited(body):
 	if body.is_in_group("Player"):

@@ -7,7 +7,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	mine_sprite.play("default")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity = Vector2.ZERO
 	move_and_slide()
 
@@ -17,3 +17,5 @@ func _on_mine_trigger_body_entered(body):
 
 func explode():
 	mine_sprite.play("explode")
+	await mine_sprite.animation_finished
+	queue_free()

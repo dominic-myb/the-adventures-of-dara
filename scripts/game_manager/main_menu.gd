@@ -9,25 +9,17 @@ func _ready():
 	Utils.saveGame()
 	Utils.loadGame()
 
-
 func _on_play_button_pressed():
 	play.play("pressed")
 	await play.animation_finished
 	get_tree().change_scene_to_file(scene_path)
 
-
 func _on_options_button_pressed():
 	options.play("pressed")
 	await options.animation_finished
-
 
 func _on_quit_button_pressed():
 	quit.play("pressed")
 	await quit.animation_finished
 	Utils.saveGame()
 	get_tree().quit()
-
-
-
-
-

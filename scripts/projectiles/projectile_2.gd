@@ -15,4 +15,3 @@ func _physics_process(delta):
 		else:
 			queue_free()
 		queue_free()
-

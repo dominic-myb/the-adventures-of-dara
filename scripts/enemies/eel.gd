@@ -22,7 +22,6 @@ func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	eel_anim.play("idle")
 
-
 func _process(_delta):
 	if is_alive:
 		
@@ -39,7 +38,6 @@ func _process(_delta):
 		else:
 			eel_anim.play("idle")
 
-
 func _physics_process(delta):
 	if is_alive:
 		
@@ -48,7 +46,6 @@ func _physics_process(delta):
 			
 		follow_player()
 		move_and_slide()
-
 
 func follow_player():
 	if not in_area_dmg:
@@ -59,13 +56,11 @@ func follow_player():
 		else:
 			velocity = Vector2.ZERO
 
-
 func sprite_position(pos: float):
 	if pos > 0: 
 		eel_sprite.flip_h = false
 	elif pos < 0: 
 		eel_sprite.flip_h = true
-
 
 func on_attack_cooldown(delta):
 	cd_timer += delta
@@ -73,23 +68,20 @@ func on_attack_cooldown(delta):
 		can_attack = true
 		cd_timer = 0.0
 
-
 func on_enemy_attack(anim: AnimationPlayer):
 	velocity = Vector2.ZERO
 	anim.play("attack")
 	await anim.animation_finished
 	can_attack = false
 
-
 func take_damage(damage):
 	is_hurt = true
 	health -= damage
 	if health <= 0: 
-		await death()
+		await _death()
 	return health
 
-
-func death():
+func _death():
 	is_alive = false
 	area_dmg.disabled = true
 	eel_anim.play("death")
@@ -97,24 +89,19 @@ func death():
 	Game.player_exp += 10
 	self.queue_free()
 
-
 func _on_player_detection_body_entered(body):
 	if body.is_in_group("Player"):
 		in_range = true
-
 
 func _on_player_detection_body_exited(body):
 	if body.is_in_group("Player"):
 		in_range = false
 
-
 func _on_damage_area_body_entered(body):
 	if body.is_in_group("Player"):
 		in_area_dmg = true
-
 
 func _on_damage_area_body_exited(body):
 	if body.is_in_group("Player"):
 		in_area_dmg = false
 		can_attack = false
-
