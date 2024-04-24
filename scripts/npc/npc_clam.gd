@@ -6,7 +6,11 @@ var in_range : bool = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var clam_sprite = $ClamSprite
-
+"""
+? There's 3 NPC we dont want to have player_near signal on every1
+? You can move the interaction area in the main root node 
+? or have another classes like state machine
+"""
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta * 0.5
