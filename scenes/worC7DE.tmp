@@ -2262,7 +2262,6 @@ texture_pressed = ExtResource("14_kwdad")
 metadata/_edit_group_ = true
 
 [node name="Conversation" type="PanelContainer" parent="CanvasLayer"]
-visible = false
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -2343,3 +2342,4 @@ script = ExtResource("29_ij25h")
 [connection signal="body_exited" from="NPC/Jellyfish/InteractionArea" to="InteractionManager/Jellyfish" method="_on_interaction_area_body_exited"]
 [connection signal="pressed" from="CanvasLayer/JoystickContainer/Joystick/Button" to="CanvasLayer/JoystickContainer/Joystick/Inner" method="_on_button_pressed"]
 [connection signal="released" from="CanvasLayer/JoystickContainer/Joystick/Button" to="CanvasLayer/JoystickContainer/Joystick/Inner" method="_on_button_released"]
+[connection signal="pressed" from="CanvasLayer/RightButtonContainer/RightButtons/Interact" to="InteractionManager" method="_on_interact_pressed"]

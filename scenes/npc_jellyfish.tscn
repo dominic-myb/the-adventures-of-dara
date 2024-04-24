@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cjfyyc03bxlkl"]
+[gd_scene load_steps=22 format=3 uid="uid://cjfyyc03bxlkl"]
 
 [ext_resource type="Script" path="res://scripts/npc/npc_jellyfish.gd" id="1_460qm"]
 [ext_resource type="Texture2D" uid="uid://vidibe6hr0dj" path="res://art/npc/idle.png" id="2_mpqvl"]
@@ -133,9 +133,6 @@ animations = [{
 radius = 52.0
 height = 144.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1nja6"]
-radius = 64.7765
-
 [node name="Jellyfish" type="CharacterBody2D"]
 collision_layer = 64
 script = ExtResource("1_460qm")
@@ -148,13 +145,3 @@ frame_progress = 0.457784
 
 [node name="JCol" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_4etvu")
-
-[node name="InteractionArea" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-
-[node name="IACol" type="CollisionShape2D" parent="InteractionArea"]
-shape = SubResource("CircleShape2D_1nja6")
-
-[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
-[connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
