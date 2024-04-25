@@ -1,6 +1,11 @@
 class_name NPC
 extends Node
 
+signal pressed
+signal accepted
+signal done
+signal pending
+
 var lines_counter : int = 0
 var lines : Array[String] = []
 var pictures : Array[Texture2D] = []
@@ -18,3 +23,4 @@ func interact_btn(btn: TouchScreenButton, value: bool):
 func line_controller(lines_holder: Label, img_holder: TextureRect):
 	img_holder.texture = pictures[lines_counter]
 	lines_holder.text = lines[lines_counter]
+	
