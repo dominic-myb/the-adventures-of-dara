@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://cjfyyc03bxlkl"]
 
-[ext_resource type="Script" path="res://scripts/npc/npc_jellyfish.gd" id="1_460qm"]
+[ext_resource type="Script" path="res://scripts/npc/jellyfish/npc_jellyfish.gd" id="1_460qm"]
 [ext_resource type="Texture2D" uid="uid://vidibe6hr0dj" path="res://art/npc/idle.png" id="2_mpqvl"]
 [ext_resource type="Texture2D" uid="uid://bo2ajja7dt040" path="res://art/npc/talk.png" id="3_wcerb"]
 

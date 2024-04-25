@@ -1,3 +1,5 @@
+Quest1
+Node
 CollisionShape2D
 Area2D
 JELLYFISH
@@ -11,4 +13,3 @@ TextureRect
 AnimatedSprite2D
 CharacterBody2D
 MarginContainer
-Label

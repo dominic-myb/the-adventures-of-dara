@@ -1,4 +1,11 @@
 res://scenes/world_sea.tscn
+res://scenes/npc_jellyfish.tscn
+res://_new/main.tscn
+res://scripts/quest/quest.gd
+res://scripts/quest/quest_1.gd
+res://scripts/quest/quest1.gd
+res://scripts/npc/clam.gd
+res://scripts/npc/npc.gd
 res://scripts/npc/interaction_manager.gd
-res://scripts/player/player_sea.gd
-res://scripts/npc/npc_jellyfish.gd
+res://scripts/quest/quest_manager.gd
+res://scripts/npc/clam/quest.gd

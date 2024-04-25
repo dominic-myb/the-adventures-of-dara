@@ -26,9 +26,9 @@
 [ext_resource type="Texture2D" uid="uid://dt3kv40vam4hd" path="res://art/ui/buttons/back-def.png" id="22_smag8"]
 [ext_resource type="Texture2D" uid="uid://bgd7haxw4vjse" path="res://art/ui/buttons/back-press.png" id="23_ohls4"]
 [ext_resource type="Texture2D" uid="uid://b6ofp12322dh3" path="res://art/ui/buttons/skip-def.png" id="24_bltmr"]
-[ext_resource type="Script" path="res://scripts/npc/clam.gd" id="24_kwjbl"]
+[ext_resource type="Script" path="res://scripts/npc/clam/clam.gd" id="24_kwjbl"]
 [ext_resource type="Texture2D" uid="uid://b0th6wcecxi2t" path="res://art/ui/buttons/skip-press.png" id="25_6bkc8"]
-[ext_resource type="Script" path="res://scripts/npc/jellyfish.gd" id="29_ij25h"]
+[ext_resource type="Script" path="res://scripts/npc/jellyfish/jellyfish.gd" id="29_ij25h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pyda4"]
 texture = ExtResource("1_h3ypg")
