@@ -1,4 +1,7 @@
+Quest3
+Quest2
 Quest1
+Node2D
 Node
 CollisionShape2D
 Area2D
@@ -10,6 +13,3 @@ VBoxContainer
 Control
 TextureButton
 TextureRect
-AnimatedSprite2D
-CharacterBody2D
-MarginContainer

@@ -2207,8 +2207,6 @@ position = Vector2(1402, -970)
 [node name="Mine" parent="Mines" instance=ExtResource("7_hjdv5")]
 position = Vector2(1319, -182)
 
-[node name="QuestItems" type="Node2D" parent="."]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="JoystickContainer" type="HBoxContainer" parent="CanvasLayer"]
@@ -2299,7 +2297,6 @@ size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("19_4vkdo")
 theme_override_font_sizes/font_size = 35
 text = "Sample"
-autowrap_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Conversation/MarginContainer/LinesCon"]
 layout_mode = 2

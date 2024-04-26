@@ -1,7 +1,7 @@
 class_name JELLYFISH
 extends NPC
 
-signal pressed
+#signal pressed
 
 const PLAYER_PIC = preload("res://art/package-icon/ICON.png")
 const JELLY_PIC = preload("res://art/npc/jellyfish-pic.png")
@@ -25,7 +25,7 @@ func _ready():
 
 	lines = [
 		"Hello, Dara",
-		"Hi, Aljay"
+		"Hi, Aljay",
 	]
 
 	pictures = [
