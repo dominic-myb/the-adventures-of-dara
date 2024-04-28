@@ -1,5 +1,6 @@
-res://scenes/world_sea.tscn
-res://scripts/npc/clam/clam.gd
-res://scripts/npc/npc.gd
-res://scripts/npc/quest.gd
+res://scenes/enemies/eel.tscn
 res://scripts/enemies/eel.gd
+res://scenes/world_sea.tscn
+res://global/quest.gd
+res://scripts/npc/quest_manager.gd
+res://global/event_bus.gd

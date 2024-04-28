@@ -17,13 +17,10 @@ var health : int = Game.enemy_hp
 @onready var eel_sprite = $EelSprite
 @onready var eel_anim = $EelAnim
 @onready var area_dmg = $DamageArea/DACol
-@onready var clam = $"../../InteractionManager/Clam"
-
 
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	eel_anim.play("idle")
-	clam.connect("accepted", quest_signal_check)
 
 func _process(_delta):
 	if is_alive:
@@ -108,6 +105,3 @@ func _on_damage_area_body_exited(body):
 	if body.is_in_group("Player"):
 		in_area_dmg = false
 		can_attack = false
-
-func quest_signal_check():
-	print("got the signal")

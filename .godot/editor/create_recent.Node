@@ -1,15 +1,10 @@
-Quest3
-Quest2
-Quest1
-Node2D
 Node
+Control
+Node2D
 CollisionShape2D
 Area2D
-JELLYFISH
-CLAM
 CenterContainer
 HBoxContainer
 VBoxContainer
-Control
 TextureButton
 TextureRect

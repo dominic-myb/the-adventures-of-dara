@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bhdd0odj6bjt3"]
+[gd_scene load_steps=35 format=3 uid="uid://bhdd0odj6bjt3"]
 
 [ext_resource type="PackedScene" uid="uid://g1mbd2nxn3uo" path="res://scenes/player.tscn" id="1_cl1xs"]
 [ext_resource type="Texture2D" uid="uid://d2wmqv5x6syit" path="res://art/tilesets/tiles.png" id="1_h3ypg"]
@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://57pe78a1v10m" path="res://art/ui/buttons/up-pressed.png" id="12_nxsnd"]
 [ext_resource type="Texture2D" uid="uid://bps508vcw0e8h" path="res://art/ui/buttons/down-normal.png" id="13_yra2r"]
 [ext_resource type="Texture2D" uid="uid://conidyasb0fwa" path="res://art/ui/buttons/down-pressed.png" id="14_kwdad"]
-[ext_resource type="Script" path="res://scripts/npc/interaction_manager.gd" id="17_tltue"]
 [ext_resource type="Texture2D" uid="uid://xch7i3e850gl" path="res://art/ui/text-box.png" id="18_bu8xj"]
 [ext_resource type="FontFile" uid="uid://bph4vobtaswbg" path="res://font/manaspc.ttf" id="19_4vkdo"]
 [ext_resource type="Texture2D" uid="uid://chk7fs66c00as" path="res://art/ui/buttons/next-def.png" id="20_s7hay"]
@@ -26,9 +25,9 @@
 [ext_resource type="Texture2D" uid="uid://dt3kv40vam4hd" path="res://art/ui/buttons/back-def.png" id="22_smag8"]
 [ext_resource type="Texture2D" uid="uid://bgd7haxw4vjse" path="res://art/ui/buttons/back-press.png" id="23_ohls4"]
 [ext_resource type="Texture2D" uid="uid://b6ofp12322dh3" path="res://art/ui/buttons/skip-def.png" id="24_bltmr"]
-[ext_resource type="Script" path="res://scripts/npc/clam/clam.gd" id="24_kwjbl"]
 [ext_resource type="Texture2D" uid="uid://b0th6wcecxi2t" path="res://art/ui/buttons/skip-press.png" id="25_6bkc8"]
-[ext_resource type="Script" path="res://scripts/npc/jellyfish/jellyfish.gd" id="29_ij25h"]
+[ext_resource type="Script" path="res://global/event_bus.gd" id="28_nthqs"]
+[ext_resource type="Script" path="res://scripts/npc/quest_manager.gd" id="30_ueyn7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pyda4"]
 texture = ExtResource("1_h3ypg")
@@ -2174,21 +2173,21 @@ limit_bottom = 0
 [node name="Clam" parent="NPC" instance=ExtResource("3_klrnf")]
 position = Vector2(205, -486)
 
-[node name="InteractionArea" type="Area2D" parent="NPC/Clam"]
+[node name="ClamInteractArea" type="Area2D" parent="NPC/Clam"]
 collision_layer = 0
 collision_mask = 2
 
-[node name="IACol" type="CollisionShape2D" parent="NPC/Clam/InteractionArea"]
+[node name="IACol" type="CollisionShape2D" parent="NPC/Clam/ClamInteractArea"]
 shape = SubResource("CircleShape2D_s5nqs")
 
 [node name="Jellyfish" parent="NPC" instance=ExtResource("4_od7lr")]
 position = Vector2(822, -184)
 
-[node name="InteractionArea" type="Area2D" parent="NPC/Jellyfish"]
+[node name="JellyfishInteractArea" type="Area2D" parent="NPC/Jellyfish"]
 collision_layer = 0
 collision_mask = 2
 
-[node name="IACol" type="CollisionShape2D" parent="NPC/Jellyfish/InteractionArea"]
+[node name="IACol" type="CollisionShape2D" parent="NPC/Jellyfish/JellyfishInteractArea"]
 shape = SubResource("CircleShape2D_h4hic")
 
 [node name="Enemies" type="Node2D" parent="."]
@@ -2331,18 +2330,21 @@ texture_pressed = ExtResource("25_6bkc8")
 
 [node name="Sea Background" parent="." instance=ExtResource("8_0bn21")]
 
-[node name="InteractionManager" type="Node" parent="." groups=["interaction_manager"]]
-script = ExtResource("17_tltue")
+[node name="QuestManager" type="Node" parent="."]
+script = ExtResource("30_ueyn7")
 
-[node name="Clam" type="Node" parent="InteractionManager"]
-script = ExtResource("24_kwjbl")
+[node name="Settings" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Jellyfish" type="Node" parent="InteractionManager"]
-script = ExtResource("29_ij25h")
+[node name="EventBus" type="Node" parent="."]
+script = ExtResource("28_nthqs")
 
-[connection signal="body_entered" from="NPC/Clam/InteractionArea" to="InteractionManager/Clam" method="_on_interaction_area_body_entered"]
-[connection signal="body_exited" from="NPC/Clam/InteractionArea" to="InteractionManager/Clam" method="_on_interaction_area_body_exited"]
-[connection signal="body_entered" from="NPC/Jellyfish/InteractionArea" to="InteractionManager/Jellyfish" method="_on_interaction_area_body_entered"]
-[connection signal="body_exited" from="NPC/Jellyfish/InteractionArea" to="InteractionManager/Jellyfish" method="_on_interaction_area_body_exited"]
+[connection signal="body_entered" from="NPC/Clam/ClamInteractArea" to="QuestManager" method="_on_clam_interact_area_body_entered"]
+[connection signal="body_exited" from="NPC/Clam/ClamInteractArea" to="QuestManager" method="_on_clam_interact_area_body_exited"]
+[connection signal="body_entered" from="NPC/Jellyfish/JellyfishInteractArea" to="QuestManager" method="_on_jellyfish_interact_area_body_entered"]
+[connection signal="body_exited" from="NPC/Jellyfish/JellyfishInteractArea" to="QuestManager" method="_on_jellyfish_interact_area_body_exited"]
 [connection signal="pressed" from="CanvasLayer/JoystickContainer/Joystick/Button" to="CanvasLayer/JoystickContainer/Joystick/Inner" method="_on_button_pressed"]
 [connection signal="released" from="CanvasLayer/JoystickContainer/Joystick/Button" to="CanvasLayer/JoystickContainer/Joystick/Inner" method="_on_button_released"]

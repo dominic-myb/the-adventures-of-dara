@@ -16,8 +16,8 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 
 [autoload]
 
-Game="*res://game/game.gd"
-Utils="*res://game/utils.gd"
+Game="*res://global/game.gd"
+Utils="*res://global/utils.gd"
 
 [display]
 
