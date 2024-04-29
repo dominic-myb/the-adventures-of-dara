@@ -17,9 +17,11 @@ var health : int = Game.enemy_hp
 @onready var eel_sprite = $EelSprite
 @onready var eel_anim = $EelAnim
 @onready var area_dmg = $DamageArea/DACol
+@onready var health_bar = $HealthBar
 
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
+	health_bar._init_health(health)
 	eel_anim.play("idle")
 
 func _process(_delta):
@@ -48,7 +50,7 @@ func _physics_process(delta):
 		move_and_slide()
 
 func follow_player():
-	if not in_area_dmg:
+	if not in_area_dmg and Game.is_alive:
 		var direction = (player.global_position - self.global_position)
 		if in_range:
 			velocity = direction.normalized() * speed
@@ -77,6 +79,7 @@ func on_enemy_attack(anim: AnimationPlayer):
 func take_damage(damage):
 	is_hurt = true
 	health -= damage
+	health_bar.health = health
 	if health <= 0: 
 		await _death()
 	return health

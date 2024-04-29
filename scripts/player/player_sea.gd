@@ -1,11 +1,17 @@
 class_name Player
 extends CharacterBody2D
 
+"""
+PROBLEM ON HANDLING TAKING DAMAGE
+NEEDS DEATH MESSAGE UI
+"""
+
 const PROJECTILE_PATH = preload("res://scenes/projectiles/projectile_2.tscn")
 
+var is_hurt : bool = false
 var is_moving : bool = false
 var is_pressed : bool = false
-var is_hurt : bool = false
+var health : float = 100
 var movespeed : float = 600.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -14,9 +20,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var player_anim = $PlayerAnim
 @onready var player_sprite = $PlayerSprite
 @onready var aim_position = $Aim/AimPosition
+@onready var health_bar = $CanvasLayer/HealthBar
 @onready var joystick = $"../../CanvasLayer/JoystickContainer/Joystick"
 
 func _ready():
+	health_bar._init_health(health)
 	player_anim.play("idle")
 
 func _physics_process(delta):
@@ -30,16 +38,14 @@ func _physics_process(delta):
 
 func _process(_delta):
 	_sprite_position(velocity.x)
+	if not Game.is_alive:
+		await _death(player_anim)
 	if is_hurt:
-		player_anim.play("hurt")
-		await player_anim.animation_finished
-		is_hurt = false
-
+		_hurt(player_anim)
 	if is_moving:
-		player_anim.play("move")
+		_moving(player_anim)
 	else:
-		player_anim.play("idle")
-		player_col.set_rotation_degrees(0)
+		_idling(player_anim)
 
 func _gravity(delta: float):
 	if not is_on_floor():
@@ -54,6 +60,13 @@ func _movement(direction, _delta: float):
 		is_moving = false
 		velocity.x = move_toward(velocity.x, 0, 10)
 		velocity.y = move_toward(0, velocity.y, 10)
+
+func _moving(anim: AnimationPlayer):
+	anim.play("move")
+
+func _idling(anim: AnimationPlayer):
+	anim.play("idle")
+	player_col.set_rotation_degrees(0)
 
 func _sprite_position(pos: float):
 	if pos > 0:
@@ -71,13 +84,24 @@ func _player_attack():
 	projectile.velocity = direction * movespeed
 	projectile.rotation = atan2(direction.y, direction.x)
 
+func _hurt(anim: AnimationPlayer):
+	anim.play("hurt")
+	await anim.animation_finished
+	is_hurt = false
+	return is_hurt
+
 func take_damage(damage):
 	is_hurt = true
 	Game.player_hp -= damage
-	if Game.player_hp <= 0: death()
+	health_bar.health = Game.player_hp
+	if Game.player_hp <= 0: 
+		await _death(player_anim)
+		_on_player_death()
 
-func death():
-	player_anim.play("death")
-	await player_anim.animation_finished
-	queue_free()
+func _death(anim: AnimationPlayer):
+	anim.play("death")
+	await anim.animation_finished
+func _on_player_death():
+	Game.is_alive = false
+	#queue_free()
 

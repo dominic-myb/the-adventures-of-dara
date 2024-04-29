@@ -9,20 +9,23 @@ var in_range : bool = false
 var in_area_dmg : bool = false
 
 var speed : float = 100.0
-var health : float = 100.0
 var attack_cd : float = 0.0
 var cd_timer  : float = 0.0
 
+var health : int = Game.enemy_hp * 2
 var damage : int = Game.enemy_damage * 2
 
 @onready var big_shark_sprite = $BigSharkSprite
 @onready var big_shark_anim = $BigSharkAnim
 @onready var area_dmg = $DamageArea/DACol
-
+@onready var healthbar_con = $CanvasLayer/Control
+@onready var health_bar = $CanvasLayer/Control/HealthBar
 
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	big_shark_anim.play("idle")
+	health_bar._init_health(health)
+	healthbar_con.visible = false
 
 func _process(_delta):
 	if is_alive:
@@ -63,13 +66,14 @@ func sprite_position(pos : float):
 		area_dmg.position.x = -83
 
 func follow_player():
-	var direction = (player.global_position - self.global_position)
-	if in_range:
-		velocity = direction.normalized() * speed
-		sprite_position(direction.normalized().x)
-	else:
-		velocity = Vector2.ZERO
-		#ADD PATROL METHOD
+	if Game.is_alive:
+		var direction = (player.global_position - self.global_position)
+		if in_range:
+			velocity = direction.normalized() * speed
+			sprite_position(direction.normalized().x)
+		else:
+			velocity = Vector2.ZERO
+			#ADD PATROL METHOD
 
 func on_enemy_attack(anim : AnimationPlayer):
 	anim.play("attack")
@@ -85,6 +89,7 @@ func on_attack_cooldown(delta):
 func take_damage(amount):
 	is_hurt = true
 	health -= amount
+	health_bar.health = health
 	if health <= 0: 
 		await death(big_shark_anim)
 	return health
@@ -98,10 +103,12 @@ func death(anim : AnimationPlayer):
 func _on_player_detection_body_entered(body):
 	if body.is_in_group("Player"):
 		in_range = true
+		healthbar_con.visible = true
 
 func _on_player_detection_body_exited(body):
 	if body.is_in_group("Player"):
 		in_range = false
+		healthbar_con.visible = false
 
 func _on_damage_area_body_entered(body):
 	if body.is_in_group("Player"):

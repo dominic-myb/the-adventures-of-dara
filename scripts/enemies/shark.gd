@@ -52,7 +52,7 @@ func _physics_process(delta):
 
 
 func follow_player():
-	if not in_damage_area:
+	if not in_damage_area and Game.is_alive:
 		var direction = (player.global_position - self.global_position)
 		if in_range:
 			velocity = direction.normalized() * speed
