@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cs2qglsg4nsf3"]
+[gd_scene load_steps=38 format=3 uid="uid://cs2qglsg4nsf3"]
 
 [ext_resource type="Texture2D" uid="uid://bdf78mtam3u8f" path="res://art/enemies/Eel/Attack/1.png" id="1_qw6tn"]
 [ext_resource type="Script" path="res://scripts/enemies/eel.gd" id="1_r8d1m"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://elrgst3af3d0" path="res://art/enemies/Eel/Death/6.png" id="12_lqri2"]
 [ext_resource type="Texture2D" uid="uid://c6dhbev21l8fk" path="res://art/enemies/Eel/Hurt/1.png" id="13_e07s7"]
 [ext_resource type="Texture2D" uid="uid://bmji8xjnpwbi4" path="res://art/enemies/Eel/Hurt/2.png" id="14_0o7hn"]
+[ext_resource type="PackedScene" uid="uid://mvufdd2858l8" path="res://scenes/ui/health_bar.tscn" id="26_iutgs"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h3j2c"]
 animations = [{
@@ -355,6 +356,12 @@ collision_mask = 2
 [node name="DACol" type="CollisionShape2D" parent="DamageArea"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_jsh02")
+
+[node name="HealthBar" parent="." instance=ExtResource("26_iutgs")]
+offset_left = -40.0
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = -21.0
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]

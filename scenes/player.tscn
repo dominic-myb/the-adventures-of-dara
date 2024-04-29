@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://g1mbd2nxn3uo"]
+[gd_scene load_steps=53 format=3 uid="uid://g1mbd2nxn3uo"]
 
 [ext_resource type="Texture2D" uid="uid://b5aax1i40hp78" path="res://art/player/dara_death.png" id="1_isvhe"]
 [ext_resource type="Script" path="res://scripts/player/player_sea.gd" id="1_pa4xk"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c75ebqtkrjrh7" path="res://art/player/dara_hurt.png" id="2_qnqi8"]
 [ext_resource type="Texture2D" uid="uid://c6vylv6ywocat" path="res://art/player/dara_move.png" id="4_adsrw"]
 [ext_resource type="Texture2D" uid="uid://bpl33trwfxdat" path="res://art/ui/buttons/attack-btn.png" id="7_fqfew"]
+[ext_resource type="PackedScene" uid="uid://mvufdd2858l8" path="res://scenes/ui/health_bar.tscn" id="8_qquo1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_emyft"]
 atlas = ExtResource("2_4vi7q")
@@ -497,3 +498,16 @@ collision_mask = 4
 [node name="HurtCol" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -8.5)
 shape = SubResource("RectangleShape2D_1qh32")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("8_qquo1")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 350.0
+offset_bottom = 70.0
+grow_horizontal = 1
+grow_vertical = 1

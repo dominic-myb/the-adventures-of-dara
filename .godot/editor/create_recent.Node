@@ -1,10 +1,14 @@
-Node
+CanvasLayer
 Control
+HBoxContainer
+Label
+Camera2D
+Timer
+ProgressBar
+Node
 Node2D
 CollisionShape2D
 Area2D
 CenterContainer
-HBoxContainer
 VBoxContainer
 TextureButton
-TextureRect

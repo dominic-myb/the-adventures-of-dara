@@ -27,10 +27,18 @@ var ememies = {
 	}
 }
 @onready var quest_manager = $"../QuestManager"
+@onready var death_cam = $"../Player/Camera2D"
+@onready var alive_cam = $"../Player/Player/Camera2D"
 func _ready():
 	quest_manager.connect("accepted", on_accept)
-func _process(delta):
-	pass
+func _process(_delta):
+	if Game.is_alive:
+		Game.cam_pos = alive_cam.position
+	elif not Game.is_alive:
+		on_player_death(Game.cam_pos)
 func on_accept(quest: int):
 	if quest == 0:
 		print("Im working!")
+func on_player_death(pos: Vector2):
+	death_cam.position = pos
+	death_cam.visible = true

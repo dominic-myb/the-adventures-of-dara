@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bhdd0odj6bjt3"]
+[gd_scene load_steps=40 format=3 uid="uid://bhdd0odj6bjt3"]
 
 [ext_resource type="PackedScene" uid="uid://g1mbd2nxn3uo" path="res://scenes/player.tscn" id="1_cl1xs"]
 [ext_resource type="Texture2D" uid="uid://d2wmqv5x6syit" path="res://art/tilesets/tiles.png" id="1_h3ypg"]
@@ -13,7 +13,6 @@
 [ext_resource type="Script" path="res://scripts/ui/joystick_inner.gd" id="7_3jpta"]
 [ext_resource type="PackedScene" uid="uid://cof5m6lvl1p75" path="res://scenes/mine.tscn" id="7_hjdv5"]
 [ext_resource type="PackedScene" uid="uid://nbkde1u3ffkf" path="res://scenes/parallaxBG/sea_background.tscn" id="8_0bn21"]
-[ext_resource type="PackedScene" uid="uid://byv6e7qn3q74u" path="res://scenes/enemies/big_shark.tscn" id="8_smw4r"]
 [ext_resource type="Texture2D" uid="uid://2j8rjgmd4vj2" path="res://art/ui/buttons/up-normal.png" id="11_v48a3"]
 [ext_resource type="Texture2D" uid="uid://57pe78a1v10m" path="res://art/ui/buttons/up-pressed.png" id="12_nxsnd"]
 [ext_resource type="Texture2D" uid="uid://bps508vcw0e8h" path="res://art/ui/buttons/down-normal.png" id="13_yra2r"]
@@ -27,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://bgd7haxw4vjse" path="res://art/ui/buttons/back-press.png" id="23_ohls4"]
 [ext_resource type="Texture2D" uid="uid://b6ofp12322dh3" path="res://art/ui/buttons/skip-def.png" id="24_bltmr"]
 [ext_resource type="Texture2D" uid="uid://b0th6wcecxi2t" path="res://art/ui/buttons/skip-press.png" id="25_6bkc8"]
+[ext_resource type="Script" path="res://scripts/ui/health_bar.gd" id="26_srtqg"]
 [ext_resource type="Script" path="res://global/event_bus.gd" id="28_nthqs"]
 [ext_resource type="Script" path="res://scripts/npc/quest_manager.gd" id="30_ueyn7"]
 
@@ -2151,6 +2151,23 @@ texture_margin_top = 20.0
 texture_margin_right = 20.0
 texture_margin_bottom = 20.0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ngh2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_260xs"]
+bg_color = Color(0.0901961, 0.694118, 0.627451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fraet"]
+bg_color = Color(0.145098, 0.145098, 0.145098, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+shadow_color = Color(0, 0, 0, 0.27451)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xkap1"]
+bg_color = Color(0.909804, 0.909804, 0.909804, 1)
+
 [node name="World Sea" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -2166,11 +2183,6 @@ unique_name_in_owner = true
 position = Vector2(198, -146)
 
 [node name="Camera2D" type="Camera2D" parent="Player/Player"]
-limit_left = 0
-limit_bottom = 0
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-visible = false
 limit_left = 0
 limit_bottom = 0
 
@@ -2207,9 +2219,6 @@ position = Vector2(756, -821)
 [node name="Shark" parent="Enemies" instance=ExtResource("5_rbf0b")]
 position = Vector2(1402, -970)
 
-[node name="Big Shark" parent="Enemies" instance=ExtResource("8_smw4r")]
-position = Vector2(846, -185)
-
 [node name="Mines" type="Node2D" parent="."]
 
 [node name="Mine" parent="Mines" instance=ExtResource("7_hjdv5")]
@@ -2218,8 +2227,6 @@ position = Vector2(1319, -182)
 [node name="QuestItems" type="Node2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Sea Background" parent="CanvasLayer" instance=ExtResource("8_0bn21")]
 
 [node name="TopUIContainer" type="HBoxContainer" parent="CanvasLayer"]
 offset_right = 40.0
@@ -2343,14 +2350,45 @@ size_flags_vertical = 8
 texture_normal = ExtResource("24_bltmr")
 texture_pressed = ExtResource("25_6bkc8")
 
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
+z_index = 1
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 400.0
+offset_bottom = 70.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_2ngh2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_260xs")
+value = 60.0
+show_percentage = false
+script = ExtResource("26_srtqg")
+
+[node name="DamageBar" type="ProgressBar" parent="CanvasLayer/HealthBar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_fraet")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xkap1")
+value = 80.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="CanvasLayer/HealthBar"]
+wait_time = 0.4
+one_shot = true
+
+[node name="Sea Background" parent="." instance=ExtResource("8_0bn21")]
+
+[node name="QuestManager" type="Node" parent="."]
+script = ExtResource("30_ueyn7")
+
 [node name="Settings" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="QuestManager" type="Node" parent="."]
-script = ExtResource("30_ueyn7")
 
 [node name="EventBus" type="Node" parent="."]
 script = ExtResource("28_nthqs")
@@ -2361,3 +2399,4 @@ script = ExtResource("28_nthqs")
 [connection signal="body_exited" from="NPC/Jellyfish/JellyfishInteractArea" to="QuestManager" method="_on_jellyfish_interact_area_body_exited"]
 [connection signal="pressed" from="CanvasLayer/JoystickContainer/Joystick/Button" to="CanvasLayer/JoystickContainer/Joystick/Inner" method="_on_button_pressed"]
 [connection signal="released" from="CanvasLayer/JoystickContainer/Joystick/Button" to="CanvasLayer/JoystickContainer/Joystick/Inner" method="_on_button_released"]
+[connection signal="timeout" from="CanvasLayer/HealthBar/Timer" to="CanvasLayer/HealthBar" method="_on_timer_timeout"]

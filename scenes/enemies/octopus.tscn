@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://blad2cr366pdi"]
+[gd_scene load_steps=40 format=3 uid="uid://blad2cr366pdi"]
 
 [ext_resource type="Texture2D" uid="uid://w8wj1dysn4c5" path="res://art/enemies/Octopus/death/1.png" id="1_5wudi"]
 [ext_resource type="Texture2D" uid="uid://8c3gta7vrp0n" path="res://art/enemies/Octopus/idle/1.png" id="1_6pr10"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://c0654klhsntls" path="res://art/enemies/Octopus/move/4.png" id="16_3osqx"]
 [ext_resource type="Texture2D" uid="uid://xjln2j2t7jg8" path="res://art/enemies/Octopus/move/5.png" id="17_pte06"]
 [ext_resource type="Texture2D" uid="uid://b04v0sd4jvlx8" path="res://art/enemies/Octopus/move/6.png" id="18_honfh"]
+[ext_resource type="PackedScene" uid="uid://mvufdd2858l8" path="res://scenes/ui/health_bar.tscn" id="28_5w4pm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b2rtg"]
 animations = [{
@@ -481,6 +482,12 @@ collision_mask = 2
 [node name="DACol" type="CollisionShape2D" parent="DamageArea"]
 position = Vector2(30, -23)
 shape = SubResource("CapsuleShape2D_v3on8")
+
+[node name="HealthBar" parent="." instance=ExtResource("28_5w4pm")]
+offset_left = -40.0
+offset_top = -53.0
+offset_right = 40.0
+offset_bottom = -47.0
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]

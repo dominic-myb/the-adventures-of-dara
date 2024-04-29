@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://byv6e7qn3q74u"]
+[gd_scene load_steps=39 format=3 uid="uid://byv6e7qn3q74u"]
 
 [ext_resource type="Texture2D" uid="uid://b6by38oimgd1s" path="res://art/enemies/Big Shark/attack/1.png" id="1_hanys"]
 [ext_resource type="Script" path="res://scripts/enemies/big_shark.gd" id="1_hll6e"]
@@ -21,6 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://rjxtsiujvx17" path="res://art/enemies/Big Shark/walk/3.png" id="18_0rpk8"]
 [ext_resource type="Texture2D" uid="uid://bej4bl1g3hrp6" path="res://art/enemies/Big Shark/walk/4.png" id="19_nfdot"]
 [ext_resource type="Texture2D" uid="uid://bjuj6ourc10nf" path="res://art/enemies/Big Shark/walk/5.png" id="20_poduv"]
+[ext_resource type="FontFile" uid="uid://bph4vobtaswbg" path="res://font/manaspc.ttf" id="22_oa06l"]
+[ext_resource type="Script" path="res://scripts/ui/health_bar.gd" id="22_rogi6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_02mib"]
 animations = [{
@@ -303,6 +305,23 @@ radius = 435.415
 radius = 47.0
 height = 102.0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ngh2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_260xs"]
+bg_color = Color(0.0901961, 0.694118, 0.627451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fraet"]
+bg_color = Color(0.145098, 0.145098, 0.145098, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+shadow_color = Color(0, 0, 0, 0.27451)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xkap1"]
+bg_color = Color(0.909804, 0.909804, 0.909804, 1)
+
 [node name="Big Shark" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_hll6e")
@@ -338,7 +357,79 @@ position = Vector2(83, 22)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_0jufj")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/Control"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -90.0
+offset_right = 250.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_styles/background = SubResource("StyleBoxEmpty_2ngh2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_260xs")
+value = 60.0
+show_percentage = false
+script = ExtResource("22_rogi6")
+
+[node name="DamageBar" type="ProgressBar" parent="CanvasLayer/Control/HealthBar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_fraet")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xkap1")
+value = 80.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Control/HealthBar"]
+wait_time = 0.4
+one_shot = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -140.0
+offset_right = -7.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("22_oa06l")
+theme_override_font_sizes/font_size = 40
+text = "Big Shark"
+
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_damage_area_body_exited"]
+[connection signal="timeout" from="CanvasLayer/Control/HealthBar/Timer" to="CanvasLayer/Control/HealthBar" method="_on_timer_timeout"]

@@ -8,6 +8,8 @@ var player_lvl = 1
 var player_gold = 0
 var lvl_to_buff = 5
 var player_damage = 2 
+var is_alive : bool = true
+var cam_pos : Vector2
 
 #for weak mobs
 var enemy_hp = 0

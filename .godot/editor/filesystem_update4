@@ -1,6 +1,5 @@
-res://scenes/enemies/eel.tscn
-res://scripts/enemies/eel.gd
 res://scenes/world_sea.tscn
-res://global/quest.gd
-res://scripts/npc/quest_manager.gd
-res://global/event_bus.gd
+res://scenes/enemies/big_shark.tscn
+res://scripts/enemies/big_shark.gd
+res://scripts/player/player_sea.gd
+res://scenes/player.tscn
