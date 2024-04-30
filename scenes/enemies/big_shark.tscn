@@ -360,6 +360,7 @@ shape = SubResource("CapsuleShape2D_0jufj")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5

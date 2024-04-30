@@ -359,9 +359,9 @@ shape = SubResource("CapsuleShape2D_jsh02")
 
 [node name="HealthBar" parent="." instance=ExtResource("26_iutgs")]
 offset_left = -40.0
-offset_top = -24.0
+offset_top = -30.0
 offset_right = 40.0
-offset_bottom = -21.0
+offset_bottom = -25.0
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]

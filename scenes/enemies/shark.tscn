@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cssscertc0ftw"]
+[gd_scene load_steps=36 format=3 uid="uid://cssscertc0ftw"]
 
 [ext_resource type="Texture2D" uid="uid://d3i21btl8ieil" path="res://art/enemies/Shark/Attack/1.png" id="1_57ssq"]
 [ext_resource type="Texture2D" uid="uid://bwioufafjresj" path="res://art/enemies/Shark/Idle/1.png" id="1_grjqt"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://d03nlbs6tee83" path="res://art/enemies/Shark/Walk/2.png" id="20_bslbi"]
 [ext_resource type="Texture2D" uid="uid://bu3501iteigxq" path="res://art/enemies/Shark/Walk/3.png" id="21_br0hm"]
 [ext_resource type="Texture2D" uid="uid://bmueqfot2xhop" path="res://art/enemies/Shark/Walk/4.png" id="22_dc0fa"]
+[ext_resource type="PackedScene" uid="uid://mvufdd2858l8" path="res://scenes/ui/health_bar.tscn" id="24_wynr3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e3b4y"]
 radius = 8.0
@@ -348,6 +349,12 @@ collision_mask = 2
 position = Vector2(27, 2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_tpnvf")
+
+[node name="HealthBar" parent="." instance=ExtResource("24_wynr3")]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = -35.0
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
