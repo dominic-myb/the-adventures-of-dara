@@ -41,6 +41,8 @@ func _process(_delta):
 			eel_anim.play("idle")
 
 func _physics_process(delta):
+	if not player:
+		velocity = Vector2.ZERO
 	if is_alive:
 		
 		if not can_attack:
@@ -89,7 +91,7 @@ func _death():
 	area_dmg.disabled = true
 	eel_anim.play("death")
 	await eel_anim.animation_finished
-	Game.player_exp += 10
+	Game.player_exp += Game.exp_to_get
 	self.queue_free()
 
 func _on_player_detection_body_entered(body):

@@ -17,9 +17,11 @@ var health : int = Game.enemy_hp
 @onready var shark_anim = $SharkAnim
 @onready var shark_sprite = $SharkSprite
 @onready var area_dmg = $DamageArea/DACol
+@onready var health_bar = $HealthBar
 
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
+	health_bar._init_health(health)
 	shark_anim.play("idle")
 
 
@@ -31,7 +33,7 @@ func _process(_delta):
 			is_hurt = false
 		
 		if can_attack and in_damage_area:
-			await on_enemy_attack(shark_anim)
+			await _on_enemy_attack(shark_anim)
 			can_attack = false
 		
 		if in_range:
@@ -41,32 +43,34 @@ func _process(_delta):
 
 
 func _physics_process(delta):
+	if not player:
+		velocity = Vector2.ZERO
 	if is_alive:
 		if not can_attack:
-			on_attack_cooldown(delta)
+			_on_attack_cooldown(delta)
 		if in_damage_area: 
 			velocity = Vector2.ZERO  
 		else: 
-			follow_player()
+			_follow_player()
 		move_and_slide()
 
 
-func follow_player():
+func _follow_player():
 	if not in_damage_area and Game.is_alive:
 		var direction = (player.global_position - self.global_position)
 		if in_range:
 			velocity = direction.normalized() * speed
-			sprite_position(direction.normalized().x)
+			_sprite_position(direction.normalized().x)
 		else:
 			velocity = Vector2.ZERO
 
 
-func on_enemy_attack(anim : AnimationPlayer):
+func _on_enemy_attack(anim : AnimationPlayer):
 	anim.play("attack")
 	await anim.animation_finished
 
 
-func on_attack_cooldown(delta):
+func _on_attack_cooldown(delta):
 	cd_timer += delta
 	if cd_timer >= attack_cd:
 		can_attack = true
@@ -76,19 +80,20 @@ func on_attack_cooldown(delta):
 func take_damage(amount):
 	is_hurt = true
 	health -= amount
+	health_bar.health = health
 	if health <= 0: 
-		await death(shark_anim)
+		await _death(shark_anim)
 	return health
 
 
-func death(anim : AnimationPlayer):
+func _death(anim : AnimationPlayer):
 	is_alive = false
 	anim.play("death")
 	await anim.animation_finished
 	queue_free()
 
 
-func sprite_position(pos: float):
+func _sprite_position(pos: float):
 	if pos > 0: 
 		shark_sprite.flip_h = false
 		area_dmg.position.x = 27
