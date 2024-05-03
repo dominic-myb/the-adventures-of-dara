@@ -22,10 +22,12 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var health_bar = $CanvasLayer/MarginCon/StatsCon/BarCon/HealthBar
 @onready var experience_bar = $CanvasLayer/MarginCon/StatsCon/BarCon/ExperienceBar
 @onready var joystick = $"../../CanvasLayer/JoystickContainer/Joystick"
+@onready var mana_bar = $CanvasLayer/MarginCon/StatsCon/BarCon/ManaBar
 
 func _ready():
 	game_over.connect(_death)
 	health_bar._init_health(Game.player_hp)
+	mana_bar._init_mana(Game.player_mana)
 	experience_bar._init_experience(Game.player_exp, Game.player_max_exp)
 	player_anim.play("idle")
 	
@@ -34,6 +36,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		_player_attack()
 
+	_mana_regen(delta)
 	_gravity(delta)
 	_movement(direction, delta)
 	move_and_slide()
@@ -77,13 +80,21 @@ func _sprite_position(pos: float):
 		player_sprite.flip_h = true
 		player_col.set_rotation_degrees(-30)
 
+func _mana_regen(delta):
+	if Game.player_mana < Game.player_max_mana:
+		Game.player_mana += delta * 2
+		mana_bar.mana = Game.player_mana
+
 func _player_attack():
 	var direction = aim_position.global_position - self.position
-	var projectile = PROJECTILE_PATH.instantiate()
-	get_parent().add_child(projectile)
-	projectile.position = aim_position.global_position
-	projectile.velocity = direction * movespeed
-	projectile.rotation = atan2(direction.y, direction.x)
+	if Game.player_mana > 5:
+		var projectile = PROJECTILE_PATH.instantiate()
+		get_parent().add_child(projectile)
+		projectile.position = aim_position.global_position
+		projectile.velocity = direction * movespeed
+		projectile.rotation = atan2(direction.y, direction.x)
+		Game.player_mana -= 5
+		mana_bar.mana = Game.player_mana
 
 func _hurt(anim: AnimationPlayer):
 	anim.play("hurt")
