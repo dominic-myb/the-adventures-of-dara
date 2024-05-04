@@ -14,15 +14,14 @@ func _init_experience(_experience, max_experience):
 
 func _set_experience(new_experience):
 	var prev_experience = experience
-	max_value = Game.player_max_exp
 	experience = min(max_value, new_experience)
 	value = new_experience
 	
 	if experience < prev_experience:
 		timer.start()
 	else:
-		added_experience.value = experience
+		value = experience
 
 
 func _on_timer_timeout():
-	added_experience.value = experience
+	value = experience
