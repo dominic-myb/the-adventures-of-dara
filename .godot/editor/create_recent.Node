@@ -1,13 +1,13 @@
-Node2D
+Timer
 CollisionShape2D
-AnimatedSprite2D
 Area2D
+Node2D
+AnimatedSprite2D
 CollisionPolygon2D
 Label
 VBoxContainer
 HBoxContainer
 Node
-Timer
 CharacterBody2D
 Marker2D
 MarginContainer

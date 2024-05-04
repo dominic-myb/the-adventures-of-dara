@@ -2156,7 +2156,7 @@ texture_margin_bottom = 20.0
 
 [node name="World Sea" type="Node2D"]
 
-[node name="TileMap" type="TileMap" parent="." groups=["Walls"]]
+[node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_7okfu")
 format = 2
 layer_0/name = "Platform"
@@ -2210,10 +2210,10 @@ shape = SubResource("CircleShape2D_h4hic")
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Octopus" parent="Enemies" instance=ExtResource("2_324mf")]
-position = Vector2(383, -814)
+position = Vector2(511, -129)
 
 [node name="Eel" parent="Enemies" instance=ExtResource("4_xus66")]
-position = Vector2(762, -804)
+position = Vector2(756, -821)
 
 [node name="Shark" parent="Enemies" instance=ExtResource("5_rbf0b")]
 position = Vector2(1402, -970)

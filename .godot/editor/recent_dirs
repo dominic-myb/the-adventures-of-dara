@@ -1,12 +1,12 @@
+res://global
+res://art/items
 res://scripts/projectiles
 res://art/projectiles
 res://scenes/items
 res://scripts/items
-res://art/items
 res://scripts/player
 res://scripts/ui
 res://scenes/ui
-res://global
 res://scripts/npc
 res://scenes
 res://art/npc

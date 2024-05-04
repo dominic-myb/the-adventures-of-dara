@@ -281,8 +281,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3koun"]
-radius = 19.0
-height = 98.0
+radius = 14.0
+height = 104.0
 
 [sub_resource type="Animation" id="Animation_7wnwk"]
 length = 0.001
@@ -468,7 +468,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qh32"]
-size = Vector2(20, 67)
+size = Vector2(20, 84.25)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
@@ -501,7 +501,6 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="HurtCol" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, -8.5)
 shape = SubResource("RectangleShape2D_1qh32")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

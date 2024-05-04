@@ -52,3 +52,20 @@ func on_accept(quest: int):
 func on_player_death():
 	marker_2d.position = player_pos
 	death_cam.visible = true
+	
+func on_enemy_death(pos: Vector2):
+	const movespeed = preload("res://scenes/items/movespeed_buff.tscn")
+	const mana = preload("res://scenes/items/mana_regen_buff.tscn")
+	const damage = preload("res://scenes/items/damage_buff.tscn")
+	randomize()
+	var random_f = randf()
+	print(random_f)
+	var item : Node
+	if random_f < 0.3:
+		item = movespeed.instantiate()
+	elif random_f < 0.6:
+		item = mana.instantiate()
+	else:
+		item = damage.instantiate()
+	get_tree().get_first_node_in_group("Powerups").add_child(item)
+	item.position = pos
