@@ -12,6 +12,4 @@ func _physics_process(delta):
 		var collider = collision_info.get_collider()
 		if collider.has_method("take_damage"):
 			collider.take_damage(Game.player_damage)
-		else:
-			queue_free()
 		queue_free()
