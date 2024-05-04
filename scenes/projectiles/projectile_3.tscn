@@ -1,29 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bigg0oxk5o8rr"]
 
+[ext_resource type="Script" path="res://scripts/projectiles/projectile_3.gd" id="1_uirud"]
 [ext_resource type="Texture2D" uid="uid://concw1sb1q4vu" path="res://art/projectiles/water_attack3.png" id="2_hixhf"]
-
-[sub_resource type="GDScript" id="GDScript_46mwh"]
-script/source = "extends Projectile
-
-@onready var anim = $AnimatedSprite2D
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	anim.play(\"default\")
-
-func _process(_delta):
-	pass
-	
-func _physics_process(delta):
-	var collision_info = move_and_collide(velocity.normalized() * delta * speed)
-	if collision_info:
-		var collider = collision_info.get_collider()
-		if collider.has_method(\"take_damage\"):
-			collider.take_damage(Game.player_damage)
-		else:
-			queue_free()
-		queue_free()
-"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ahj3j"]
 atlas = ExtResource("2_hixhf")
@@ -73,7 +51,9 @@ radius = 8.0
 height = 28.0
 
 [node name="Projectile3" type="Area2D"]
-script = SubResource("GDScript_46mwh")
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("1_uirud")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qjlvg")
@@ -82,3 +62,5 @@ sprite_frames = SubResource("SpriteFrames_qjlvg")
 position = Vector2(2, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_7aqa1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
