@@ -1,7 +1,7 @@
-[gd_scene load_steps=38 format=3 uid="uid://cs2qglsg4nsf3"]
+[gd_scene load_steps=39 format=3 uid="uid://cs2qglsg4nsf3"]
 
+[ext_resource type="Script" path="res://scripts/enemies/mob_eel.gd" id="1_mqlmg"]
 [ext_resource type="Texture2D" uid="uid://bdf78mtam3u8f" path="res://art/enemies/Eel/Attack/1.png" id="1_qw6tn"]
-[ext_resource type="Script" path="res://scripts/enemies/eel.gd" id="1_r8d1m"]
 [ext_resource type="Texture2D" uid="uid://bqfgwigs0ew1k" path="res://art/enemies/Eel/Idle/1.png" id="1_xropy"]
 [ext_resource type="Texture2D" uid="uid://dvm7m1c3juj81" path="res://art/enemies/Eel/Attack/2.png" id="2_no8jh"]
 [ext_resource type="Texture2D" uid="uid://bfe7m7dp583ea" path="res://art/enemies/Eel/Idle/2.png" id="2_xccxc"]
@@ -157,6 +157,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [3]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Attack/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_4t7lh"]
 resource_name = "attack"
@@ -185,6 +197,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Attack/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_o2cxh"]
@@ -318,14 +342,17 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_0pti3"]
 radius = 333.006
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jsh02"]
-radius = 7.0
-height = 84.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhgxi"]
+size = Vector2(12.9999, 83)
 
-[node name="Eel" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5fmb0"]
+radius = 26.0
+height = 132.0
+
+[node name="Eel" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 4
 collision_mask = 37
-script = ExtResource("1_r8d1m")
+script = ExtResource("1_mqlmg")
 
 [node name="EelSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_h3j2c")
@@ -343,19 +370,20 @@ libraries = {
 autoplay = "idle"
 
 [node name="PlayerDetection" type="Area2D" parent="."]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 2
 
-[node name="PDCol" type="CollisionShape2D" parent="PlayerDetection"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_0pti3")
 
-[node name="DamageArea" type="Area2D" parent="."]
-collision_layer = 4
+[node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 2
 
-[node name="DACol" type="CollisionShape2D" parent="DamageArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+position = Vector2(0, 0.5)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_jsh02")
+shape = SubResource("RectangleShape2D_xhgxi")
 
 [node name="HealthBar" parent="." instance=ExtResource("26_iutgs")]
 offset_left = -40.0
@@ -363,7 +391,21 @@ offset_top = -30.0
 offset_right = 40.0
 offset_bottom = -25.0
 
+[node name="Attack" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+rotation = 1.5708
+scale = Vector2(0.896983, 0.935874)
+shape = SubResource("CapsuleShape2D_5fmb0")
+
+[node name="AttackCooldown" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
-[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
-[connection signal="body_exited" from="DamageArea" to="." method="_on_damage_area_body_exited"]
+[connection signal="body_entered" from="AttackRange" to="." method="_on_damage_area_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_damage_area_body_exited"]
+[connection signal="body_entered" from="Attack" to="." method="_on_attack_body_entered"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

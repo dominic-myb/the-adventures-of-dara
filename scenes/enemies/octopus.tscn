@@ -1,9 +1,9 @@
-[gd_scene load_steps=40 format=3 uid="uid://blad2cr366pdi"]
+[gd_scene load_steps=41 format=3 uid="uid://blad2cr366pdi"]
 
 [ext_resource type="Texture2D" uid="uid://w8wj1dysn4c5" path="res://art/enemies/Octopus/death/1.png" id="1_5wudi"]
 [ext_resource type="Texture2D" uid="uid://8c3gta7vrp0n" path="res://art/enemies/Octopus/idle/1.png" id="1_6pr10"]
+[ext_resource type="Script" path="res://scripts/enemies/mob_octo.gd" id="1_g65wo"]
 [ext_resource type="Texture2D" uid="uid://cndq5n76s5etu" path="res://art/enemies/Octopus/attack/1.png" id="1_pf1wf"]
-[ext_resource type="Script" path="res://scripts/enemies/octopus.gd" id="1_qdmp6"]
 [ext_resource type="Texture2D" uid="uid://dh3ebrs32m7if" path="res://art/enemies/Octopus/idle/2.png" id="2_1rvvf"]
 [ext_resource type="Texture2D" uid="uid://r74uus200kgd" path="res://art/enemies/Octopus/attack/2.png" id="2_u3jcx"]
 [ext_resource type="Texture2D" uid="uid://c5hgk45dqwpnt" path="res://art/enemies/Octopus/death/2.png" id="2_w3866"]
@@ -164,6 +164,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Attack/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_h437k"]
 resource_name = "attack"
@@ -192,6 +204,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Attack/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_o1ir5"]
@@ -325,14 +349,16 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_qn41x"]
 radius = 426.001
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v3on8"]
-radius = 16.0
-height = 54.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_efv3r"]
+size = Vector2(28, 30)
 
-[node name="Octopus" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_iqrv5"]
+radius = 21.0
+
+[node name="Octopus" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 4
 collision_mask = 5
-script = ExtResource("1_qdmp6")
+script = ExtResource("1_g65wo")
 
 [node name="OctoSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b2rtg")
@@ -347,20 +373,20 @@ libraries = {
 }
 
 [node name="PlayerDetection" type="Area2D" parent="."]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 2
 
-[node name="PDCol" type="CollisionShape2D" parent="PlayerDetection"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 rotation = 1.5708
 shape = SubResource("CircleShape2D_qn41x")
 
-[node name="DamageArea" type="Area2D" parent="."]
-collision_layer = 4
+[node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 2
 
-[node name="DACol" type="CollisionShape2D" parent="DamageArea"]
-position = Vector2(32, -22)
-shape = SubResource("CapsuleShape2D_v3on8")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+position = Vector2(35, -15)
+shape = SubResource("RectangleShape2D_efv3r")
 
 [node name="HealthBar" parent="." instance=ExtResource("28_5w4pm")]
 offset_left = -40.0
@@ -368,7 +394,21 @@ offset_top = -53.0
 offset_right = 40.0
 offset_bottom = -47.0
 
+[node name="Attack" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+position = Vector2(35, -15)
+shape = SubResource("CircleShape2D_iqrv5")
+disabled = true
+
+[node name="AttackCooldown" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
-[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
-[connection signal="body_exited" from="DamageArea" to="." method="_on_damage_area_body_exited"]
+[connection signal="body_entered" from="AttackRange" to="." method="_on_damage_area_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_damage_area_body_exited"]
+[connection signal="body_entered" from="Attack" to="." method="_on_attack_body_entered"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

@@ -1,8 +1,8 @@
-[gd_scene load_steps=36 format=3 uid="uid://cssscertc0ftw"]
+[gd_scene load_steps=37 format=3 uid="uid://cssscertc0ftw"]
 
+[ext_resource type="Script" path="res://scripts/enemies/mob_shark.gd" id="1_7g1in"]
 [ext_resource type="Texture2D" uid="uid://d3i21btl8ieil" path="res://art/enemies/Shark/Attack/1.png" id="1_57ssq"]
 [ext_resource type="Texture2D" uid="uid://bwioufafjresj" path="res://art/enemies/Shark/Idle/1.png" id="1_grjqt"]
-[ext_resource type="Script" path="res://scripts/enemies/shark.gd" id="1_yecgm"]
 [ext_resource type="Texture2D" uid="uid://b6uo0v3ulc5c5" path="res://art/enemies/Shark/Idle/2.png" id="2_d1lmh"]
 [ext_resource type="Texture2D" uid="uid://sh0rronn5q7o" path="res://art/enemies/Shark/Attack/2.png" id="2_xyt7t"]
 [ext_resource type="Texture2D" uid="uid://deg42pitn8aqa" path="res://art/enemies/Shark/Attack/3.png" id="3_3oigo"]
@@ -310,14 +310,17 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_rg1n2"]
 radius = 277.002
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tpnvf"]
-radius = 4.0
-height = 52.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_suhx1"]
+size = Vector2(5.99995, 40)
 
-[node name="Shark" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b3428"]
+radius = 8.0
+height = 58.0
+
+[node name="Shark" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 4
 collision_mask = 5
-script = ExtResource("1_yecgm")
+script = ExtResource("1_7g1in")
 
 [node name="SharkCol" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 3)
@@ -335,20 +338,20 @@ libraries = {
 autoplay = "idle"
 
 [node name="PlayerDetection" type="Area2D" parent="."]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 2
 
-[node name="PDCol" type="CollisionShape2D" parent="PlayerDetection"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_rg1n2")
 
-[node name="DamageArea" type="Area2D" parent="."]
-collision_layer = 4
+[node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 2
 
-[node name="DACol" type="CollisionShape2D" parent="DamageArea"]
-position = Vector2(27, 2)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+position = Vector2(36, 2)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_tpnvf")
+shape = SubResource("RectangleShape2D_suhx1")
 
 [node name="HealthBar" parent="." instance=ExtResource("24_wynr3")]
 offset_left = -40.0
@@ -356,7 +359,20 @@ offset_top = -40.0
 offset_right = 40.0
 offset_bottom = -35.0
 
+[node name="Attack" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+position = Vector2(36, 2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_b3428")
+
+[node name="AttackCooldown" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
-[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
-[connection signal="body_exited" from="DamageArea" to="." method="_on_damage_area_body_exited"]
+[connection signal="body_entered" from="AttackRange" to="." method="_on_damage_area_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_damage_area_body_exited"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

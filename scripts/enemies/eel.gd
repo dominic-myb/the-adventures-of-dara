@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal dead
+
 var player : CharacterBody2D
 
 var is_alive : bool = true
@@ -16,29 +18,29 @@ var health : float = Game.enemy_hp
 
 @onready var eel_sprite = $EelSprite
 @onready var eel_anim = $EelAnim
-@onready var area_dmg = $DamageArea/DACol
+@onready var eel_area_dmg = $DamageArea/DACol
 @onready var health_bar = $HealthBar
+@onready var eel_col = $EelCol
 
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	health_bar._init_health(health)
 	eel_anim.play("idle")
+	dead.connect(_death)
 
 func _process(_delta):
-	if is_alive:
-		
-		if is_hurt:
-			eel_anim.play("hurt")
-			await eel_anim.animation_finished
-			is_hurt = false
-		
-		if can_attack and in_area_dmg:
-			await on_enemy_attack(eel_anim)
-		
-		if in_range:
-			eel_anim.play("move")
-		else:
-			eel_anim.play("idle")
+	if eel_anim.current_animation == "death":
+		return
+	if is_hurt:
+		await _hurt()
+	
+	if can_attack and in_area_dmg:
+		await _on_enemy_attack()
+	
+	if in_range:
+		eel_anim.play("move")
+	else:
+		eel_anim.play("idle")
 
 func _physics_process(delta):
 	if not player:
@@ -46,37 +48,37 @@ func _physics_process(delta):
 	if is_alive:
 		
 		if not can_attack:
-			on_attack_cooldown(delta)
+			_on_attack_cooldown(delta)
 		if not in_range:
 			_health_regen(delta)
-		follow_player()
+		_follow_player()
 		move_and_slide()
 
-func follow_player():
+func _follow_player():
 	if not in_area_dmg and Game.is_alive:
 		var direction = (player.global_position - self.global_position)
 		if in_range:
 			velocity = direction.normalized() * speed
-			sprite_position(direction.normalized().x)
+			_sprite_position(direction.normalized().x)
 		else:
 			velocity = Vector2.ZERO
 
-func sprite_position(pos: float):
+func _sprite_position(pos: float):
 	if pos > 0: 
 		eel_sprite.flip_h = false
 	elif pos < 0: 
 		eel_sprite.flip_h = true
 
-func on_attack_cooldown(delta):
+func _on_attack_cooldown(delta):
 	cd_timer += delta
 	if cd_timer >= attack_cd:
 		can_attack = true
 		cd_timer = 0.0
 
-func on_enemy_attack(anim: AnimationPlayer):
+func _on_enemy_attack():
 	velocity = Vector2.ZERO
-	anim.play("attack")
-	await anim.animation_finished
+	eel_anim.play("attack")
+	await eel_anim.animation_finished
 	can_attack = false
 
 func take_damage(damage):
@@ -84,16 +86,22 @@ func take_damage(damage):
 	health -= damage
 	health_bar.health = health
 	if health <= 0: 
-		await _death()
+		dead.emit()
 	return health
+
+func _hurt():
+	eel_anim.play("hurt")
+	await eel_anim.animation_finished
+	is_hurt = false
 
 func _death():
 	is_alive = false
-	area_dmg.disabled = true
+	eel_area_dmg.disabled = true
+	eel_col.disabled = true
 	eel_anim.play("death")
 	await eel_anim.animation_finished
 	Game.player_exp += Game.exp_to_get + 1000
-	self.queue_free()
+	queue_free()
 
 func _health_regen(delta):
 	if health < Game.enemy_max_hp:

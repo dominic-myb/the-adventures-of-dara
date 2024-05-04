@@ -20,7 +20,9 @@ var speed : float = Game.enemy_speed
 @onready var octo_anim = $OctoAnim
 @onready var octo_sprite = $OctoSprite
 @onready var health_bar = $HealthBar
+@onready var octo_col = $OctoCol
 @onready var area_dmg = $DamageArea/DACol
+@onready var event_bus = $"../../EventBus"
 
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
@@ -30,6 +32,8 @@ func _ready():
 	dead.connect(_death)
 
 func _process(_delta):
+	if octo_anim.current_animation == "death":
+		return
 	if is_hurt:
 		await _hurt(octo_anim)
 	if can_attack and in_area_dmg:
@@ -92,9 +96,11 @@ func _hurt(anim: AnimationPlayer):
 
 func _death():
 	area_dmg.disabled = true
+	octo_col.disabled = true
 	octo_anim.play("death")
 	await octo_anim.animation_finished
 	Game.player_exp += Game.exp_to_get
+	event_bus.on_enemy_death(global_position)
 	Utils.saveGame()
 	queue_free()
 	
@@ -111,6 +117,7 @@ func _on_enemy_buff():
 	health = Game.enemy_max_hp
 	damage = Game.enemy_damage
 	speed = Game.enemy_speed
+
 # SIGNAL CONNECTIONS:
 func _on_player_detection_body_entered(body):
 	if body.is_in_group("Player"):

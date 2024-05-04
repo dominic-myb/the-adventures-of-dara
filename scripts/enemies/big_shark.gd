@@ -123,3 +123,11 @@ func _on_damage_area_body_exited(body):
 	if body.is_in_group("Player"):
 		in_area_dmg = false
 		can_attack = false
+
+func _on_attack_body_entered(body):
+	pass # Replace with function body.
+
+func _on_attack_cooldown_timeout():
+	pass # Replace with function body.
+
+
