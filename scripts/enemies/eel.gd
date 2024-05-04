@@ -12,7 +12,7 @@ var speed : float = 100.0
 var attack_cd : float = 3.0
 var cd_timer : float = 0.0
 
-var health : int = Game.enemy_hp
+var health : float = Game.enemy_hp
 
 @onready var eel_sprite = $EelSprite
 @onready var eel_anim = $EelAnim
@@ -47,7 +47,8 @@ func _physics_process(delta):
 		
 		if not can_attack:
 			on_attack_cooldown(delta)
-			
+		if not in_range:
+			_health_regen(delta)
 		follow_player()
 		move_and_slide()
 
@@ -91,8 +92,13 @@ func _death():
 	area_dmg.disabled = true
 	eel_anim.play("death")
 	await eel_anim.animation_finished
-	Game.player_exp += Game.exp_to_get
+	Game.player_exp += Game.exp_to_get + 1000
 	self.queue_free()
+
+func _health_regen(delta):
+	if health < Game.enemy_max_hp:
+		health += delta * 0.2
+	health_bar.health = health
 
 func _on_player_detection_body_entered(body):
 	if body.is_in_group("Player"):

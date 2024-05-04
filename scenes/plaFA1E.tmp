@@ -592,7 +592,7 @@ one_shot = true
 wait_time = 10.0
 one_shot = true
 
-[node name="MovespeedBuffTimer" type="Timer" parent="."]
+[node name="MobilityBuffTimer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
 
@@ -601,4 +601,4 @@ script = ExtResource("13_0k3ky")
 
 [connection signal="timeout" from="ManaBuffTimer" to="." method="_on_mana_buff_timer_timeout"]
 [connection signal="timeout" from="DamageBuffTimer" to="." method="_on_damage_buff_timer_timeout"]
-[connection signal="timeout" from="MovespeedBuffTimer" to="." method="_on_movespeed_buff_timer_timeout"]
+[connection signal="timeout" from="MobilityBuffTimer" to="." method="_on_mobility_buff_timer_timeout"]

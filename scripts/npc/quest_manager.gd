@@ -2,14 +2,9 @@ extends Node
 
 """
 + Add Conversation, then mission
-+ Add a mission manager 3 states enum[locked, unlocked, accepted, done]
 + Add Exp value per mission
-+ Make healthbar, manabar, expbar
-+ Make healthbar, lvlnum above in mobs
-+ Make healthbar, anchor bottom center with name above
 + Make a resource save
 + Make all death functions private
-+ Add character stats manager 
 + Use signals on_health_change
 
 CHECK IF THE EVENT.QUEST_STATUS == ACCEPT, 
@@ -17,9 +12,6 @@ IF IT IS PREVENT FROM GETTING OTHER QUEST
 USE PRIVATE _QUEST_STATUS LOCALLY 
 THEN UPDATE EVENT.QUEST_STATUS 
 IF THE QUEST IS BEING ACCEPTED
-
-ISSUES:
-	NOT CHANGING IMG OF NPC
 
 """
 
@@ -216,7 +208,7 @@ func convo_manager():
 			CLAM_IMG,
 			PLAYER_IMG
 		]
-	if NPC[_npc]["status"] == QUEST_STATUS.LOCKED:
+	elif NPC[_npc]["status"] == QUEST_STATUS.LOCKED:
 		lines = [
 			"You're not ready for this!"
 		]
@@ -254,7 +246,7 @@ func convo_manager():
 			JELLYFISH_IMG,
 			PLAYER_IMG
 		]
-
+	
 """
 START OF QUEST MANAGER
 """

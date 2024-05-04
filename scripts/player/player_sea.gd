@@ -2,16 +2,19 @@ class_name Player
 extends CharacterBody2D
 
 """
-PROBLEM ON HANDLING TAKING DAMAGE
 NEEDS DEATH MESSAGE UI
 """
 signal game_over
-const PROJECTILE_PATH = preload("res://scenes/projectiles/projectile_2.tscn")
+const PROJECTILE_PATH = preload("res://scenes/projectiles/projectile_1.tscn")
 
 var is_hurt : bool = false
 var is_moving : bool = false
 var is_pressed : bool = false
-var movespeed : float = 600.0
+var mana_regen_rate : float = Game.player_mana_regen_rate
+var mana : float = Game.player_mana
+var damage : float = Game.player_damage
+var movespeed : float = Game.player_movespeed
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var aim = $Aim
@@ -19,10 +22,13 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var player_anim = $PlayerAnim
 @onready var player_sprite = $PlayerSprite
 @onready var aim_position = $Aim/AimPosition
+@onready var mana_bar = $CanvasLayer/MarginCon/StatsCon/BarCon/ManaBar
+@onready var joystick = $"../../CanvasLayer/JoystickContainer/Joystick"
 @onready var health_bar = $CanvasLayer/MarginCon/StatsCon/BarCon/HealthBar
 @onready var experience_bar = $CanvasLayer/MarginCon/StatsCon/BarCon/ExperienceBar
-@onready var joystick = $"../../CanvasLayer/JoystickContainer/Joystick"
-@onready var mana_bar = $CanvasLayer/MarginCon/StatsCon/BarCon/ManaBar
+@onready var mana_buff_timer = $ManaBuffTimer
+@onready var damage_buff_timer = $DamageBuffTimer
+@onready var movespeed_buff_timer = $MovespeedBuffTimer
 
 func _ready():
 	game_over.connect(_death)
@@ -33,10 +39,8 @@ func _ready():
 	
 func _physics_process(delta):
 	var direction = joystick.vector_pos.normalized()
-	if Input.is_action_just_pressed("ui_accept"):
-		_player_attack()
-
-	_mana_regen(delta)
+	
+	_mana_regen(delta + mana_regen_rate)
 	_gravity(delta)
 	_movement(direction, delta)
 	move_and_slide()
@@ -44,6 +48,8 @@ func _physics_process(delta):
 func _process(_delta):
 	_sprite_position(velocity.x)
 	experience_bar.experience = Game.player_exp
+	if Input.is_action_just_pressed("ui_accept"):
+		_player_attack()
 	if is_hurt:
 		await _hurt(player_anim)
 	if is_moving:
@@ -89,7 +95,7 @@ func _player_attack():
 	var direction = aim_position.global_position - self.position
 	if Game.player_mana > 5:
 		var projectile = PROJECTILE_PATH.instantiate()
-		get_parent().add_child(projectile)
+		get_tree().get_first_node_in_group("Projectiles").add_child(projectile)
 		projectile.position = aim_position.global_position
 		projectile.velocity = direction * movespeed
 		projectile.rotation = atan2(direction.y, direction.x)
@@ -107,10 +113,31 @@ func _death():
 	await player_anim.animation_finished
 	queue_free()
 
-func take_damage(damage):
+func on_mana_powerup(_amount):
+	mana_buff_timer.start()
+	mana_regen_rate += _amount
+
+func on_damage_powerup(_amount):
+	damage_buff_timer.start()
+	damage += _amount
+	
+func on_movespeed_powerup(_amount):
+	movespeed_buff_timer.start()
+	movespeed += _amount
+
+func take_damage(_damage):
 	is_hurt = true
-	Game.player_hp -= damage
+	Game.player_hp -= _damage
 	health_bar.health = Game.player_hp
 	if Game.player_hp <= 0: 
 		game_over.emit()
+
+func _on_mana_buff_timer_timeout():
+	mana_regen_rate = Game.player_mana_regen_rate
+
+func _on_damage_buff_timer_timeout():
+	damage = Game.player_damage
+
+func _on_movespeed_buff_timer_timeout():
+	movespeed = Game.player_movespeed
 

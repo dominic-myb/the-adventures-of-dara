@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bhdd0odj6bjt3"]
+[gd_scene load_steps=39 format=3 uid="uid://bhdd0odj6bjt3"]
 
 [ext_resource type="PackedScene" uid="uid://g1mbd2nxn3uo" path="res://scenes/player.tscn" id="1_cl1xs"]
 [ext_resource type="Texture2D" uid="uid://d2wmqv5x6syit" path="res://art/tilesets/tiles.png" id="1_h3ypg"]
@@ -14,7 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://cof5m6lvl1p75" path="res://scenes/mine.tscn" id="7_hjdv5"]
 [ext_resource type="PackedScene" uid="uid://nbkde1u3ffkf" path="res://scenes/parallaxBG/sea_background.tscn" id="8_0bn21"]
 [ext_resource type="PackedScene" uid="uid://byv6e7qn3q74u" path="res://scenes/enemies/big_shark.tscn" id="8_smw4r"]
+[ext_resource type="PackedScene" uid="uid://ccjutlydpupap" path="res://scenes/items/damage_buff.tscn" id="11_eylc5"]
 [ext_resource type="Texture2D" uid="uid://2j8rjgmd4vj2" path="res://art/ui/buttons/up-normal.png" id="11_v48a3"]
+[ext_resource type="PackedScene" uid="uid://caikhgjxtyys" path="res://scenes/items/mana_regen_buff.tscn" id="11_xlftl"]
+[ext_resource type="PackedScene" uid="uid://du8u0dpk3u8a4" path="res://scenes/items/movespeed_buff.tscn" id="12_5ldcx"]
 [ext_resource type="Texture2D" uid="uid://57pe78a1v10m" path="res://art/ui/buttons/up-pressed.png" id="12_nxsnd"]
 [ext_resource type="Texture2D" uid="uid://bps508vcw0e8h" path="res://art/ui/buttons/down-normal.png" id="13_yra2r"]
 [ext_resource type="Texture2D" uid="uid://conidyasb0fwa" path="res://art/ui/buttons/down-pressed.png" id="14_kwdad"]
@@ -2167,6 +2170,8 @@ position = Vector2(198, -146)
 
 [node name="Camera2D" type="Camera2D" parent="Player/Player"]
 limit_left = 0
+limit_top = -2560
+limit_right = 5760
 limit_bottom = 0
 
 [node name="Marker2D" type="Marker2D" parent="Player"]
@@ -2174,7 +2179,11 @@ limit_bottom = 0
 [node name="Camera2D" type="Camera2D" parent="Player/Marker2D"]
 visible = false
 limit_left = 0
+limit_top = -2560
+limit_right = 5760
 limit_bottom = 0
+
+[node name="Projectiles" type="Node2D" parent="." groups=["Projectiles"]]
 
 [node name="NPC" type="Node2D" parent="."]
 
@@ -2216,6 +2225,17 @@ position = Vector2(1546, -159)
 
 [node name="Mine" parent="Mines" instance=ExtResource("7_hjdv5")]
 position = Vector2(1319, -182)
+
+[node name="Powerups" type="Node2D" parent="."]
+
+[node name="damage_buff" parent="Powerups" instance=ExtResource("11_eylc5")]
+position = Vector2(295, -216)
+
+[node name="mana_regen_buff" parent="Powerups" instance=ExtResource("11_xlftl")]
+position = Vector2(317, -103)
+
+[node name="movespeed_buff" parent="Powerups" instance=ExtResource("12_5ldcx")]
+position = Vector2(885, -176)
 
 [node name="QuestItems" type="Node2D" parent="."]
 

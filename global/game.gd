@@ -6,12 +6,16 @@ var player_hp = 0
 var player_max_hp = 10
 var player_exp = 0
 var player_max_exp = 100
+var player_mana = 0
+var player_max_mana = 100
 var player_lvl = 1
 var player_gold = 0
 var lvl_to_buff = 5
 var player_damage = 2 
 var is_alive : bool = true #
 var cam_pos : Vector2 #
+var player_movespeed : float = 600.00
+var player_mana_regen_rate : float
 
 var enemy_hp = 0
 var enemy_max_hp = 10
@@ -24,7 +28,9 @@ var exp_to_get = 10
 func _ready():
 	player_hp = player_max_hp
 	enemy_hp = enemy_max_hp
-func _process(_delta):
+	player_mana = player_max_mana
+func _process(delta):
+	player_mana_regen_rate = delta
 	if player_exp >= player_max_exp:
 		# leftover exps will be counted
 		player_exp = player_exp - player_max_exp

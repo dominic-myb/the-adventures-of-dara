@@ -13,7 +13,7 @@ var attack_cd : float = 0.0
 var cd_timer  : float = 0.0
 
 var health : int = Game.enemy_hp * 2
-var damage : int = Game.enemy_damage * 2
+var damage : int = Game.enemy_damage
 
 @onready var area_dmg = $DamageArea/DACol
 @onready var big_shark_anim = $BigSharkAnim
