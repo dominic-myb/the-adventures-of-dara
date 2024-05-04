@@ -5,7 +5,7 @@ extends CharacterBody2D
 NEEDS DEATH MESSAGE UI
 """
 signal game_over
-const PROJECTILE_PATH = preload("res://scenes/projectiles/projectile_1.tscn")
+const PROJECTILE_PATH = preload("res://scenes/projectiles/projectile_3.tscn")
 
 var is_hurt : bool = false
 var is_moving : bool = false
@@ -97,7 +97,7 @@ func _player_attack():
 		var projectile = PROJECTILE_PATH.instantiate()
 		get_tree().get_first_node_in_group("Projectiles").add_child(projectile)
 		projectile.position = aim_position.global_position
-		projectile.velocity = direction * movespeed
+		projectile.set_direction(direction)
 		projectile.rotation = atan2(direction.y, direction.x)
 		Game.player_mana -= 5
 		mana_bar.mana = Game.player_mana
