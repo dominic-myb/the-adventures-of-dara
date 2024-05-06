@@ -1,6 +1,11 @@
 res://scenes/world_sea.tscn
 res://scripts/enemies/mob_octo.gd
-res://scenes/items/damage_buff.tscn
-res://scripts/items/damage_buff.gd
-res://scripts/items/movespeed_buff.gd
-res://scripts/items/mana_regen_buff.gd
+res://scenes/prelude.tscn
+res://scripts/prelude.gd
+res://global/game.gd
+res://scenes/main_menu.tscn
+res://scripts/game_manager/main_menu.gd
+res://global/event_bus.gd
+res://scenes/world_earth.tscn
+res://scenes/npc/interaction_area.tscn
+res://scenes/settings/main_settings.tscn

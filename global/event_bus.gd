@@ -33,6 +33,8 @@ var player : CharacterBody2D
 @onready var marker_2d = $"../Player/Marker2D"
 var player_pos
 func _ready():
+	Game.is_played = true
+	Utils.saveGame()
 	player = get_tree().get_first_node_in_group("Player")
 	quest_manager.connect("accepted", on_accept)
 	player.game_over.connect(on_player_death)
@@ -63,7 +65,7 @@ func on_enemy_death(pos: Vector2):
 	var item : Node
 	if random_f < 0.3:
 		item = movespeed.instantiate()
-	elif random_f < 0.6:
+	elif random_f < 0.95:
 		item = mana.instantiate()
 	else:
 		item = damage.instantiate()

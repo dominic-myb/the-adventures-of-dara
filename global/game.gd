@@ -2,6 +2,12 @@ extends Node
 
 signal buffed
 
+# structure
+# game_attrib, player_attrib, enemy_attrib
+# remove the comments
+# add load on main menu on ready utils.loadgame
+
+var is_played : = false # !important
 var player_hp = 0
 var player_max_hp = 10
 var player_exp = 0
@@ -9,13 +15,12 @@ var player_max_exp = 100
 var player_mana = 0
 var player_max_mana = 100
 var player_lvl = 1
-var player_gold = 0
-var lvl_to_buff = 5
+var player_gold = 0 # no gold na
+var lvl_to_buff : int = 5
 var player_damage = 2 
-var is_alive : bool = true #
-var cam_pos : Vector2 #
 var player_movespeed : float = 600.00
 var player_mana_regen_rate : float
+var is_alive : bool = true # !important
 
 var enemy_hp = 0
 var enemy_max_hp = 10

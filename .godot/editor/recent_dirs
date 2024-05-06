@@ -1,3 +1,7 @@
+res://scenes
+res://art/ui
+res://art/ui/_new_button_sprites
+res://scripts
 res://global
 res://art/items
 res://scripts/projectiles
@@ -8,10 +12,8 @@ res://scripts/player
 res://scripts/ui
 res://scenes/ui
 res://scripts/npc
-res://scenes
 res://art/npc
 res://art/ui/buttons
-res://scripts
 res://art/enemies/Mines
 C:/the-adventures-of-dara
 res://art/package-icon

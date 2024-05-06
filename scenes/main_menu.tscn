@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cdueccuslp4js"]
 
-[ext_resource type="Script" path="res://scripts/game_manager/main_menu.gd" id="1_ciru4"]
+[ext_resource type="Script" path="res://scripts/managers/main_menu.gd" id="1_ciru4"]
 [ext_resource type="Texture2D" uid="uid://c7hfxu58vp8sj" path="res://art/ui/buttons/play-btn.png" id="1_nhhxu"]
 [ext_resource type="Texture2D" uid="uid://e34nxsqduq5o" path="res://art/ui/buttons/play-press.png" id="2_51r55"]
 [ext_resource type="Texture2D" uid="uid://d0v7v8w0tf4qw" path="res://art/ui/buttons/option-btn.png" id="4_sl1t4"]
