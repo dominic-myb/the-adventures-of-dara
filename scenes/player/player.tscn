@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://scripts/ui/player_health_bar.gd" id="9_bvepj"]
 [ext_resource type="PackedScene" uid="uid://dvoooakyv66ij" path="res://scenes/ui/experience_bar.tscn" id="10_c0ybc"]
 [ext_resource type="PackedScene" uid="uid://baeteg3v0ka3x" path="res://scenes/ui/mana_bar.tscn" id="11_h2xh8"]
-[ext_resource type="Script" path="res://scripts/player/stats_manager.gd" id="13_0k3ky"]
+[ext_resource type="Script" path="res://scripts/managers/stats_manager.gd" id="13_0k3ky"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_emyft"]
 atlas = ExtResource("2_4vi7q")
