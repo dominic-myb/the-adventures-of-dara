@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bhdd0odj6bjt3"]
+[gd_scene load_steps=40 format=3 uid="uid://bhdd0odj6bjt3"]
 
 [ext_resource type="PackedScene" uid="uid://g1mbd2nxn3uo" path="res://scenes/player.tscn" id="1_cl1xs"]
 [ext_resource type="Texture2D" uid="uid://d2wmqv5x6syit" path="res://art/tilesets/tiles.png" id="1_h3ypg"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://b0th6wcecxi2t" path="res://art/ui/buttons/skip-press.png" id="25_6bkc8"]
 [ext_resource type="Script" path="res://global/event_bus.gd" id="28_nthqs"]
 [ext_resource type="Script" path="res://scripts/npc/quest_manager.gd" id="30_ueyn7"]
+[ext_resource type="Script" path="res://scripts/spawn_manager.gd" id="33_f8g2g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pyda4"]
 texture = ExtResource("1_h3ypg")
@@ -2230,12 +2231,15 @@ position = Vector2(1319, -182)
 
 [node name="damage_buff" parent="Powerups" instance=ExtResource("11_eylc5")]
 position = Vector2(295, -216)
+collision_mask = 3
 
 [node name="mana_regen_buff" parent="Powerups" instance=ExtResource("11_xlftl")]
 position = Vector2(317, -103)
+collision_mask = 3
 
 [node name="movespeed_buff" parent="Powerups" instance=ExtResource("12_5ldcx")]
 position = Vector2(885, -176)
+collision_mask = 3
 
 [node name="QuestItems" type="Node2D" parent="."]
 
@@ -2376,6 +2380,9 @@ script = ExtResource("30_ueyn7")
 
 [node name="EventBus" type="Node" parent="."]
 script = ExtResource("28_nthqs")
+
+[node name="SpawnManager" type="Node" parent="."]
+script = ExtResource("33_f8g2g")
 
 [connection signal="body_entered" from="NPC/Clam/ClamInteractArea" to="QuestManager" method="_on_clam_interact_area_body_entered"]
 [connection signal="body_exited" from="NPC/Clam/ClamInteractArea" to="QuestManager" method="_on_clam_interact_area_body_exited"]

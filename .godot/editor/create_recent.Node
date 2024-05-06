@@ -1,3 +1,4 @@
+Node
 Timer
 CollisionShape2D
 Area2D
@@ -7,7 +8,6 @@ CollisionPolygon2D
 Label
 VBoxContainer
 HBoxContainer
-Node
 CharacterBody2D
 Marker2D
 MarginContainer

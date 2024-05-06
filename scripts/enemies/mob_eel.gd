@@ -21,7 +21,6 @@ func _ready():
 	dead.connect(death)
 
 func _process(_delta):
-	print(attack_cooldown.time_left)
 	if anim.current_animation == "death":
 		return
 	if is_hurt:
