@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bhdd0odj6bjt3"]
+[gd_scene load_steps=42 format=3 uid="uid://bhdd0odj6bjt3"]
 
 [ext_resource type="PackedScene" uid="uid://g1mbd2nxn3uo" path="res://scenes/player/player.tscn" id="1_cl1xs"]
 [ext_resource type="Texture2D" uid="uid://d2wmqv5x6syit" path="res://art/tilesets/tiles.png" id="1_h3ypg"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://caikhgjxtyys" path="res://scenes/items/mana_regen_buff.tscn" id="11_xlftl"]
 [ext_resource type="PackedScene" uid="uid://du8u0dpk3u8a4" path="res://scenes/items/movespeed_buff.tscn" id="12_5ldcx"]
 [ext_resource type="Texture2D" uid="uid://57pe78a1v10m" path="res://art/ui/buttons/up-pressed.png" id="12_nxsnd"]
+[ext_resource type="PackedScene" uid="uid://ctvnhqhv17k13" path="res://scenes/quests/garbage/garbage1.tscn" id="13_vef2h"]
 [ext_resource type="Texture2D" uid="uid://bps508vcw0e8h" path="res://art/ui/buttons/down-normal.png" id="13_yra2r"]
 [ext_resource type="Texture2D" uid="uid://conidyasb0fwa" path="res://art/ui/buttons/down-pressed.png" id="14_kwdad"]
 [ext_resource type="Texture2D" uid="uid://xch7i3e850gl" path="res://art/ui/text-box.png" id="18_bu8xj"]
@@ -33,6 +34,7 @@
 [ext_resource type="Script" path="res://global/event_bus.gd" id="28_nthqs"]
 [ext_resource type="Script" path="res://scripts/managers/quest_manager.gd" id="30_ueyn7"]
 [ext_resource type="Script" path="res://scripts/managers/spawn_manager.gd" id="33_f8g2g"]
+[ext_resource type="PackedScene" uid="uid://jni4q16mxj73" path="res://scenes/quests/quest_1.tscn" id="34_3ft3l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pyda4"]
 texture = ExtResource("1_h3ypg")
@@ -2167,7 +2169,7 @@ layer_0/tile_data = PackedInt32Array(-131010, 524288, 536870913, -65474, 524288,
 
 [node name="Player" parent="Player" instance=ExtResource("1_cl1xs")]
 unique_name_in_owner = true
-position = Vector2(198, -146)
+position = Vector2(2243, -2367)
 
 [node name="Camera2D" type="Camera2D" parent="Player/Player"]
 limit_left = 0
@@ -2199,7 +2201,7 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_s5nqs")
 
 [node name="Jellyfish" parent="NPC" instance=ExtResource("4_od7lr")]
-position = Vector2(707, -151)
+position = Vector2(2456, -2043)
 
 [node name="JellyfishInteractArea" type="Area2D" parent="NPC/Jellyfish"]
 collision_layer = 0
@@ -2241,7 +2243,11 @@ collision_mask = 3
 position = Vector2(885, -176)
 collision_mask = 3
 
-[node name="QuestItems" type="Node2D" parent="."]
+[node name="QuestItems" type="Node2D" parent="." groups=["QuestItems"]]
+
+[node name="Garbage" parent="QuestItems" instance=ExtResource("13_vef2h")]
+position = Vector2(2455, -2412)
+collision_layer = 0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -2383,6 +2389,9 @@ script = ExtResource("28_nthqs")
 
 [node name="SpawnManager" type="Node" parent="."]
 script = ExtResource("33_f8g2g")
+
+[node name="Quest1" parent="." instance=ExtResource("34_3ft3l")]
+position = Vector2(2684, -2498)
 
 [connection signal="body_entered" from="NPC/Clam/ClamInteractArea" to="QuestManager" method="_on_clam_interact_area_body_entered"]
 [connection signal="body_exited" from="NPC/Clam/ClamInteractArea" to="QuestManager" method="_on_clam_interact_area_body_exited"]

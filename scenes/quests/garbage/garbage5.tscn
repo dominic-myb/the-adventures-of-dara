@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5y8i67656fts"]
+
+[ext_resource type="Script" path="res://scripts/quests/garbage.gd" id="1_yutad"]
+[ext_resource type="Texture2D" uid="uid://b5tfuhrf84d18" path="res://art/quests/can.png" id="2_w80eb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k75cv"]
+radius = 18.2483
+
+[node name="Garbage" type="Area2D" groups=["Garbage"]]
+collision_layer = 256
+collision_mask = 128
+monitoring = false
+script = ExtResource("1_yutad")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_w80eb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_k75cv")

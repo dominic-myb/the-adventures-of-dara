@@ -15,7 +15,6 @@ var in_range: bool = false
 var can_attack: bool = true
 var is_alive: bool = true
 
-
 @onready var event_bus: Node
 @onready var anim: AnimationPlayer
 @onready var healthbar: ProgressBar

@@ -1,3 +1,10 @@
+res://art/quests
+res://scripts/quests
+res://scenes/quests
+res://mini_games
+res://mini_games/src
+res://art/enemies/Mines
+C:/GodotProjects
 res://scenes
 res://art/ui
 res://art/ui/_new_button_sprites
@@ -13,8 +20,3 @@ res://scripts/ui
 res://scenes/ui
 res://scripts/npc
 res://art/npc
-res://art/ui/buttons
-res://art/enemies/Mines
-C:/the-adventures-of-dara
-res://art/package-icon
-res://_new

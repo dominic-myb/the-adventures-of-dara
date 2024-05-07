@@ -29,6 +29,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var mana_buff_timer = $ManaBuffTimer
 @onready var damage_buff_timer = $DamageBuffTimer
 @onready var movespeed_buff_timer = $MovespeedBuffTimer
+@onready var basket = $QuestItems/Basket
 
 func _ready():
 	game_over.connect(_death)
@@ -82,9 +83,13 @@ func _sprite_position(pos: float):
 	if pos > 0:
 		player_sprite.flip_h = false
 		player_col.set_rotation_degrees(30)
+		if basket:
+			basket.position.x = 60
 	elif pos < 0:
 		player_sprite.flip_h = true
 		player_col.set_rotation_degrees(-30)
+		if basket:
+			basket.position.x = -60
 
 func _mana_regen(delta):
 	if Game.player_mana < Game.player_max_mana:
@@ -141,3 +146,7 @@ func _on_damage_buff_timer_timeout():
 func _on_movespeed_buff_timer_timeout():
 	movespeed = Game.player_movespeed
 
+func _on_basket_body_entered(body):
+	if body.is_in_group("Garbage") and body.has_method("on_garbage_gone"):
+		body.on_garbage_gone()
+		print("detected")

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlgxgv82cw3r"]
+
+[ext_resource type="Texture2D" uid="uid://iby43e2ewr8k" path="res://art/quests/Basket.png" id="1_1nkvl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5jra"]
+size = Vector2(62.25, 9)
+
+[node name="Basket" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1nkvl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -18)
+shape = SubResource("RectangleShape2D_a5jra")
