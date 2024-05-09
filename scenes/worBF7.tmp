@@ -36,8 +36,8 @@
 [ext_resource type="Script" path="res://global/event_bus.gd" id="28_nthqs"]
 [ext_resource type="Script" path="res://scripts/managers/quest_manager.gd" id="30_ueyn7"]
 [ext_resource type="Script" path="res://scripts/managers/spawn_manager.gd" id="33_f8g2g"]
+[ext_resource type="PackedScene" uid="uid://jni4q16mxj73" path="res://scenes/quests/quest_1.tscn" id="34_3ft3l"]
 [ext_resource type="PackedScene" uid="uid://dhv85vvcff4k" path="res://scenes/npc/npc_dalag.tscn" id="35_b5hly"]
-[ext_resource type="Script" path="res://scripts/quests/quest3.gd" id="39_j2l10"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pyda4"]
 texture = ExtResource("1_h3ypg")
@@ -2166,7 +2166,7 @@ texture_margin_top = 20.0
 texture_margin_right = 20.0
 texture_margin_bottom = 20.0
 
-[node name="World Sea" type="Node2D" groups=["World"]]
+[node name="World Sea" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="." groups=["Walls"]]
 tile_set = SubResource("TileSet_7okfu")
@@ -2190,7 +2190,8 @@ limit_bottom = 0
 
 [node name="QuestItems" type="Node2D" parent="Player/Player"]
 
-[node name="Basket" parent="Player/Player/QuestItems" groups=["Basket"] instance=ExtResource("3_rbqd5")]
+[node name="Basket" parent="Player/Player/QuestItems" instance=ExtResource("3_rbqd5")]
+position = Vector2(60, 0)
 
 [node name="Marker2D" type="Marker2D" parent="Player"]
 
@@ -2227,7 +2228,7 @@ collision_mask = 2
 [node name="IACol" type="CollisionShape2D" parent="NPC/Jellyfish/JellyfishInteractArea"]
 shape = SubResource("CircleShape2D_h4hic")
 
-[node name="Dalag" parent="NPC" groups=["Dalag"] instance=ExtResource("35_b5hly")]
+[node name="Dalag" parent="NPC" groups=["NPC"] instance=ExtResource("35_b5hly")]
 position = Vector2(1777, -2230)
 collision_layer = 0
 collision_mask = 3
@@ -2428,22 +2429,10 @@ script = ExtResource("28_nthqs")
 [node name="SpawnManager" type="Node" parent="."]
 script = ExtResource("33_f8g2g")
 
-[node name="Quest3" type="Node2D" parent="."]
-position = Vector2(2243, -2367)
-script = ExtResource("39_j2l10")
+[node name="Quest1" parent="." instance=ExtResource("34_3ft3l")]
+position = Vector2(2684, -2498)
 
-[node name="Pos1" type="Marker2D" parent="Quest3"]
-position = Vector2(-2129, 784)
-
-[node name="Pos2" type="Marker2D" parent="Quest3"]
-position = Vector2(283, 2257)
-
-[node name="Pos3" type="Marker2D" parent="Quest3"]
-position = Vector2(2973, 988)
-
-[node name="Pos4" type="Marker2D" parent="Quest3"]
-position = Vector2(-1399, 1566)
-
+[connection signal="body_entered" from="Player/Player/QuestItems/Basket" to="Player/Player" method="_on_basket_body_entered"]
 [connection signal="body_entered" from="NPC/Clam/ClamInteractArea" to="QuestManager" method="_on_clam_interact_area_body_entered"]
 [connection signal="body_exited" from="NPC/Clam/ClamInteractArea" to="QuestManager" method="_on_clam_interact_area_body_exited"]
 [connection signal="body_entered" from="NPC/Jellyfish/JellyfishInteractArea" to="QuestManager" method="_on_jellyfish_interact_area_body_entered"]

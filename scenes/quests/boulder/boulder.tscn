@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dg6oxpy02dicc"]
+[gd_scene load_steps=12 format=3 uid="uid://dg6oxpy02dicc"]
 
-[ext_resource type="Texture2D" uid="uid://gaqvq2phye5y" path="res://art/npc/dalag/boulder.png" id="1_658ca"]
+[ext_resource type="Texture2D" uid="uid://gaqvq2phye5y" path="res://art/quests/quest1/boulder.png" id="1_658ca"]
 [ext_resource type="Script" path="res://scripts/quests/boulder.gd" id="1_opre8"]
+[ext_resource type="PackedScene" uid="uid://c58756h4643av" path="res://scenes/quests/arrow_guide.tscn" id="3_p4je4"]
+[ext_resource type="Script" path="res://scripts/ui/health_bar.gd" id="4_3qv25"]
+[ext_resource type="FontFile" uid="uid://bph4vobtaswbg" path="res://font/manaspc.ttf" id="5_qaj0q"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6gbq4"]
 animations = [{
@@ -17,6 +20,23 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_llsjb"]
 radius = 61.0328
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ngh2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_260xs"]
+bg_color = Color(0.0901961, 0.694118, 0.627451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fraet"]
+bg_color = Color(0.145098, 0.145098, 0.145098, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+shadow_color = Color(0, 0, 0, 0.27451)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xkap1"]
+bg_color = Color(0.909804, 0.909804, 0.909804, 1)
+
 [node name="Boulder" type="CharacterBody2D" groups=["Boulder"]]
 collision_layer = 256
 script = ExtResource("1_opre8")
@@ -26,3 +46,64 @@ sprite_frames = SubResource("SpriteFrames_6gbq4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_llsjb")
+
+[node name="ArrowGuide" parent="." instance=ExtResource("3_p4je4")]
+position = Vector2(0, -89)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -148.0
+offset_right = 250.0
+offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/Control"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_2ngh2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_260xs")
+value = 60.0
+show_percentage = false
+script = ExtResource("4_3qv25")
+
+[node name="DamageBar" type="ProgressBar" parent="CanvasLayer/Control/HealthBar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_fraet")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xkap1")
+value = 80.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Control/HealthBar"]
+wait_time = 0.4
+one_shot = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/HealthBar"]
+layout_mode = 0
+offset_top = -50.0
+offset_right = 108.0
+offset_bottom = -10.0
+theme_override_fonts/font = ExtResource("5_qaj0q")
+theme_override_font_sizes/font_size = 40
+text = "Bato"
+
+[connection signal="timeout" from="CanvasLayer/Control/HealthBar/Timer" to="CanvasLayer/Control/HealthBar" method="_on_timer_timeout"]

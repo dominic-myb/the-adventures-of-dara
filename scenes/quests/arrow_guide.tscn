@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c58756h4643av"]
+
+[ext_resource type="Texture2D" uid="uid://b8ls2ky7l1awe" path="res://art/quests/quest2/arrow-sheet.png" id="1_eleuu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ctxk"]
+atlas = ExtResource("1_eleuu")
+region = Rect2(0, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylp65"]
+atlas = ExtResource("1_eleuu")
+region = Rect2(32, 0, 32, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kcwt7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ctxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylp65")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ArrowGuide" type="AnimatedSprite2D"]
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_kcwt7")

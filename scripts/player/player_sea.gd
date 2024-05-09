@@ -16,6 +16,7 @@ var damage : float = Game.player_damage
 var movespeed : float = Game.player_movespeed
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var can_move : bool = true
 
 @onready var aim = $Aim
 @onready var player_col = $PlayerCol
@@ -40,11 +41,11 @@ func _ready():
 	
 func _physics_process(delta):
 	var direction = joystick.vector_pos.normalized()
-	
 	_mana_regen(delta + mana_regen_rate)
 	_gravity(delta)
 	_movement(direction, delta)
-	move_and_slide()
+	if can_move:
+		move_and_slide()
 
 func _process(_delta):
 	_sprite_position(velocity.x)
@@ -146,7 +147,3 @@ func _on_damage_buff_timer_timeout():
 func _on_movespeed_buff_timer_timeout():
 	movespeed = Game.player_movespeed
 
-func _on_basket_body_entered(body):
-	if body.is_in_group("Garbage") and body.has_method("on_garbage_gone"):
-		body.on_garbage_gone()
-		print("detected")

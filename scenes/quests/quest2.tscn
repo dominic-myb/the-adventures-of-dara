@@ -1,0 +1,103 @@
+[gd_scene load_steps=10 format=3 uid="uid://jni4q16mxj73"]
+
+[ext_resource type="Script" path="res://scripts/quests/quest2.gd" id="1_wefa0"]
+[ext_resource type="Texture2D" uid="uid://b8ls2ky7l1awe" path="res://art/quests/quest2/arrow-sheet.png" id="2_ysoup"]
+[ext_resource type="Texture2D" uid="uid://chwikac2piyfx" path="res://art/quests/quest2/border.png" id="3_div6a"]
+[ext_resource type="FontFile" uid="uid://bph4vobtaswbg" path="res://font/manaspc.ttf" id="3_g8xi0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_moxxe"]
+atlas = ExtResource("2_ysoup")
+region = Rect2(0, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k44jp"]
+atlas = ExtResource("2_ysoup")
+region = Rect2(32, 0, 32, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8akw5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moxxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k44jp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxfts"]
+size = Vector2(822, 573)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kihns"]
+size = Vector2(822, 28)
+
+[node name="Quest2" type="Node2D"]
+script = ExtResource("1_wefa0")
+
+[node name="SpawnPos1" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8akw5")
+
+[node name="SpawnPos2" type="AnimatedSprite2D" parent="."]
+position = Vector2(200, 0)
+sprite_frames = SubResource("SpriteFrames_8akw5")
+
+[node name="SpawnPos3" type="AnimatedSprite2D" parent="."]
+position = Vector2(400, 0)
+sprite_frames = SubResource("SpriteFrames_8akw5")
+
+[node name="SpawnPos4" type="AnimatedSprite2D" parent="."]
+position = Vector2(600, 0)
+sprite_frames = SubResource("SpriteFrames_8akw5")
+
+[node name="QuestArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="QuestArea"]
+position = Vector2(305, 276.5)
+shape = SubResource("RectangleShape2D_sxfts")
+
+[node name="Label" type="Label" parent="QuestArea/CollisionShape2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_g8xi0")
+theme_override_font_sizes/font_size = 30
+
+[node name="Border" type="Sprite2D" parent="QuestArea"]
+z_index = -1
+position = Vector2(305, 276.5)
+texture = ExtResource("3_div6a")
+
+[node name="TimeInsideArea" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="QuestTime" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="GarbageDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GarbageDetector"]
+position = Vector2(305, 581)
+shape = SubResource("RectangleShape2D_kihns")
+
+[connection signal="body_entered" from="QuestArea" to="." method="_on_quest_area_body_entered"]
+[connection signal="body_exited" from="QuestArea" to="." method="_on_quest_area_body_exited"]
+[connection signal="timeout" from="TimeInsideArea" to="." method="_on_time_inside_area_timeout"]
+[connection signal="timeout" from="QuestTime" to="." method="_on_quest_time_timeout"]
+[connection signal="body_entered" from="GarbageDetector" to="." method="_on_garbage_detector_body_entered"]

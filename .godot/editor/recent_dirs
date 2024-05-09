@@ -1,6 +1,10 @@
+res://scripts/quests
+res://scenes/quests
+res://art/quests/quest3
+res://art/quests/quest2
+res://art/items
 res://scenes/quests/boulder
 res://art/quests
-res://scripts/quests
 res://art/npc/dalag
 res://scripts/npc
 res://art/npc/pawikan

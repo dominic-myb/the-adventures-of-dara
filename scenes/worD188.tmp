@@ -2188,9 +2188,9 @@ limit_top = -2560
 limit_right = 5760
 limit_bottom = 0
 
-[node name="QuestItems" type="Node2D" parent="Player/Player"]
+[node name="QuestItems" type="Node2D" parent="Player/Player" groups=["PlayerQuestItems"]]
 
-[node name="Basket" parent="Player/Player/QuestItems" groups=["Basket"] instance=ExtResource("3_rbqd5")]
+[node name="Basket" parent="Player/Player/QuestItems" instance=ExtResource("3_rbqd5")]
 
 [node name="Marker2D" type="Marker2D" parent="Player"]
 

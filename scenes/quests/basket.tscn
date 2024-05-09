@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dlgxgv82cw3r"]
 
-[ext_resource type="Texture2D" uid="uid://iby43e2ewr8k" path="res://art/quests/Basket.png" id="1_1nkvl"]
+[ext_resource type="Texture2D" uid="uid://iby43e2ewr8k" path="res://art/quests/quest2/Basket.png" id="1_1nkvl"]
 [ext_resource type="Script" path="res://scripts/quests/basket.gd" id="1_4a6ab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a5jra"]

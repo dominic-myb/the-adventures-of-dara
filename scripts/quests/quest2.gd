@@ -8,17 +8,21 @@ var in_range: bool = false
 var started: bool = false
 var speed: float
 var garbage_counter: int 
+var basket : Area2D
 
 @onready var pos_1 = $SpawnPos1
 @onready var pos_2 = $SpawnPos2
 @onready var pos_3 = $SpawnPos3
 @onready var pos_4 = $SpawnPos4
+@onready var border = $QuestArea/Border
 
 @onready var label = $QuestArea/CollisionShape2D/Label
 @onready var quest_items = $"../QuestItems"
 @onready var area_time = $TimeInsideArea
 @onready var quest_time = $QuestTime
-@onready var basket = $"../Player/Player/QuestItems/Basket"
+
+func _ready():
+	basket = get_tree().get_first_node_in_group("Basket")
 
 func _process(_delta):
 	if quest_time.time_left > 0:
@@ -42,6 +46,12 @@ func guide_visible(_is_visible: bool):
 	pos_2.visible = _is_visible
 	pos_3.visible = _is_visible
 	pos_4.visible = _is_visible
+	border.visible = _is_visible
+	if _is_visible:
+		pos_1.play("default")
+		pos_2.play("default")
+		pos_3.play("default")
+		pos_4.play("default")
 	
 
 func is_divisible_by_five(_num):
@@ -96,6 +106,7 @@ func _on_quest_area_body_entered(body):
 
 func _on_quest_area_body_exited(body):
 	if body.is_in_group("Player") and not started:
+		border.show()
 		area_time.stop()
 		in_range = false
 
@@ -108,6 +119,13 @@ func _on_time_inside_area_timeout():
 	
 func _on_quest_time_timeout():
 	print_debug("Points: %s"% basket.points)
+	hide()
+	basket.hide()
+	
+	# reference the total garbage spawned / basket.points
+	# if 75% == pass else == on_quest_failed
+	# add a lsitener to this cause you need to queue_free this
+	# every start of the game if not 75% grade
 	# ui display points w/ exit
 	# add audio
 

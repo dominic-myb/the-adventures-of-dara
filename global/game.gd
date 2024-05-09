@@ -18,7 +18,7 @@ var player_lvl = 1
 var player_gold = 0 # no gold na
 var lvl_to_buff : int = 5
 var player_damage = 2 
-var player_movespeed : float = 1000.00 # 600.00 init
+var player_movespeed : float = 600.00 # 600.00 init
 var player_mana_regen_rate : float
 var is_alive : bool = true # !important
 var PLAYER_QUEST_LEVEL : int = 0

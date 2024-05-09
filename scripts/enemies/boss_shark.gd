@@ -1,6 +1,7 @@
 class_name BossShark
 extends SeaEnemy
 @onready var attack_cooldown = $AttackCooldown
+@onready var control = $CanvasLayer/Control
 func _ready():
 	sprite = $BigSharkSprite
 	anim = $BigSharkAnim
@@ -28,8 +29,10 @@ func _process(_delta):
 		await on_enemy_attack()
 		attack_cooldown.start()
 	if in_range:
+		control.visible = true
 		moving()
 	elif not in_range or not player:
+		control.visible = false
 		idling()
 
 func _physics_process(_delta):
