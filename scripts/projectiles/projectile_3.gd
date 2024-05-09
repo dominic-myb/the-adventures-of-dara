@@ -11,7 +11,7 @@ func set_direction(_direction: Vector2):
 	velocity = _direction.normalized()
 
 func _on_body_entered(body):
-	if body.is_in_group("Enemies") and body.has_method("take_damage"):
+	if (body.is_in_group("Enemies") or body.is_in_group("Boulder"))and body.has_method("take_damage"):
 		body.take_damage(Game.player_damage)
 		velocity = Vector2.ZERO
 		speed = 0

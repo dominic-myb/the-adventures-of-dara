@@ -36,7 +36,7 @@ func _ready():
 	Game.is_played = true
 	Utils.saveGame()
 	player = get_tree().get_first_node_in_group("Player")
-	quest_manager.connect("accepted", on_accept)
+	#quest_manager.connect("accepted", on_accept)
 	player.game_over.connect(on_player_death)
 
 func _process(_delta):

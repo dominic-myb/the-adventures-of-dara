@@ -135,7 +135,7 @@ height = 28.0
 
 [node name="Projectile3" type="Area2D"]
 collision_layer = 0
-collision_mask = 5
+collision_mask = 261
 script = ExtResource("1_uirud")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://cnop1o88y3a3r"]
+
+[ext_resource type="Texture2D" uid="uid://d3df4gj6hg4f4" path="res://art/npc/pawikan/pawikan.png" id="1_d8tna"]
+[ext_resource type="Script" path="res://scripts/npc/npc_pawikan.gd" id="1_yemsi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vub7y"]
+atlas = ExtResource("1_d8tna")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cf5fx"]
+atlas = ExtResource("1_d8tna")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bgsj"]
+atlas = ExtResource("1_d8tna")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yyg0"]
+atlas = ExtResource("1_d8tna")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0iuq"]
+atlas = ExtResource("1_d8tna")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s37rv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vub7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cf5fx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bgsj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yyg0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0iuq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_42dif"]
+radius = 17.0294
+
+[node name="Pawikan" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_yemsi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_s37rv")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_42dif")

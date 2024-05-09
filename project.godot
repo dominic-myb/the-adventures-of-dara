@@ -42,7 +42,7 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_6="player_hurtbox"
 2d_physics/layer_7="NPC"
 2d_physics/layer_8="Garbage"
-2d_physics/layer_9="Detector"
+2d_physics/layer_9="Boulder"
 
 [rendering]
 

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg6oxpy02dicc"]
+
+[ext_resource type="Texture2D" uid="uid://gaqvq2phye5y" path="res://art/npc/dalag/boulder.png" id="1_658ca"]
+[ext_resource type="Script" path="res://scripts/quests/boulder.gd" id="1_opre8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6gbq4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_658ca")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_llsjb"]
+radius = 61.0328
+
+[node name="Boulder" type="CharacterBody2D" groups=["Boulder"]]
+collision_layer = 256
+script = ExtResource("1_opre8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6gbq4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_llsjb")

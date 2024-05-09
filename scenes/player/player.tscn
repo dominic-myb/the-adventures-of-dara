@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://g1mbd2nxn3uo"]
+[gd_scene load_steps=58 format=3 uid="uid://g1mbd2nxn3uo"]
 
 [ext_resource type="Texture2D" uid="uid://b5aax1i40hp78" path="res://art/player/dara_death.png" id="1_isvhe"]
 [ext_resource type="Script" path="res://scripts/player/player_sea.gd" id="1_pa4xk"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://dvoooakyv66ij" path="res://scenes/ui/experience_bar.tscn" id="10_c0ybc"]
 [ext_resource type="PackedScene" uid="uid://baeteg3v0ka3x" path="res://scenes/ui/mana_bar.tscn" id="11_h2xh8"]
 [ext_resource type="Script" path="res://scripts/managers/stats_manager.gd" id="13_0k3ky"]
-[ext_resource type="PackedScene" uid="uid://dlgxgv82cw3r" path="res://scenes/quests/basket.tscn" id="14_s8lns"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_emyft"]
 atlas = ExtResource("2_4vi7q")
@@ -599,12 +598,6 @@ one_shot = true
 [node name="StatsManager" type="Node" parent="."]
 script = ExtResource("13_0k3ky")
 
-[node name="QuestItems" type="Node2D" parent="."]
-
-[node name="Basket" parent="QuestItems" instance=ExtResource("14_s8lns")]
-position = Vector2(60, 0)
-
 [connection signal="timeout" from="ManaBuffTimer" to="." method="_on_mana_buff_timer_timeout"]
 [connection signal="timeout" from="DamageBuffTimer" to="." method="_on_damage_buff_timer_timeout"]
 [connection signal="timeout" from="MovespeedBuffTimer" to="." method="_on_movespeed_buff_timer_timeout"]
-[connection signal="body_entered" from="QuestItems/Basket" to="." method="_on_basket_body_entered"]
