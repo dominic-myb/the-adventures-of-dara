@@ -1,6 +1,13 @@
 extends Node2D
 
+signal done(num: int)
+signal failed()
+
 const garbage1 = preload("res://scenes/quests/garbage1.tscn")
+const garbage2 = preload("res://scenes/quests/garbage2.tscn")
+const garbage3 = preload("res://scenes/quests/garbage3.tscn")
+const garbage4 = preload("res://scenes/quests/garbage4.tscn")
+const garbage5 = preload("res://scenes/quests/garbage5.tscn")
 
 var garbage = []
 var timeout: bool = false
@@ -9,6 +16,7 @@ var started: bool = false
 var speed: float
 var garbage_counter: int 
 var basket : Area2D
+var pawikan : CharacterBody2D
 
 @onready var pos_1 = $SpawnPos1
 @onready var pos_2 = $SpawnPos2
@@ -22,7 +30,10 @@ var basket : Area2D
 @onready var quest_time = $QuestTime
 
 func _ready():
+	toggle_guide(true)
+	pawikan = get_tree().get_first_node_in_group("Pawikan")
 	basket = get_tree().get_first_node_in_group("Basket")
+	failed.connect(on_quest_failed)
 
 func _process(_delta):
 	if quest_time.time_left > 0:
@@ -41,13 +52,13 @@ func _process(_delta):
 			# add audio
 			label.text = "Go!"
 
-func guide_visible(_is_visible: bool):
-	pos_1.visible = _is_visible
-	pos_2.visible = _is_visible
-	pos_3.visible = _is_visible
-	pos_4.visible = _is_visible
-	border.visible = _is_visible
-	if _is_visible:
+func toggle_guide(_show: bool):
+	pos_1.visible = _show
+	pos_2.visible = _show
+	pos_3.visible = _show
+	pos_4.visible = _show
+	border.visible = _show
+	if _show:
 		pos_1.play("default")
 		pos_2.play("default")
 		pos_3.play("default")
@@ -62,7 +73,7 @@ func is_divisible_by_five(_num):
 
 func random_speed():
 	randomize()
-	var _random_float = randf_range(0, 0.01)
+	var _random_float = randf_range(0, 0.05)
 	return _random_float
 	
 func spawn_garbage():
@@ -72,13 +83,13 @@ func spawn_garbage():
 	if random_float < 0.20:
 		_garbage = garbage1.instantiate()
 	elif random_float < 0.40:
-		_garbage = garbage1.instantiate()
+		_garbage = garbage2.instantiate()
 	elif random_float < 0.60:
-		_garbage = garbage1.instantiate()
+		_garbage = garbage3.instantiate()
 	elif random_float < 0.80:
-		_garbage = garbage1.instantiate()
+		_garbage = garbage4.instantiate()
 	elif random_float < 1.00:
-		_garbage = garbage1.instantiate()
+		_garbage = garbage5.instantiate()
 	_garbage.position = chance_position()
 	_garbage.speed += random_speed()
 	garbage_counter += 1
@@ -98,10 +109,25 @@ func chance_position():
 		_pos = pos_4.global_position
 	return _pos
 
+func check_score(_points: int, _total_spawned: int):
+	_points = basket.points
+	_total_spawned = garbage_counter
+	var _score : float = float(_points)/float(_total_spawned)
+	if _score >= 0.75:
+		return true
+	else:
+		return false
+
+func on_quest_failed():
+	garbage_counter = 0
+	basket.points = 0
+	started = false
+	
+
 func _on_quest_area_body_entered(body):
 	if body.is_in_group("Player") and not started:
 		area_time.start()
-		guide_visible(true)
+		toggle_guide(true)
 		in_range = true
 
 func _on_quest_area_body_exited(body):
@@ -111,16 +137,20 @@ func _on_quest_area_body_exited(body):
 		in_range = false
 
 func _on_time_inside_area_timeout():
-	guide_visible(false)
+	toggle_guide(false)
 	timeout = true
 	quest_time.start()
 	started = true
 	#spawn_garbage()
 	
 func _on_quest_time_timeout():
-	print_debug("Points: %s"% basket.points)
-	hide()
-	basket.hide()
+	if check_score(basket.points, garbage_counter):
+		done.emit()
+		hide()
+		basket.hide()
+		pawikan.bubble_enabled = false
+	else:
+		failed.emit()
 	
 	# reference the total garbage spawned / basket.points
 	# if 75% == pass else == on_quest_failed

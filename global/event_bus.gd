@@ -36,7 +36,7 @@ func _ready():
 	Game.is_played = true
 	Utils.saveGame()
 	player = get_tree().get_first_node_in_group("Player")
-	#quest_manager.connect("accepted", on_accept)
+	# quest_manager.connect("accepted", on_accept)
 	player.game_over.connect(on_player_death)
 
 func _process(_delta):
@@ -46,10 +46,6 @@ func _process(_delta):
 		player_pos = player.global_position
 	if not Game.is_alive:
 		on_player_death()
-
-func on_accept(quest: int):
-	if quest == 0:
-		print("Im working!")
 
 func on_player_death():
 	marker_2d.position = player_pos
@@ -61,7 +57,6 @@ func on_enemy_death(pos: Vector2):
 	const damage = preload("res://scenes/items/damage_buff.tscn")
 	randomize()
 	var random_f = randf()
-	print(random_f)
 	var item : Node
 	if random_f < 0.3:
 		item = movespeed.instantiate()

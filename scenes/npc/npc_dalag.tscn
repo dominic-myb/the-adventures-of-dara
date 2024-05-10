@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b43xiuv13nke" path="res://art/npc/dalag/dalag4.png" id="4_f2kka"]
 [ext_resource type="Texture2D" uid="uid://c3kr4ufksg51q" path="res://art/npc/dalag/dalag_idle.png" id="5_ljxa4"]
 [ext_resource type="Texture2D" uid="uid://brg0r6geje45w" path="res://art/items/powerups-items.png" id="7_42dj1"]
+[ext_resource type="PackedScene" uid="uid://c58756h4643av" path="res://scenes/quests/arrow_guide.tscn" id="8_phaj2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_prbyu"]
 atlas = ExtResource("5_ljxa4")
@@ -183,10 +184,6 @@ region = Rect2(128, 32, 32, 32)
 atlas = ExtResource("7_42dj1")
 region = Rect2(160, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7p0eq"]
-atlas = ExtResource("7_42dj1")
-region = Rect2(224, 32, 32, 32)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_7lpv8"]
 animations = [{
 "frames": [{
@@ -207,14 +204,38 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5n4ku")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7p0eq")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_tiyl8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_4gyou"]
 resource_name = "default"
@@ -243,33 +264,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6]
-}
-
-[sub_resource type="Animation" id="Animation_tiyl8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"default"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_whn6u"]
@@ -303,3 +297,6 @@ root_node = NodePath("../Heart")
 libraries = {
 "": SubResource("AnimationLibrary_whn6u")
 }
+
+[node name="ArrowGuide" parent="." instance=ExtResource("8_phaj2")]
+position = Vector2(0, -50)

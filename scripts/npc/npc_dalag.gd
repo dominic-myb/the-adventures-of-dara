@@ -4,6 +4,8 @@ signal connected
 var player : CharacterBody2D
 var boulder : CharacterBody2D
 var accepted : bool
+var guide_enabled: bool = true
+var heart_enabled: bool = true
 
 @onready var sprite = $AnimatedSprite2D
 @onready var collider = $CollisionShape2D
@@ -14,8 +16,8 @@ var accepted : bool
 @onready var quest_manager = $"../../QuestManager"
 
 func _ready():
-	guide.play("default")
-	heart_sprite.hide()
+	toggle_guide(guide_enabled)
+	toggle_heart(!heart_enabled)
 	quest_manager.accepted.connect(on_accepted)
 	player = get_tree().get_first_node_in_group("Player")
 	
@@ -48,13 +50,21 @@ func on_unlocked():
 	accepted = false
 	anim.play("idle")
 
-func on_done(num: int):
-	print(num)
-	heart_sprite.show() 
-	heart.play("default")
-	guide.hide()
+func on_done(_num: int):
+	toggle_guide(!guide_enabled)
+	toggle_heart(heart_enabled)
 	anim.play("quest_done")
 
-func on_accepted():
+func on_accepted(_num: int):
 	accepted = true
-	guide.hide()
+	toggle_guide(!guide_enabled)
+	
+func toggle_guide(_show: bool):
+	guide.visible = _show
+	if _show:
+		guide.play("default")
+
+func toggle_heart(_show: bool):
+	heart_sprite.visible = _show
+	if _show:
+		heart.play("default")

@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnop1o88y3a3r"]
+[gd_scene load_steps=12 format=3 uid="uid://cnop1o88y3a3r"]
 
 [ext_resource type="Texture2D" uid="uid://d3df4gj6hg4f4" path="res://art/npc/pawikan/pawikan.png" id="1_d8tna"]
 [ext_resource type="Script" path="res://scripts/npc/npc_pawikan.gd" id="1_yemsi"]
+[ext_resource type="PackedScene" uid="uid://q1q3jbwbxubo" path="res://scenes/quests/speech_bubble.tscn" id="3_7xkpx"]
+[ext_resource type="PackedScene" uid="uid://c58756h4643av" path="res://scenes/quests/arrow_guide.tscn" id="4_jpaaw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vub7y"]
 atlas = ExtResource("1_d8tna")
@@ -60,3 +62,14 @@ animation = &"idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -13)
 shape = SubResource("CircleShape2D_42dif")
+
+[node name="SpeechBubble" parent="." instance=ExtResource("3_7xkpx")]
+visible = false
+offset_left = -35.0
+offset_top = -172.0
+offset_right = 134.0
+offset_bottom = -48.0
+
+[node name="ArrowGuide" parent="." instance=ExtResource("4_jpaaw")]
+visible = false
+position = Vector2(0, -70)

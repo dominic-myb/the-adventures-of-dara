@@ -33,7 +33,7 @@ size = Vector2(822, 573)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kihns"]
 size = Vector2(822, 28)
 
-[node name="Quest2" type="Node2D"]
+[node name="Quest2" type="Node2D" groups=["Quest2"]]
 script = ExtResource("1_wefa0")
 
 [node name="SpawnPos1" type="AnimatedSprite2D" parent="."]

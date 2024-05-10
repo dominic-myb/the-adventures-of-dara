@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_nrvt0"]
 radius = 14.5602
 
-[node name="Garbage6" type="CharacterBody2D" groups=["Garbage"]]
+[node name="Garbage1" type="CharacterBody2D" groups=["Garbage"]]
 collision_layer = 128
 collision_mask = 0
 script = ExtResource("1_xcl4m")

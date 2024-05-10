@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bhdd0odj6bjt3"]
+[gd_scene load_steps=44 format=3 uid="uid://bhdd0odj6bjt3"]
 
 [ext_resource type="PackedScene" uid="uid://g1mbd2nxn3uo" path="res://scenes/player/player.tscn" id="1_cl1xs"]
 [ext_resource type="Texture2D" uid="uid://d2wmqv5x6syit" path="res://art/tilesets/tiles.png" id="1_h3ypg"]
@@ -6,14 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://cfsm4h2l24w5n" path="res://scenes/npc/npc_clam.tscn" id="3_klrnf"]
 [ext_resource type="PackedScene" uid="uid://dlgxgv82cw3r" path="res://scenes/quests/basket.tscn" id="3_rbqd5"]
 [ext_resource type="Script" path="res://scripts/ui/joystick.gd" id="4_5a8fq"]
-[ext_resource type="PackedScene" uid="uid://cjfyyc03bxlkl" path="res://scenes/npc/npc_jellyfish.tscn" id="4_od7lr"]
 [ext_resource type="PackedScene" uid="uid://cs2qglsg4nsf3" path="res://scenes/enemies/eel.tscn" id="4_xus66"]
 [ext_resource type="Texture2D" uid="uid://0mwtxhkdpfm4" path="res://art/ui/joystick/joystick-outer.png" id="5_lbebd"]
 [ext_resource type="PackedScene" uid="uid://cssscertc0ftw" path="res://scenes/enemies/shark.tscn" id="5_rbf0b"]
 [ext_resource type="PackedScene" uid="uid://cnop1o88y3a3r" path="res://scenes/npc/npc_pawikan.tscn" id="6_o2m22"]
 [ext_resource type="Texture2D" uid="uid://b7rcvhuxba5hx" path="res://art/ui/joystick/joystick-inner.png" id="6_ul52k"]
 [ext_resource type="Script" path="res://scripts/ui/joystick_inner.gd" id="7_3jpta"]
-[ext_resource type="PackedScene" uid="uid://c58756h4643av" path="res://scenes/quests/arrow_guide.tscn" id="7_6w3k1"]
 [ext_resource type="PackedScene" uid="uid://cof5m6lvl1p75" path="res://scenes/traps/mine.tscn" id="7_hjdv5"]
 [ext_resource type="PackedScene" uid="uid://nbkde1u3ffkf" path="res://scenes/parallaxBG/sea_background.tscn" id="8_0bn21"]
 [ext_resource type="PackedScene" uid="uid://byv6e7qn3q74u" path="res://scenes/enemies/big_shark.tscn" id="8_smw4r"]
@@ -2148,9 +2146,6 @@ sources/0 = SubResource("TileSetAtlasSource_pyda4")
 [sub_resource type="CircleShape2D" id="CircleShape2D_s5nqs"]
 radius = 52.345
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_h4hic"]
-radius = 52.345
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_nmlx7"]
 radius = 52.345
 
@@ -2216,17 +2211,6 @@ collision_mask = 2
 [node name="IACol" type="CollisionShape2D" parent="NPC/Clam/ClamInteractArea"]
 shape = SubResource("CircleShape2D_s5nqs")
 
-[node name="Jellyfish" parent="NPC" instance=ExtResource("4_od7lr")]
-visible = false
-position = Vector2(2456, -2043)
-
-[node name="JellyfishInteractArea" type="Area2D" parent="NPC/Jellyfish"]
-collision_layer = 0
-collision_mask = 2
-
-[node name="IACol" type="CollisionShape2D" parent="NPC/Jellyfish/JellyfishInteractArea"]
-shape = SubResource("CircleShape2D_h4hic")
-
 [node name="Dalag" parent="NPC" groups=["Dalag"] instance=ExtResource("35_b5hly")]
 position = Vector2(1777, -2230)
 collision_layer = 0
@@ -2239,11 +2223,8 @@ collision_mask = 2
 [node name="IACol" type="CollisionShape2D" parent="NPC/Dalag/DalagIA"]
 shape = SubResource("CircleShape2D_nmlx7")
 
-[node name="ArrowGuide" parent="NPC/Dalag" instance=ExtResource("7_6w3k1")]
-position = Vector2(-4, -49)
-
-[node name="Pawikan" parent="NPC" instance=ExtResource("6_o2m22")]
-position = Vector2(2551, -2287)
+[node name="Pawikan" parent="NPC" groups=["Pawikan"] instance=ExtResource("6_o2m22")]
+position = Vector2(2368, -2335)
 
 [node name="PawikanIA" type="Area2D" parent="NPC/Pawikan"]
 collision_layer = 0
@@ -2446,8 +2427,6 @@ position = Vector2(-1399, 1566)
 
 [connection signal="body_entered" from="NPC/Clam/ClamInteractArea" to="QuestManager" method="_on_clam_interact_area_body_entered"]
 [connection signal="body_exited" from="NPC/Clam/ClamInteractArea" to="QuestManager" method="_on_clam_interact_area_body_exited"]
-[connection signal="body_entered" from="NPC/Jellyfish/JellyfishInteractArea" to="QuestManager" method="_on_jellyfish_interact_area_body_entered"]
-[connection signal="body_exited" from="NPC/Jellyfish/JellyfishInteractArea" to="QuestManager" method="_on_jellyfish_interact_area_body_exited"]
 [connection signal="body_entered" from="NPC/Dalag/DalagIA" to="QuestManager" method="_on_dalag_ia_body_entered"]
 [connection signal="body_exited" from="NPC/Dalag/DalagIA" to="QuestManager" method="_on_dalag_ia_body_exited"]
 [connection signal="body_entered" from="NPC/Pawikan/PawikanIA" to="QuestManager" method="_on_pawikan_ia_body_entered"]

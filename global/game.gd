@@ -2,12 +2,7 @@ extends Node
 
 signal buffed
 
-# structure
-# game_attrib, player_attrib, enemy_attrib
-# remove the comments
-# add load on main menu on ready utils.loadgame
-
-var is_played : = false # !important
+# PLAYER_ATTRIB
 var player_hp = 0
 var player_max_hp = 10
 var player_exp = 0
@@ -22,13 +17,17 @@ var player_movespeed : float = 600.00 # 600.00 init
 var player_mana_regen_rate : float
 var is_alive : bool = true # !important
 var PLAYER_QUEST_LEVEL : int = 0
+
+# ENEMY ATTRIB
 var enemy_hp = 0
 var enemy_max_hp = 10
 var enemy_damage = 2
 var enemy_lvl = 1
 var enemy_speed = 100.0
-
 var exp_to_get = 10
+
+# GAME ATTRIB
+var is_played : = false # !important
 var QUEST_STATUS = {
 	"Q1": false,
 	"Q2": false,
@@ -37,6 +36,7 @@ var QUEST_STATUS = {
 	"Q5": false,
 	"Q6": false
 }
+
 func _ready():
 	player_hp = player_max_hp
 	enemy_hp = enemy_max_hp
@@ -50,9 +50,9 @@ func _process(delta):
 		player_damage += 1
 		enemy_damage += 1
 		player_max_exp += 100
-		print("Exp: ", Game.player_exp)
-		print("Lvl: ", Game.player_lvl)
-		print("MaxExp: ", Game.player_max_exp)
+		#print("Exp: ", Game.player_exp)
+		#print("Lvl: ", Game.player_lvl)
+		#print("MaxExp: ", Game.player_max_exp)
 		# Utils.saveGame()
 		# get_tree().change_scene_to_file("res://src/scenes/world_earth.tscn")
 	if player_lvl >= lvl_to_buff:

@@ -12,7 +12,8 @@ IF THE QUEST IS BEING ACCEPTED
 """
 
 signal pressed
-signal accepted
+signal accepted(num: int)
+signal unlocked(num: int)
 
 enum QUEST_LEVEL { Q1, Q2,Q3
 }
@@ -66,9 +67,17 @@ var active_npc : int
 @onready var picture = $"../CanvasLayer/Conversation/MarginContainer/LinesCon/Picture"
 @onready var quest_items = $"../Player/Player/QuestItems"
 @onready var quest_3 = $"../Quest3"
+
 @onready var player = %Player
 
+@onready var pawikan = $"../NPC/Pawikan"
+@onready var dalag = $"../NPC/Dalag"
+
+
 func _ready():
+	unlocked.connect(quest_unlocked)
+	if Game.PLAYER_QUEST_LEVEL == 0:
+		unlocked.emit(0)
 	quest_items.hide()
 	accepted.connect(quest)
 	interact.visible = false
@@ -111,7 +120,7 @@ func on_next_pressed():
 		lines_counter = 0
 		if NPC_QUEST_STATUS[active_npc]["status"] == QUEST_STATUS.UNLOCKED and not has_active_quest:
 			NPC_QUEST_STATUS[active_npc]["status"] = QUEST_STATUS.ACCEPTED
-			accepted.emit()
+			accepted.emit(active_npc)
 	else:
 		line_controller(picture)
 
@@ -128,7 +137,7 @@ func on_skip_pressed():
 	controls(joystick, right_buttons, true)
 	if NPC_QUEST_STATUS[active_npc]["status"] == QUEST_STATUS.UNLOCKED and not has_active_quest:
 		NPC_QUEST_STATUS[active_npc]["status"] = QUEST_STATUS.ACCEPTED
-		accepted.emit()
+		accepted.emit(active_npc)
 		has_active_quest = true
 	player.can_move = true
 
@@ -244,21 +253,24 @@ func convo_manager():
 START OF QUEST MANAGER
 """
 		
-func quest():
-	if Game.PLAYER_QUEST_LEVEL == 0 and quest_accepted():
+func quest(_num: int):
+	if Game.PLAYER_QUEST_LEVEL == 0 and quest_accepted(_num):
+		# DALAG
 		var boulder = BOULDER.instantiate()
-		var dalag = get_tree().get_first_node_in_group("NPC").find_child("Dalag")
 		boulder.position = dalag.global_position
 		get_tree().get_first_node_in_group("QuestItems").add_child(boulder)
 		boulder.done.connect(quest_done)
 		
-	elif Game.PLAYER_QUEST_LEVEL == 1 and quest_accepted():
+	elif Game.PLAYER_QUEST_LEVEL == 1 and quest_accepted(_num):
+		# PAWIKAN
+		pawikan.bubble_enabled = true
 		var quest2 = QUEST2.instantiate()
 		quest2.position = Vector2(2684, -2498)
 		get_tree().get_first_node_in_group("World").add_child(quest2)
 		quest_items.show()
 		#quest_1.show()
-	elif Game.PLAYER_QUEST_LEVEL == 2 and quest_accepted():
+	elif Game.PLAYER_QUEST_LEVEL == 2 and quest_accepted(_num):
+		# KABIBE
 		var pearl = PEARL.instantiate()
 		randomize()
 		var num = randi_range(0,5)
@@ -271,28 +283,41 @@ func quest():
 		elif num == 4:
 			pearl.position = quest_3.pos_4.position
 		get_tree().get_first_node_in_group("QuestItems").add_child(pearl)
-	elif Game.PLAYER_QUEST_LEVEL == 3 and quest_accepted():
+	elif Game.PLAYER_QUEST_LEVEL == 3 and quest_accepted(_num):
 		pass
-	elif Game.PLAYER_QUEST_LEVEL == 4 and quest_accepted():
+	elif Game.PLAYER_QUEST_LEVEL == 4 and quest_accepted(_num):
 		pass
-	elif Game.PLAYER_QUEST_LEVEL == 5 and quest_accepted():
+	elif Game.PLAYER_QUEST_LEVEL == 5 and quest_accepted(_num):
 		pass
 
 func quest_locked():
-	print_debug("QUEST2: LOCKED!")
-func quest_unlocked():
-	print_debug("QUEST2: UNLOCKED!")
-func quest_accepted():
+	print_debug("QUEST: LOCKED!")
+
+func quest_unlocked(_num: int):
+	if NPC_QUEST_STATUS[NPC.DALAG]["status"] == QUEST_STATUS.UNLOCKED and Game.PLAYER_QUEST_LEVEL == 0:
+		# DALAG
+		dalag.guide_enabled = true
+		pass
+	elif NPC_QUEST_STATUS[NPC.PAWIKAN]["status"] == QUEST_STATUS.UNLOCKED and Game.PLAYER_QUEST_LEVEL == 1:
+		# PAWIKAN
+		pass
+	elif NPC_QUEST_STATUS[NPC.KABIBE]["status"] == QUEST_STATUS.UNLOCKED and Game.PLAYER_QUEST_LEVEL == 2:
+		# PAWIKAN
+		pass
+		
+func quest_accepted(_num: int):
+	NPC_QUEST_STATUS[_num]["status"] = QUEST_STATUS.ACCEPTED
 	has_active_quest = true
-	print_debug("QUEST2: ACCEPTED!")
+	print_debug("QUEST: ACCEPTED!")
 	return true
+
 func quest_done(num: int):
 	Game.PLAYER_QUEST_LEVEL += 1
 	NPC_QUEST_STATUS[num]["status"] = QUEST_STATUS.DONE
 	NPC_QUEST_STATUS[num+1]["status"] = QUEST_STATUS.UNLOCKED
-	print(NPC_QUEST_STATUS[active_npc]["status"])
 	has_active_quest = false
-	print_debug("QUEST2: DONE!")
+	unlocked.emit(num+1)
+	print_debug("QUEST: DONE!")
 
 func _on_clam_interact_area_body_entered(body):
 	if body.is_in_group("Player"):
