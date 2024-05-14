@@ -145,10 +145,11 @@ func _on_time_inside_area_timeout():
 	
 func _on_quest_time_timeout():
 	if check_score(basket.points, garbage_counter):
-		done.emit()
+		#Game.QUEST_STATUS["Q2"] = true
+		done.emit(1)
 		hide()
 		basket.hide()
-		pawikan.bubble_enabled = false
+		#pawikan.bubble_enabled = false
 	else:
 		failed.emit()
 	

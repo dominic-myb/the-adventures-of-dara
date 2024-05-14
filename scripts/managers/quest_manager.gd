@@ -1,16 +1,5 @@
 extends Node
 
-"""
-+ Make a resource save
-
-CHECK IF THE EVENT.QUEST_STATUS == ACCEPT, 
-IF IT IS PREVENT FROM GETTING OTHER QUEST
-USE PRIVATE _QUEST_STATUS LOCALLY 
-THEN UPDATE EVENT.QUEST_STATUS 
-IF THE QUEST IS BEING ACCEPTED
-
-"""
-
 signal pressed
 signal accepted(num: int)
 signal unlocked(num: int)
@@ -65,14 +54,14 @@ var active_npc : int
 @onready var joystick = $"../CanvasLayer/JoystickContainer"
 @onready var right_buttons = $"../CanvasLayer/RightButtonContainer"
 @onready var picture = $"../CanvasLayer/Conversation/MarginContainer/LinesCon/Picture"
-@onready var quest_items = $"../Player/Player/QuestItems"
+@onready var quest_items = $"../Player/Player/Basket"
 @onready var quest_3 = $"../Quest3"
 
-@onready var player = %Player
+@onready var player = $"../Player/Player"
 
+@onready var kabibe = $"../NPC/Kabibe"
 @onready var pawikan = $"../NPC/Pawikan"
 @onready var dalag = $"../NPC/Dalag"
-
 
 func _ready():
 	unlocked.connect(quest_unlocked)
@@ -80,6 +69,7 @@ func _ready():
 		unlocked.emit(0)
 	quest_items.hide()
 	accepted.connect(quest)
+	
 	interact.visible = false
 	conversation_box.visible = false
 	
@@ -174,6 +164,13 @@ func convo_manager():
 			pictures = [
 				PAWIKAN_IMG
 			]
+	elif active_npc == NPC.KABIBE and NPC_QUEST_STATUS[active_npc]["status"] == QUEST_STATUS.LOCKED:
+			lines = [
+				"Hindi ka pa handa para dito!"
+			]
+			pictures = [
+				KABIBE_IMG
+			]
 	elif active_npc == NPC.DALAG and NPC_QUEST_STATUS[active_npc]["status"] == QUEST_STATUS.UNLOCKED:
 		lines = [
 			"Kaibigan, saan ka patungo?",
@@ -248,6 +245,37 @@ func convo_manager():
 			PAWIKAN_IMG,
 			PLAYER_IMG
 		]
+	elif active_npc == NPC.KABIBE and NPC_QUEST_STATUS[active_npc]["status"] == QUEST_STATUS.UNLOCKED:
+		lines = [
+			"I Have a favor to you, Dara!",
+			"What is it?",
+			"I Want you to kill the eel",
+			"Roger!"
+		]
+		pictures = [
+			KABIBE_IMG,
+			PLAYER_IMG,
+			KABIBE_IMG,
+			PLAYER_IMG
+		]
+	elif active_npc == NPC.KABIBE and NPC_QUEST_STATUS[active_npc]["status"] == QUEST_STATUS.ACCEPTED:
+		lines = [
+			"Remember that you need  to kill the eel",
+			"Roger!"
+		]
+		pictures = [
+			KABIBE_IMG,
+			PLAYER_IMG
+		]
+	elif active_npc == NPC.KABIBE and  NPC_QUEST_STATUS[active_npc]["status"] == QUEST_STATUS.DONE:
+		lines = [
+			"Thank you, Dara",
+			"Welcome!"
+		]
+		pictures = [
+			KABIBE_IMG,
+			PLAYER_IMG
+		]
 	
 """
 START OF QUEST MANAGER
@@ -263,26 +291,28 @@ func quest(_num: int):
 		
 	elif Game.PLAYER_QUEST_LEVEL == 1 and quest_accepted(_num):
 		# PAWIKAN
-		pawikan.bubble_enabled = true
-		var quest2 = QUEST2.instantiate()
-		quest2.position = Vector2(2684, -2498)
-		get_tree().get_first_node_in_group("World").add_child(quest2)
+		#pawikan.bubble_enabled = true
+		var _quest2 = QUEST2.instantiate()
+		_quest2.position = Vector2(2684, -2498)
+		get_tree().get_first_node_in_group("World").add_child(_quest2)
 		quest_items.show()
+		_quest2.done.connect(quest_done)
 		#quest_1.show()
 	elif Game.PLAYER_QUEST_LEVEL == 2 and quest_accepted(_num):
 		# KABIBE
 		var pearl = PEARL.instantiate()
 		randomize()
-		var num = randi_range(0,5)
-		if num == 1:
-			pearl.position = quest_3.pos_1.position
-		elif num == 2:
-			pearl.position = quest_3.pos_2.position
-		elif num == 3:
-			pearl.position = quest_3.pos_3.position
-		elif num == 4:
-			pearl.position = quest_3.pos_4.position
+		var random_float = randf()
+		if random_float < 0.25:
+			pearl.position = quest_3.pos_1
+		elif random_float < 0.50:
+			pearl.position = quest_3.pos_2
+		elif random_float < 0.75:
+			pearl.position = quest_3.pos_3
+		elif random_float < 1.00:
+			pearl.position = quest_3.pos_4
 		get_tree().get_first_node_in_group("QuestItems").add_child(pearl)
+		pearl.done.connect(quest_done)
 	elif Game.PLAYER_QUEST_LEVEL == 3 and quest_accepted(_num):
 		pass
 	elif Game.PLAYER_QUEST_LEVEL == 4 and quest_accepted(_num):
@@ -296,7 +326,7 @@ func quest_locked():
 func quest_unlocked(_num: int):
 	if NPC_QUEST_STATUS[NPC.DALAG]["status"] == QUEST_STATUS.UNLOCKED and Game.PLAYER_QUEST_LEVEL == 0:
 		# DALAG
-		dalag.guide_enabled = true
+		#dalag.guide_enabled = true
 		pass
 	elif NPC_QUEST_STATUS[NPC.PAWIKAN]["status"] == QUEST_STATUS.UNLOCKED and Game.PLAYER_QUEST_LEVEL == 1:
 		# PAWIKAN
@@ -315,58 +345,46 @@ func quest_done(num: int):
 	Game.PLAYER_QUEST_LEVEL += 1
 	NPC_QUEST_STATUS[num]["status"] = QUEST_STATUS.DONE
 	NPC_QUEST_STATUS[num+1]["status"] = QUEST_STATUS.UNLOCKED
+	Game.QUEST_STATUS["Q"+"%s"%num] = true
 	has_active_quest = false
 	unlocked.emit(num+1)
 	print_debug("QUEST: DONE!")
 
-func _on_clam_interact_area_body_entered(body):
-	if body.is_in_group("Player"):
-		active_npc = NPC.DALAG
-		interact_btn(interact, true)
-		interact.connect("pressed", on_interact_pressed)
-		buttons_connect()
-
-func _on_clam_interact_area_body_exited(body):
-	if body.is_in_group("Player"):
-		interact_btn(interact, false)
-		interact.disconnect("pressed", on_interact_pressed)
-		buttons_disconnect()
-
-func _on_jellyfish_interact_area_body_entered(body):
+func _on_pawikan_body_entered(body):
 	if body.is_in_group("Player"):
 		active_npc = NPC.PAWIKAN
 		interact_btn(interact, true)
 		interact.connect("pressed", on_interact_pressed)
 		buttons_connect()
 
-func _on_jellyfish_interact_area_body_exited(body):
+func _on_pawikan_body_exited(body):
 	if body.is_in_group("Player"):
 		interact_btn(interact, false)
 		interact.disconnect("pressed", on_interact_pressed)
 		buttons_disconnect()
 
-func _on_dalag_ia_body_entered(body):
+func _on_dalag_body_entered(body):
 	if body.is_in_group("Player"):
 		active_npc = NPC.DALAG
 		interact_btn(interact, true)
 		interact.connect("pressed", on_interact_pressed)
 		buttons_connect()
 
-func _on_dalag_ia_body_exited(body):
+func _on_dalag_body_exited(body):
 	if body.is_in_group("Player"):
 		on_out_of_range()
 		interact_btn(interact, false)
 		interact.disconnect("pressed", on_interact_pressed)
 		buttons_disconnect()
 
-func _on_pawikan_ia_body_entered(body):
+func _on_kabibe_body_entered(body):
 	if body.is_in_group("Player"):
-		active_npc = NPC.PAWIKAN
+		active_npc = NPC.KABIBE
 		interact_btn(interact, true)
 		interact.connect("pressed", on_interact_pressed)
 		buttons_connect()
 
-func _on_pawikan_ia_body_exited(body):
+func _on_kabibe_body_exited(body):
 	if body.is_in_group("Player"):
 		interact_btn(interact, false)
 		interact.disconnect("pressed", on_interact_pressed)

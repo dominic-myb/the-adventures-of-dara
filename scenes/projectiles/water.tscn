@@ -1,0 +1,210 @@
+[gd_scene load_steps=24 format=3 uid="uid://dgqi03yplhvhs"]
+
+[ext_resource type="Texture2D" uid="uid://nt2rhletyx0l" path="res://art/projectiles/water/1.png" id="1_4gd71"]
+[ext_resource type="Script" path="res://scripts/projectiles/water.gd" id="1_004kt"]
+[ext_resource type="Texture2D" uid="uid://bybehq8fyy5e1" path="res://art/projectiles/water/2.png" id="2_5yhr0"]
+[ext_resource type="Texture2D" uid="uid://dqkkw7txcn5sn" path="res://art/projectiles/water/3.png" id="3_n30cl"]
+[ext_resource type="Texture2D" uid="uid://ba2yeafmn0y8q" path="res://art/projectiles/water/4.png" id="4_8iurv"]
+[ext_resource type="Texture2D" uid="uid://b0tkovbd36ig7" path="res://art/projectiles/water/5.png" id="5_xc20m"]
+[ext_resource type="Texture2D" uid="uid://cvdtwtnaeq0ci" path="res://art/projectiles/water/6.png" id="6_2fgqa"]
+[ext_resource type="Texture2D" uid="uid://cyc886mlklycx" path="res://art/projectiles/water/7.png" id="7_tbrk0"]
+[ext_resource type="Texture2D" uid="uid://ehbyn52bo5wp" path="res://art/projectiles/water/8.png" id="8_28ly2"]
+[ext_resource type="Texture2D" uid="uid://d1cugchbsvu1j" path="res://art/projectiles/water/9.png" id="9_sj3ch"]
+[ext_resource type="Texture2D" uid="uid://bnalhtdxxejs" path="res://art/projectiles/water/10.png" id="10_5p1fw"]
+[ext_resource type="Texture2D" uid="uid://8obi4gj5voa6" path="res://art/projectiles/water/11.png" id="11_pxltf"]
+[ext_resource type="Texture2D" uid="uid://b0nr547q3rfwn" path="res://art/projectiles/water/12.png" id="12_tmmpb"]
+[ext_resource type="Texture2D" uid="uid://dqu8mqvg1ghwq" path="res://art/projectiles/water/13.png" id="13_tm6jq"]
+[ext_resource type="Texture2D" uid="uid://bk10k0et54gu4" path="res://art/projectiles/water/14.png" id="14_bnvcb"]
+[ext_resource type="Texture2D" uid="uid://s2gj5t3t7v8a" path="res://art/projectiles/water/15.png" id="15_erqog"]
+[ext_resource type="Texture2D" uid="uid://djn57o2rei0qb" path="res://art/projectiles/water/16.png" id="16_lf86s"]
+[ext_resource type="Texture2D" uid="uid://cjbvr038d7rge" path="res://art/projectiles/water/17.png" id="17_wd3sj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k6der"]
+size = Vector2(76, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o7m12"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4gd71")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5yhr0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_n30cl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8iurv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xc20m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2fgqa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tbrk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_28ly2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_sj3ch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5p1fw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_pxltf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tmmpb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_tm6jq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_bnvcb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_erqog")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_lf86s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_wd3sj")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_yddqs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_o7m12")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_dngi7"]
+resource_name = "default"
+length = 3.4
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_o7m12")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_77d1d"]
+_data = {
+"RESET": SubResource("Animation_yddqs"),
+"default": SubResource("Animation_dngi7")
+}
+
+[node name="Water" type="CharacterBody2D" groups=["Water"]]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_004kt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_k6der")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_o7m12")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_77d1d")
+}

@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqanpsoo6txmg"]
+
+[ext_resource type="Texture2D" uid="uid://codi7788io8ja" path="res://art/parallax_bg/sky.png" id="1_8e7ct"]
+[ext_resource type="Texture2D" uid="uid://bu7bp0ojgx3ee" path="res://art/parallax_bg/clouds.png" id="2_v0q38"]
+[ext_resource type="Texture2D" uid="uid://dww0yyvlkw8wu" path="res://art/parallax_bg/sea-sheet.png" id="3_eeqjd"]
+[ext_resource type="Texture2D" uid="uid://c2s6yc6g74voo" path="res://art/parallax_bg/far-grounds-sheet.png" id="4_8p7j8"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayerSky" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(1120, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayerSky"]
+offset_right = 1120.0
+offset_bottom = 304.0
+scale = Vector2(2.7, 2.7)
+texture = ExtResource("1_8e7ct")
+stretch_mode = 1
+
+[node name="ParallaxLayerClouds" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.3, 0)
+motion_mirroring = Vector2(1088, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayerClouds"]
+offset_right = 1088.0
+offset_bottom = 236.0
+scale = Vector2(2.7, 2.7)
+texture = ExtResource("2_v0q38")
+stretch_mode = 1
+
+[node name="ParallaxLayerSea" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.4, 1)
+motion_mirroring = Vector2(1120, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayerSea"]
+offset_right = 1120.0
+offset_bottom = 304.0
+scale = Vector2(2.7, 2.7)
+texture = ExtResource("3_eeqjd")
+stretch_mode = 1
+
+[node name="ParallaxLayerFarGround" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.6, 1)
+motion_mirroring = Vector2(1663.2, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayerFarGround"]
+offset_right = 616.0
+offset_bottom = 304.0
+scale = Vector2(2.7, 2.7)
+texture = ExtResource("4_8p7j8")

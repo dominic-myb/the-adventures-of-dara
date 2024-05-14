@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dux04tqhpywx6"]
+
+[ext_resource type="Script" path="res://scripts/npc/lola.gd" id="1_55rsh"]
+[ext_resource type="Texture2D" uid="uid://chlnr2sluxbj1" path="res://art/npc/lola.png" id="1_jmr0s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t7kke"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jmr0s")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_smyu7"]
+radius = 90.471
+
+[node name="Lola" type="Area2D"]
+z_index = -1
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_55rsh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_t7kke")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_smyu7")

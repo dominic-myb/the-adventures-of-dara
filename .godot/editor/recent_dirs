@@ -1,15 +1,24 @@
-res://art/ui
+res://scripts/projectiles
+res://scenes/projectiles
+res://art/projectiles/water
+res://art/ui/buttons
+res://scripts/npc
+res://art/npc
+res://scenes/quests/quest4
+res://art/quests/quest4
 res://scripts/quests
-res://scenes/quests
+res://art/parallax_bg
+res://art/player/dara_earth
+res://scenes/parallaxBG
+res://scripts/managers
+res://scenes/player
 C:/Projects
+res://scenes/npc
+res://art/npc/dalag
+res://art/npc/pawikan
+res://art/npc/kabibe
+res://
+res://art/ui/_new_button_sprites
+res://sound_fx/prelude
 C:/Program Files/Java/jdk-22
 C:/Program Files/Java/jdk-22/bin
-res://art/quests/quest3
-res://art/quests/quest2
-res://art/items
-res://scenes/quests/boulder
-res://art/quests
-res://art/npc/dalag
-res://scripts/npc
-res://art/npc/pawikan
-res://scenes/npc

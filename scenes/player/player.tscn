@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://g1mbd2nxn3uo"]
+[gd_scene load_steps=57 format=3 uid="uid://g1mbd2nxn3uo"]
 
 [ext_resource type="Texture2D" uid="uid://b5aax1i40hp78" path="res://art/player/dara_death.png" id="1_isvhe"]
 [ext_resource type="Script" path="res://scripts/player/player_sea.gd" id="1_pa4xk"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" path="res://scripts/ui/player_health_bar.gd" id="9_bvepj"]
 [ext_resource type="PackedScene" uid="uid://dvoooakyv66ij" path="res://scenes/ui/experience_bar.tscn" id="10_c0ybc"]
 [ext_resource type="PackedScene" uid="uid://baeteg3v0ka3x" path="res://scenes/ui/mana_bar.tscn" id="11_h2xh8"]
-[ext_resource type="Script" path="res://scripts/managers/stats_manager.gd" id="13_0k3ky"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_emyft"]
 atlas = ExtResource("2_4vi7q")
@@ -508,29 +507,11 @@ shape = SubResource("RectangleShape2D_1qh32")
 [node name="MarginCon" type="MarginContainer" parent="CanvasLayer"]
 offset_left = 50.0
 offset_top = 50.0
-offset_right = 350.0
-offset_bottom = 106.0
+offset_right = 420.0
+offset_bottom = 152.0
 
 [node name="StatsCon" type="HBoxContainer" parent="CanvasLayer/MarginCon"]
 layout_mode = 2
-
-[node name="LabelCon" type="VBoxContainer" parent="CanvasLayer/MarginCon/StatsCon"]
-layout_mode = 2
-
-[node name="Health" type="Label" parent="CanvasLayer/MarginCon/StatsCon/LabelCon"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_rbgbu")
-text = "HP"
-
-[node name="Exp" type="Label" parent="CanvasLayer/MarginCon/StatsCon/LabelCon"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_rbgbu")
-text = "Exp"
-
-[node name="Mana" type="Label" parent="CanvasLayer/MarginCon/StatsCon/LabelCon"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_rbgbu")
-text = "Mana"
 
 [node name="BarCon" type="VBoxContainer" parent="CanvasLayer/MarginCon/StatsCon"]
 layout_mode = 2
@@ -542,46 +523,50 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("9_bvepj")
 
+[node name="Label" type="Label" parent="CanvasLayer/MarginCon/StatsCon/BarCon/HealthBar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 40.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_rbgbu")
+text = "HP"
+
 [node name="ExperienceBar" parent="CanvasLayer/MarginCon/StatsCon/BarCon" instance=ExtResource("10_c0ybc")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginCon/StatsCon/BarCon/ExperienceBar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 40.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_rbgbu")
+text = "Exp"
 
 [node name="ManaBar" parent="CanvasLayer/MarginCon/StatsCon/BarCon" instance=ExtResource("11_h2xh8")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Container" type="HBoxContainer" parent="CanvasLayer"]
-offset_left = 50.0
-offset_top = 150.0
-offset_right = 90.0
-offset_bottom = 227.0
-
-[node name="Stats" type="VBoxContainer" parent="CanvasLayer/Container"]
-layout_mode = 2
-
-[node name="Damage" type="Label" parent="CanvasLayer/Container/Stats"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_rbgbu")
-
-[node name="RegenRate" type="Label" parent="CanvasLayer/Container/Stats"]
-layout_mode = 2
-
-[node name="Speed" type="Label" parent="CanvasLayer/Container/Stats"]
-layout_mode = 2
-
-[node name="Timers" type="VBoxContainer" parent="CanvasLayer/Container"]
-layout_mode = 2
-
-[node name="DamageTimer" type="Label" parent="CanvasLayer/Container/Timers"]
-layout_mode = 2
-
-[node name="RegenRateTimer" type="Label" parent="CanvasLayer/Container/Timers"]
-layout_mode = 2
-
-[node name="SpeedTimer" type="Label" parent="CanvasLayer/Container/Timers"]
-layout_mode = 2
+[node name="Label" type="Label" parent="CanvasLayer/MarginCon/StatsCon/BarCon/ManaBar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 44.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Mana"
 
 [node name="ManaBuffTimer" type="Timer" parent="."]
 wait_time = 10.0
@@ -594,9 +579,6 @@ one_shot = true
 [node name="MovespeedBuffTimer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
-
-[node name="StatsManager" type="Node" parent="."]
-script = ExtResource("13_0k3ky")
 
 [connection signal="timeout" from="ManaBuffTimer" to="." method="_on_mana_buff_timer_timeout"]
 [connection signal="timeout" from="DamageBuffTimer" to="." method="_on_damage_buff_timer_timeout"]

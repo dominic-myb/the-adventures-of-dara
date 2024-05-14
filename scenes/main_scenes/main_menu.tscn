@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3 uid="uid://cdueccuslp4js"]
+
+[ext_resource type="Script" path="res://scripts/managers/main_menu.gd" id="1_hrmu5"]
+[ext_resource type="Texture2D" uid="uid://bkmvgf2n2um8x" path="res://art/ui/title-screen2.png" id="2_57rmv"]
+[ext_resource type="Texture2D" uid="uid://c7hfxu58vp8sj" path="res://art/ui/buttons/play-btn.png" id="3_7sqhj"]
+[ext_resource type="Texture2D" uid="uid://e34nxsqduq5o" path="res://art/ui/buttons/play-press.png" id="4_mqmkr"]
+[ext_resource type="Texture2D" uid="uid://d0v7v8w0tf4qw" path="res://art/ui/buttons/option-btn.png" id="5_x0ydx"]
+[ext_resource type="Texture2D" uid="uid://dpndw6km13xa" path="res://art/ui/buttons/option-pressed.png" id="6_tduey"]
+[ext_resource type="Texture2D" uid="uid://bus2pscu7h4bw" path="res://art/ui/buttons/quit-btn.png" id="7_oalth"]
+[ext_resource type="Texture2D" uid="uid://bfefjr0f6tjbe" path="res://art/ui/buttons/quit-press.png" id="8_iecer"]
+[ext_resource type="PackedScene" uid="uid://ctfmy3ewqm4dm" path="res://scenes/parallaxBG/main_menu_bg.tscn" id="9_5b7t8"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hrmu5")
+
+[node name="GameTitle" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -304.0
+offset_top = 50.0
+offset_right = 304.0
+offset_bottom = 210.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_57rmv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -4.0
+offset_right = 79.0
+offset_bottom = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("3_7sqhj")
+texture_pressed = ExtResource("4_mqmkr")
+stretch_mode = 5
+
+[node name="Options" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("5_x0ydx")
+texture_pressed = ExtResource("6_tduey")
+stretch_mode = 5
+
+[node name="Quit" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("7_oalth")
+texture_pressed = ExtResource("8_iecer")
+stretch_mode = 5
+
+[node name="MainMenuBG" parent="." instance=ExtResource("9_5b7t8")]
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -30,7 +30,7 @@ var can_move : bool = true
 @onready var mana_buff_timer = $ManaBuffTimer
 @onready var damage_buff_timer = $DamageBuffTimer
 @onready var movespeed_buff_timer = $MovespeedBuffTimer
-@onready var basket = $QuestItems/Basket
+@onready var basket = $Basket
 
 func _ready():
 	game_over.connect(_death)

@@ -1,0 +1,113 @@
+[gd_scene load_steps=18 format=3 uid="uid://dffr0tyyu872s"]
+
+[ext_resource type="Script" path="res://scripts/npc/dalag.gd" id="1_eugn2"]
+[ext_resource type="Texture2D" uid="uid://c3kr4ufksg51q" path="res://art/npc/dalag/dalag_idle.png" id="1_y5fk5"]
+[ext_resource type="Texture2D" uid="uid://b2qjmqr3a3ler" path="res://art/npc/dalag/dalag1.png" id="2_ebe7w"]
+[ext_resource type="Texture2D" uid="uid://bxxexi4awyn7h" path="res://art/npc/dalag/dalag2.png" id="3_qqwrt"]
+[ext_resource type="Texture2D" uid="uid://tytpk8735pbt" path="res://art/npc/dalag/dalag3.png" id="4_77dob"]
+[ext_resource type="Texture2D" uid="uid://b43xiuv13nke" path="res://art/npc/dalag/dalag4.png" id="5_y487s"]
+[ext_resource type="PackedScene" uid="uid://c58756h4643av" path="res://scenes/quests/arrow_guide.tscn" id="7_q5xlu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aambr"]
+radius = 98.8585
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovpck"]
+atlas = ExtResource("1_y5fk5")
+region = Rect2(0, 0, 128, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ofxd"]
+atlas = ExtResource("1_y5fk5")
+region = Rect2(128, 0, 128, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eiplp"]
+atlas = ExtResource("1_y5fk5")
+region = Rect2(256, 0, 128, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwrma"]
+atlas = ExtResource("1_y5fk5")
+region = Rect2(384, 0, 128, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgmvq"]
+atlas = ExtResource("1_y5fk5")
+region = Rect2(0, 0, 128, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yh701"]
+atlas = ExtResource("1_y5fk5")
+region = Rect2(128, 0, 128, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8hfq"]
+atlas = ExtResource("1_y5fk5")
+region = Rect2(256, 0, 128, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yspxh"]
+atlas = ExtResource("1_y5fk5")
+region = Rect2(384, 0, 128, 70)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a713t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovpck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ofxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eiplp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwrma")
+}],
+"loop": true,
+"name": &"accepted",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgmvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yh701")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8hfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yspxh")
+}],
+"loop": true,
+"name": &"finished",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ebe7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qqwrt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_77dob")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y487s")
+}],
+"loop": true,
+"name": &"locked",
+"speed": 5.0
+}]
+
+[node name="Dalag" type="Area2D" groups=["Dalag"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_eugn2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_aambr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_a713t")
+animation = &"locked"
+
+[node name="ArrowGuide" parent="." instance=ExtResource("7_q5xlu")]
+position = Vector2(-3, -75)

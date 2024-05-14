@@ -1,0 +1,470 @@
+[gd_scene load_steps=18 format=3 uid="uid://b6ld2fe6wk6lo"]
+
+[ext_resource type="Script" path="res://scripts/prelude/prelude.gd" id="1_dgf5d"]
+[ext_resource type="Texture2D" uid="uid://biv0v38uqw5n3" path="res://art/pic_prelude/scene1.jpg" id="2_6lqom"]
+[ext_resource type="Texture2D" uid="uid://bxswpyspdachr" path="res://art/pic_prelude/scene2.jpg" id="3_jnclv"]
+[ext_resource type="Texture2D" uid="uid://dm2r48nw1ablk" path="res://art/pic_prelude/background.png" id="3_pe2q7"]
+[ext_resource type="Texture2D" uid="uid://ct0hkigalgk7y" path="res://art/pic_prelude/scene3.jpg" id="4_of3k0"]
+[ext_resource type="Texture2D" uid="uid://drgf1f412lpv2" path="res://art/pic_prelude/scene4.jpg" id="5_xjanh"]
+[ext_resource type="Texture2D" uid="uid://d0ur8cu4tdgxr" path="res://art/pic_prelude/scene5.jpg" id="6_o1blw"]
+[ext_resource type="AudioStream" uid="uid://do8tyaclebrro" path="res://sound_fx/prelude/Audio - 1.wav" id="8_euum1"]
+[ext_resource type="AudioStream" uid="uid://bty0madasw4ot" path="res://sound_fx/prelude/Audio - 2.wav" id="9_jmn5r"]
+[ext_resource type="AudioStream" uid="uid://14tqt7e8gn1c" path="res://sound_fx/prelude/Audio - 3.wav" id="10_2uta2"]
+[ext_resource type="AudioStream" uid="uid://dj34eg5jfpc5h" path="res://sound_fx/prelude/Audio - 4.wav" id="11_glpaj"]
+[ext_resource type="AudioStream" uid="uid://n31lrqkqjiiy" path="res://sound_fx/prelude/Audio - 5.wav" id="12_nxfda"]
+[ext_resource type="Texture2D" uid="uid://bsthvuakeh677" path="res://art/ui/_new_button_sprites/laktaw-btn.png" id="13_sfo0p"]
+[ext_resource type="Texture2D" uid="uid://dk6qmhjgljbk1" path="res://art/ui/_new_button_sprites/laktaw-press.png" id="14_s1pig"]
+
+[sub_resource type="Animation" id="Animation_hu6jp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("scene_1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("scene_2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.333333)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("scene_3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("scene_4:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("scene_5:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SoundFX/audio_1:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SoundFX/audio_2:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SoundFX/audio_3:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SoundFX/audio_4:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SoundFX/audio_5:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("VBoxContainer/Skip:texture_normal")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("13_sfo0p")]
+}
+
+[sub_resource type="Animation" id="Animation_51x3n"]
+resource_name = "prelude"
+length = 118.0
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("scene_1:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_6lqom")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("scene_1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 19.4, 19.6, 19.8, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("scene_2:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(20.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_jnclv")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("scene_2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(20.6, 20.8, 21, 21.2, 47.2, 47.4, 47.6, 47.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("scene_3:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(48, 48.2, 48.4, 48.6, 62, 62.2, 62.4, 62.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("scene_3:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(48),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_of3k0")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("scene_4:texture")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(63),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_xjanh")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("scene_4:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(63, 63.2, 63.4, 63.6, 75, 75.2, 75.4, 75.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("scene_5:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(76, 76.2, 76.4, 76.6, 117, 117.2, 117.4, 117.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("scene_5:texture")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(76),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_o1blw")]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SoundFX/audio_1:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SoundFX/audio_2:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(20.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SoundFX/audio_3:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(48.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SoundFX/audio_4:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(63.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SoundFX/audio_5:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(76.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mno23"]
+_data = {
+"RESET": SubResource("Animation_hu6jp"),
+"prelude": SubResource("Animation_51x3n")
+}
+
+[node name="Prelude" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_dgf5d")
+
+[node name="scene_6" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_pe2q7")
+expand_mode = 1
+
+[node name="scene_5" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_o1blw")
+expand_mode = 1
+
+[node name="scene_4" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_xjanh")
+expand_mode = 1
+
+[node name="scene_3" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_of3k0")
+expand_mode = 1
+
+[node name="scene_2" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.333333)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_jnclv")
+expand_mode = 1
+
+[node name="scene_1" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_6lqom")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mno23")
+}
+
+[node name="SoundFX" type="Node" parent="."]
+
+[node name="audio_1" type="AudioStreamPlayer2D" parent="SoundFX"]
+stream = ExtResource("8_euum1")
+
+[node name="audio_2" type="AudioStreamPlayer2D" parent="SoundFX"]
+stream = ExtResource("9_jmn5r")
+
+[node name="audio_3" type="AudioStreamPlayer2D" parent="SoundFX"]
+stream = ExtResource("10_2uta2")
+
+[node name="audio_4" type="AudioStreamPlayer2D" parent="SoundFX"]
+stream = ExtResource("11_glpaj")
+
+[node name="audio_5" type="AudioStreamPlayer2D" parent="SoundFX"]
+stream = ExtResource("12_nxfda")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -318.0
+offset_top = -157.0
+offset_right = -78.0
+offset_bottom = -61.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Skip" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+keep_pressed_outside = true
+texture_normal = ExtResource("13_sfo0p")
+texture_pressed = ExtResource("14_s1pig")
+stretch_mode = 5
+
+[connection signal="pressed" from="VBoxContainer/Skip" to="." method="_on_skip_pressed"]
