@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://dth8krakgrh5w"]
+
+[ext_resource type="Script" path="res://scripts/quests/quest_notification.gd" id="1_oc3yd"]
+[ext_resource type="FontFile" uid="uid://bph4vobtaswbg" path="res://font/manaspc.ttf" id="2_5qo1t"]
+
+[node name="QuestNotification" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_oc3yd")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5qo1t")
+text = "<QUEST COMPLETED!>"
+horizontal_alignment = 1
+
+[node name="Contents" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5qo1t")
+text = "Congratulations you completed the quest!"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

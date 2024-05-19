@@ -1,0 +1,396 @@
+[gd_scene load_steps=18 format=3 uid="uid://dl7le2cirspn8"]
+
+[ext_resource type="Texture2D" uid="uid://dm2r48nw1ablk" path="res://art/transitions_anim/background.png" id="1_1st5x"]
+[ext_resource type="Script" path="res://scripts/transition_anim/middle_transition.gd" id="1_4gata"]
+[ext_resource type="Texture2D" uid="uid://b8cuuj4a0du58" path="res://art/transitions_anim/sea_to_land/scene_1.jpg" id="2_r7ei3"]
+[ext_resource type="Texture2D" uid="uid://suxwmsn53liv" path="res://art/transitions_anim/sea_to_land/scene_2.jpg" id="3_4gy21"]
+[ext_resource type="Texture2D" uid="uid://bgkutn54otudl" path="res://art/transitions_anim/sea_to_land/scene_3.jpg" id="4_w2lb5"]
+[ext_resource type="Texture2D" uid="uid://cpf7n08m2ftc0" path="res://art/transitions_anim/sea_to_land/scene_4.jpg" id="5_eo73d"]
+[ext_resource type="Texture2D" uid="uid://o8jn0uy0alr8" path="res://art/transitions_anim/sea_to_land/scene_5.jpg" id="6_5ff80"]
+[ext_resource type="AudioStream" uid="uid://daosdh6oju806" path="res://sound_fx/sea_to_land/audio_1.wav" id="8_53gdy"]
+[ext_resource type="AudioStream" uid="uid://sodiiknp5gjo" path="res://sound_fx/sea_to_land/audio_2.wav" id="9_o0ihl"]
+[ext_resource type="AudioStream" uid="uid://cu8nqxxhwtelf" path="res://sound_fx/sea_to_land/audio_3.wav" id="10_qq73n"]
+[ext_resource type="AudioStream" uid="uid://b6wssq8nxsk3e" path="res://sound_fx/sea_to_land/audio_4.wav" id="11_07c6a"]
+[ext_resource type="AudioStream" uid="uid://dwfgfwof0am6b" path="res://sound_fx/sea_to_land/audio_5.wav" id="12_8u2gy"]
+[ext_resource type="Texture2D" uid="uid://bsthvuakeh677" path="res://art/ui/_new_button_sprites/laktaw-btn.png" id="13_tc4bl"]
+[ext_resource type="Texture2D" uid="uid://dk6qmhjgljbk1" path="res://art/ui/_new_button_sprites/laktaw-press.png" id="14_xkajy"]
+
+[sub_resource type="Animation" id="Animation_voahe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("scene_1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MusicHolder/audio_1:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("scene_2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MusicHolder/audio_2:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("scene_3:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MusicHolder/audio_3:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("scene_4:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MusicHolder/audio_4:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("scene_5:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MusicHolder/audio_5:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_xstyu"]
+resource_name = "middle_transition"
+length = 120.0
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("scene_1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 22, 22.2, 22.4, 22.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MusicHolder/audio_1:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("scene_2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(23, 23.2, 23.4, 23.6, 39, 39.2, 39.4, 39.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MusicHolder/audio_2:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(23.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("scene_3:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(40, 40.2, 40.4, 40.6, 55, 55.2, 55.4, 55.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MusicHolder/audio_3:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(40.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("scene_4:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(57, 57.2, 57.4, 57.6, 84, 84.2, 84.4, 84.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MusicHolder/audio_4:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(57.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("scene_5:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(85, 85.2, 85.4, 85.6, 113.6, 113.8, 114, 114.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MusicHolder/audio_5:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(85.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nuau3"]
+_data = {
+"RESET": SubResource("Animation_voahe"),
+"middle_transition": SubResource("Animation_xstyu")
+}
+
+[node name="MiddleTransition" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_4gata")
+
+[node name="white_bg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_1st5x")
+expand_mode = 1
+
+[node name="scene_1" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_r7ei3")
+expand_mode = 1
+
+[node name="scene_2" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_4gy21")
+expand_mode = 1
+
+[node name="scene_3" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_w2lb5")
+expand_mode = 1
+
+[node name="scene_4" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_eo73d")
+expand_mode = 1
+
+[node name="scene_5" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_5ff80")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nuau3")
+}
+
+[node name="MusicHolder" type="Node" parent="."]
+
+[node name="audio_1" type="AudioStreamPlayer2D" parent="MusicHolder"]
+stream = ExtResource("8_53gdy")
+
+[node name="audio_2" type="AudioStreamPlayer2D" parent="MusicHolder"]
+stream = ExtResource("9_o0ihl")
+
+[node name="audio_3" type="AudioStreamPlayer2D" parent="MusicHolder"]
+stream = ExtResource("10_qq73n")
+
+[node name="audio_4" type="AudioStreamPlayer2D" parent="MusicHolder"]
+stream = ExtResource("11_07c6a")
+
+[node name="audio_5" type="AudioStreamPlayer2D" parent="MusicHolder"]
+stream = ExtResource("12_8u2gy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -318.0
+offset_top = -157.0
+offset_right = -78.0
+offset_bottom = -61.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Skip" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("13_tc4bl")
+texture_pressed = ExtResource("14_xkajy")
+stretch_mode = 5
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

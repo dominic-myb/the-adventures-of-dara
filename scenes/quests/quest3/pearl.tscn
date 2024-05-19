@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgs27af2fwjpw"]
+
+[ext_resource type="Texture2D" uid="uid://dmpyvyar5y68k" path="res://art/quests/quest3/pearl.png" id="1_ommir"]
+[ext_resource type="Script" path="res://scripts/quests/pearl.gd" id="1_sb243"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yx4e3"]
+radius = 20.025
+
+[node name="Pearl" type="Area2D"]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_sb243")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ommir")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yx4e3")
+
+[node name="TimedSpawn" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="TimedSpawn" to="." method="_on_timed_spawn_timeout"]

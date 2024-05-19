@@ -1,7 +1,13 @@
 extends Area2D
-signal done
+
+signal done(_num: int)
+
 var status_lvl: int = 4
+var enable_collider: bool = true
+
 @onready var anim = $AnimatedSprite2D
+@onready var collider = $CollisionShape2D
+@onready var timer_display = $"../../CanvasLayer/TimerDisplay"
 
 func _ready():
 	done.connect(on_done)
@@ -11,6 +17,9 @@ func _ready():
 # if this quest accepted the player attack should be water attack
 func _process(_delta):
 	_fire_status(status_lvl)
+	collider.set_disabled(enable_collider)
+	if status_lvl == 0:
+		done.emit(3)
 
 func _fire_status(_fire_stat: int):
 	if status_lvl == 0:
@@ -25,9 +34,10 @@ func _fire_status(_fire_stat: int):
 		anim.play("fire_1")
 		await anim.animation_finished
 		status_lvl = 0
+		done.emit(3)
 	
-func on_done():
-	anim.play("no_fire")
+func on_done(_num: int):
+	anim.play("fire_0")
 
 func on_change_status():
 	if status_lvl > 0:

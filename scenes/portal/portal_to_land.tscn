@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://cui31namgyrlb"]
+
+[ext_resource type="Script" path="res://scripts/portal/portal_to_land.gd" id="1_fw7ob"]
+[ext_resource type="Texture2D" uid="uid://b4enn6522c5os" path="res://art/portal/portal_1.png" id="2_08os2"]
+[ext_resource type="PackedScene" uid="uid://c58756h4643av" path="res://scenes/quests/arrow_guide.tscn" id="3_crkiy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4bj17"]
+height = 132.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utuyy"]
+atlas = ExtResource("2_08os2")
+region = Rect2(0, 0, 125, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5e7ws"]
+atlas = ExtResource("2_08os2")
+region = Rect2(125, 0, 125, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pus1q"]
+atlas = ExtResource("2_08os2")
+region = Rect2(250, 0, 125, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ik138"]
+atlas = ExtResource("2_08os2")
+region = Rect2(375, 0, 125, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cm27r"]
+atlas = ExtResource("2_08os2")
+region = Rect2(500, 0, 125, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htg6r"]
+atlas = ExtResource("2_08os2")
+region = Rect2(625, 0, 125, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hej32"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utuyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5e7ws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pus1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ik138")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cm27r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htg6r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PortalToLand" type="Area2D"]
+script = ExtResource("1_fw7ob")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_4bj17")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hej32")
+
+[node name="ArrowGuide" parent="." instance=ExtResource("3_crkiy")]
+position = Vector2(0, 50)
+rotation = 0.0
+frame_progress = 0.466636
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

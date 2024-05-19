@@ -1,33 +1,50 @@
 class_name PlayerEarth extends CharacterBody2D
 
 const WATER = preload("res://scenes/projectiles/water.tscn")
-const SPEED = 600.0
-const JUMP_VELOCITY = -600.0
+const SPEED = 400.0
+const JUMP_VELOCITY = -500.0
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var can_shoot: bool = true
+var lock_shoot: bool = false
 var cd: float = 3.0
 var counter: float = 0.0
+var can_move: bool = true
 
 @onready var sprite = $AnimatedSprite2D
 @onready var anim = $AnimationPlayer
 @onready var collider = $CollisionShape2D
 @onready var marker_2d = $Marker2D
+@onready var music = $SoundFX/Music
+@onready var on_accept = $SoundFX/OnAccept
+@onready var on_done = $SoundFX/OnDone
+@onready var on_failed = $SoundFX/OnFailed
+@onready var quest_manager = $"../../QuestManager"
+
+func _ready():
+	quest_manager.connect("accepted", on_accept_quest)
+	quest_manager.connect("failed", on_failed_quest)
+	quest_manager.connect("done", on_done_quest)
+	music.play()
 
 func _physics_process(delta):
 	var direction = Input.get_axis("left", "right")
 	_gravity(delta)
 	_on_move(direction)
 	_on_jump()
-	shoot(delta)
+	if not lock_shoot:
+		shoot(delta)
 	# add a condition can_move here !
-	move_and_slide()
+	if can_move:
+		move_and_slide()
 
 func _process(_delta):
 	_on_sprite_orientation(velocity.x)
 	if anim.current_animation == "death":
 		return
 	if anim.current_animation == "hurt":
+		return
+	if anim.current_animation == "fall":
 		return
 	if anim.current_animation == "jump":
 		return
@@ -75,8 +92,7 @@ func _on_jump_anim(_velocity_y: float):
 
 func _on_fall_anim(_velocity_y: float):
 	if _velocity_y > 0:
-		#anim.play("fall")
-		pass
+		anim.play("fall")
 
 func shoot(delta):
 	if not can_shoot:
@@ -86,8 +102,19 @@ func shoot(delta):
 	elif Input.is_action_just_pressed("attack") and can_shoot:
 		can_shoot = false
 		_on_shoot()
+
 func _on_shoot():
 	var water = WATER.instantiate()
 	water.position = marker_2d.global_position
 	if get_tree().get_first_node_in_group("Water").get_children().size() < 1:
 		get_tree().get_first_node_in_group("Water").add_child(water)
+
+
+func _on_music_finished():
+	music.play()
+func on_accept_quest(_num: int):
+	on_accept.play()
+func on_failed_quest(_num: int):
+	on_failed.play()
+func on_done_quest(_num: int):
+	on_done.play()

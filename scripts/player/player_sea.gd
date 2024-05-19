@@ -1,9 +1,5 @@
-class_name Player
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
-"""
-NEEDS DEATH MESSAGE UI
-"""
 signal game_over
 const PROJECTILE_PATH = preload("res://scenes/projectiles/projectile_3.tscn")
 
@@ -17,6 +13,7 @@ var movespeed : float = Game.player_movespeed
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var can_move : bool = true
+var can_attack: bool = true
 
 @onready var aim = $Aim
 @onready var player_col = $PlayerCol
@@ -25,18 +22,19 @@ var can_move : bool = true
 @onready var aim_position = $Aim/AimPosition
 @onready var mana_bar = $CanvasLayer/MarginCon/StatsCon/BarCon/ManaBar
 @onready var joystick = $"../../CanvasLayer/JoystickContainer/Joystick"
-@onready var health_bar = $CanvasLayer/MarginCon/StatsCon/BarCon/HealthBar
-@onready var experience_bar = $CanvasLayer/MarginCon/StatsCon/BarCon/ExperienceBar
-@onready var mana_buff_timer = $ManaBuffTimer
-@onready var damage_buff_timer = $DamageBuffTimer
-@onready var movespeed_buff_timer = $MovespeedBuffTimer
 @onready var basket = $Basket
+@onready var quest_manager = $"../../QuestManager"
+@onready var on_done = $SoundFX/OnDone
+@onready var on_accept = $SoundFX/OnAccept
+@onready var on_failed = $SoundFX/OnFailed
+@onready var music = $SoundFX/Music
 
 func _ready():
-	game_over.connect(_death)
-	health_bar._init_health(Game.player_hp)
+	music.play()
+	quest_manager.connect("done", quest_done)
+	quest_manager.connect("failed", quest_failed)
+	quest_manager.connect("accepted", quest_accept)
 	mana_bar._init_mana(Game.player_mana)
-	experience_bar._init_experience(Game.player_exp, Game.player_max_exp)
 	player_anim.play("idle")
 	
 func _physics_process(delta):
@@ -49,11 +47,8 @@ func _physics_process(delta):
 
 func _process(_delta):
 	_sprite_position(velocity.x)
-	experience_bar.experience = Game.player_exp
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") and can_attack:
 		_player_attack()
-	if is_hurt:
-		await _hurt(player_anim)
 	if is_moving:
 		_moving(player_anim)
 	else:
@@ -108,42 +103,14 @@ func _player_attack():
 		Game.player_mana -= 5
 		mana_bar.mana = Game.player_mana
 
-func _hurt(anim: AnimationPlayer):
-	anim.play("hurt")
-	await anim.animation_finished
-	is_hurt = false
+func quest_accept(_num: int):
+	on_accept.play()
 
-func _death():
-	Game.is_alive = false
-	player_anim.play("death")
-	await player_anim.animation_finished
-	queue_free()
+func quest_failed(_num: int):
+	on_failed.play()
 
-func on_mana_powerup(_amount):
-	mana_buff_timer.start()
-	mana_regen_rate += _amount
+func quest_done(_num: int):
+	on_done.play()
 
-func on_damage_powerup(_amount):
-	damage_buff_timer.start()
-	damage += _amount
-	
-func on_movespeed_powerup(_amount):
-	movespeed_buff_timer.start()
-	movespeed += _amount
-
-func take_damage(_damage):
-	is_hurt = true
-	Game.player_hp -= _damage
-	health_bar.health = Game.player_hp
-	if Game.player_hp <= 0: 
-		game_over.emit()
-
-func _on_mana_buff_timer_timeout():
-	mana_regen_rate = Game.player_mana_regen_rate
-
-func _on_damage_buff_timer_timeout():
-	damage = Game.player_damage
-
-func _on_movespeed_buff_timer_timeout():
-	movespeed = Game.player_movespeed
-
+func _on_music_finished():
+	music.play()

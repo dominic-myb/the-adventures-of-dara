@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://lgxydtjm2j84"]
+
+[ext_resource type="Script" path="res://scripts/ui/game_over_notif.gd" id="1_kjaxv"]
+[ext_resource type="FontFile" uid="uid://bph4vobtaswbg" path="res://font/manaspc.ttf" id="1_y8bib"]
+[ext_resource type="Texture2D" uid="uid://cd7ffhkmaue7" path="res://art/ui/buttons/retry_btn.png" id="2_sw6qb"]
+[ext_resource type="Texture2D" uid="uid://d2sffmngr5uwy" path="res://art/ui/buttons/retry_press.png" id="3_4me6s"]
+[ext_resource type="Texture2D" uid="uid://cb14o0u0qt5wi" path="res://art/ui/buttons/home_btn.png" id="4_yrsqe"]
+[ext_resource type="Texture2D" uid="uid://c4uslxs6qwvd4" path="res://art/ui/buttons/home_press.png" id="5_gulkl"]
+
+[node name="Game Over" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = -100.0
+offset_right = 185.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kjaxv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_y8bib")
+theme_override_font_sizes/font_size = 45
+text = "Game Over!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Retry" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("2_sw6qb")
+texture_pressed = ExtResource("3_4me6s")
+stretch_mode = 5
+
+[node name="Home" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_yrsqe")
+texture_pressed = ExtResource("5_gulkl")
+stretch_mode = 5

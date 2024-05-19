@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://dkych5o74syfh"]
+
+[ext_resource type="Texture2D" uid="uid://30fljwbp6mad" path="res://art/npc/bata/bata_gutom.png" id="1_3flo3"]
+[ext_resource type="Script" path="res://scripts/npc/bata.gd" id="1_dq538"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hxpe"]
+atlas = ExtResource("1_3flo3")
+region = Rect2(0, 0, 128, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6s6u"]
+atlas = ExtResource("1_3flo3")
+region = Rect2(128, 0, 128, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24e5w"]
+atlas = ExtResource("1_3flo3")
+region = Rect2(256, 0, 128, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4s4sr"]
+atlas = ExtResource("1_3flo3")
+region = Rect2(384, 0, 128, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5lfr"]
+atlas = ExtResource("1_3flo3")
+region = Rect2(512, 0, 128, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r12cq"]
+atlas = ExtResource("1_3flo3")
+region = Rect2(0, 0, 128, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usijl"]
+atlas = ExtResource("1_3flo3")
+region = Rect2(128, 0, 128, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2p626"]
+atlas = ExtResource("1_3flo3")
+region = Rect2(256, 0, 128, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_28m7b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hxpe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6s6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24e5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4s4sr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5lfr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r12cq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usijl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2p626")
+}],
+"loop": true,
+"name": &"done",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s5rb2"]
+radius = 86.8332
+
+[node name="Bata" type="Area2D"]
+script = ExtResource("1_dq538")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_28m7b")
+animation = &"done"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_s5rb2")

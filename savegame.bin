@@ -1,1 +1,1 @@
-{"enemy_damage":2,"enemy_hp":10,"enemy_lvl":1,"enemy_max_hp":10,"enemy_speed":100,"lvl_to_buff":5,"player_damage":2,"player_exp":0,"player_gold":0,"player_hp":10,"player_lvl":1,"player_max_exp":100,"player_max_hp":10}
+{"PLAYER_QUEST_LEVEL":3,"QUEST_STATUS":{"Q1":false,"Q2":false,"Q3":false,"Q4":false,"Q5":false,"Q6":false},"is_played":false,"player_damage":2,"player_hp":3,"player_mana":100,"player_mana_regen_rate":0.0166666666666667,"player_max_mana":100,"player_movespeed":600}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdueccuslp4js"]
+[gd_scene load_steps=16 format=3 uid="uid://cdueccuslp4js"]
 
 [ext_resource type="Script" path="res://scripts/managers/main_menu.gd" id="1_hrmu5"]
 [ext_resource type="Texture2D" uid="uid://bkmvgf2n2um8x" path="res://art/ui/title-screen2.png" id="2_57rmv"]
@@ -9,6 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://bus2pscu7h4bw" path="res://art/ui/buttons/quit-btn.png" id="7_oalth"]
 [ext_resource type="Texture2D" uid="uid://bfefjr0f6tjbe" path="res://art/ui/buttons/quit-press.png" id="8_iecer"]
 [ext_resource type="PackedScene" uid="uid://ctfmy3ewqm4dm" path="res://scenes/parallaxBG/main_menu_bg.tscn" id="9_5b7t8"]
+[ext_resource type="AudioStream" uid="uid://bqjxh7kumu2xi" path="res://sound_fx/main_menu_sfx/main_sfx.wav" id="10_r5qsi"]
+[ext_resource type="Texture2D" uid="uid://b81pcjqjq2x2v" path="res://art/ui/textbox-2.png" id="11_8ssip"]
+[ext_resource type="FontFile" uid="uid://bph4vobtaswbg" path="res://font/manaspc.ttf" id="12_u2ofm"]
+[ext_resource type="Texture2D" uid="uid://dt3kv40vam4hd" path="res://art/ui/buttons/back-def.png" id="12_wlxm6"]
+[ext_resource type="Texture2D" uid="uid://bgd7haxw4vjse" path="res://art/ui/buttons/back-press.png" id="13_8w8t8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sr5ys"]
+texture = ExtResource("11_8ssip")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -71,6 +79,124 @@ stretch_mode = 5
 
 [node name="MainMenuBG" parent="." instance=ExtResource("9_5b7t8")]
 
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_r5qsi")
+bus = &"Music"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_sr5ys")
+
+[node name="Settings" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Settings"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_top = 120.0
+offset_right = 576.0
+offset_bottom = 180.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("12_u2ofm")
+theme_override_font_sizes/font_size = 60
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -277.0
+offset_top = -64.0
+offset_right = 277.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="Labels" type="VBoxContainer" parent="Settings/HBoxContainer"]
+layout_mode = 2
+
+[node name="Master" type="Label" parent="Settings/HBoxContainer/Labels"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("12_u2ofm")
+theme_override_font_sizes/font_size = 40
+text = "Master
+"
+horizontal_alignment = 3
+
+[node name="Music" type="Label" parent="Settings/HBoxContainer/Labels"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("12_u2ofm")
+theme_override_font_sizes/font_size = 40
+text = "Music
+"
+horizontal_alignment = 3
+
+[node name="SoundFX" type="Label" parent="Settings/HBoxContainer/Labels"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("12_u2ofm")
+theme_override_font_sizes/font_size = 40
+text = "SoundFX"
+horizontal_alignment = 3
+
+[node name="Sliders" type="VBoxContainer" parent="Settings/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Master" type="HSlider" parent="Settings/HBoxContainer/Sliders"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Music" type="HSlider" parent="Settings/HBoxContainer/Sliders"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SoundFX" type="HSlider" parent="Settings/HBoxContainer/Sliders"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Back" type="TextureButton" parent="Settings"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -311.0
+offset_top = -189.0
+offset_right = -151.0
+offset_bottom = -125.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("12_wlxm6")
+texture_pressed = ExtResource("13_8w8t8")
+stretch_mode = 0
+
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="finished" from="Music" to="." method="_on_sfx_finished"]
+[connection signal="value_changed" from="Settings/HBoxContainer/Sliders/Master" to="." method="_on_master_value_changed"]
+[connection signal="value_changed" from="Settings/HBoxContainer/Sliders/Music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="Settings/HBoxContainer/Sliders/SoundFX" to="." method="_on_sound_fx_value_changed"]

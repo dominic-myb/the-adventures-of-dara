@@ -1,17 +1,18 @@
-[gd_scene load_steps=57 format=3 uid="uid://g1mbd2nxn3uo"]
+[gd_scene load_steps=58 format=3 uid="uid://g1mbd2nxn3uo"]
 
-[ext_resource type="Texture2D" uid="uid://b5aax1i40hp78" path="res://art/player/dara_death.png" id="1_isvhe"]
+[ext_resource type="Texture2D" uid="uid://b5aax1i40hp78" path="res://art/player/dara_sea/dara_death.png" id="1_isvhe"]
 [ext_resource type="Script" path="res://scripts/player/player_sea.gd" id="1_pa4xk"]
-[ext_resource type="Texture2D" uid="uid://b8pg1fxyuma2x" path="res://art/player/dara_idle.png" id="1_u5xla"]
-[ext_resource type="Texture2D" uid="uid://dew3puq6241wt" path="res://art/player/dara_attack.png" id="2_4vi7q"]
-[ext_resource type="Texture2D" uid="uid://c75ebqtkrjrh7" path="res://art/player/dara_hurt.png" id="2_qnqi8"]
-[ext_resource type="Texture2D" uid="uid://c6vylv6ywocat" path="res://art/player/dara_move.png" id="4_adsrw"]
+[ext_resource type="Texture2D" uid="uid://b8pg1fxyuma2x" path="res://art/player/dara_sea/dara_idle.png" id="1_u5xla"]
+[ext_resource type="Texture2D" uid="uid://dew3puq6241wt" path="res://art/player/dara_sea/dara_attack.png" id="2_4vi7q"]
+[ext_resource type="Texture2D" uid="uid://c75ebqtkrjrh7" path="res://art/player/dara_sea/dara_hurt.png" id="2_qnqi8"]
+[ext_resource type="Texture2D" uid="uid://c6vylv6ywocat" path="res://art/player/dara_sea/dara_move.png" id="4_adsrw"]
 [ext_resource type="Texture2D" uid="uid://bpl33trwfxdat" path="res://art/ui/buttons/attack-btn.png" id="7_fqfew"]
-[ext_resource type="PackedScene" uid="uid://mvufdd2858l8" path="res://scenes/ui/health_bar.tscn" id="8_qquo1"]
 [ext_resource type="FontFile" uid="uid://bph4vobtaswbg" path="res://font/manaspc.ttf" id="8_rbgbu"]
-[ext_resource type="Script" path="res://scripts/ui/player_health_bar.gd" id="9_bvepj"]
-[ext_resource type="PackedScene" uid="uid://dvoooakyv66ij" path="res://scenes/ui/experience_bar.tscn" id="10_c0ybc"]
+[ext_resource type="AudioStream" uid="uid://dghbcaamlvovx" path="res://sound_fx/sea_ingame/in_game_music.wav" id="10_52nh4"]
+[ext_resource type="AudioStream" uid="uid://d0ftrme57xv0h" path="res://sound_fx/sea_ingame/quest_done2.wav" id="11_740b3"]
 [ext_resource type="PackedScene" uid="uid://baeteg3v0ka3x" path="res://scenes/ui/mana_bar.tscn" id="11_h2xh8"]
+[ext_resource type="AudioStream" uid="uid://6txrb1hvq4kj" path="res://sound_fx/sea_ingame/quest_accept.wav" id="12_1mujy"]
+[ext_resource type="AudioStream" uid="uid://r5ryg8j5bas" path="res://sound_fx/sea_ingame/quest_failed1.wav" id="13_gqs8g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_emyft"]
 atlas = ExtResource("2_4vi7q")
@@ -505,10 +506,10 @@ shape = SubResource("RectangleShape2D_1qh32")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MarginCon" type="MarginContainer" parent="CanvasLayer"]
-offset_left = 50.0
-offset_top = 50.0
-offset_right = 420.0
-offset_bottom = 152.0
+offset_left = 20.0
+offset_top = 100.0
+offset_right = 390.0
+offset_bottom = 140.0
 
 [node name="StatsCon" type="HBoxContainer" parent="CanvasLayer/MarginCon"]
 layout_mode = 2
@@ -517,69 +518,49 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HealthBar" parent="CanvasLayer/MarginCon/StatsCon/BarCon" instance=ExtResource("8_qquo1")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = ExtResource("9_bvepj")
-
-[node name="Label" type="Label" parent="CanvasLayer/MarginCon/StatsCon/BarCon/HealthBar"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -11.5
-offset_right = 40.0
-offset_bottom = 11.5
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("8_rbgbu")
-text = "HP"
-
-[node name="ExperienceBar" parent="CanvasLayer/MarginCon/StatsCon/BarCon" instance=ExtResource("10_c0ybc")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="CanvasLayer/MarginCon/StatsCon/BarCon/ExperienceBar"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -11.5
-offset_right = 40.0
-offset_bottom = 11.5
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("8_rbgbu")
-text = "Exp"
-
 [node name="ManaBar" parent="CanvasLayer/MarginCon/StatsCon/BarCon" instance=ExtResource("11_h2xh8")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="CanvasLayer/MarginCon/StatsCon/BarCon/ManaBar"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -11.5
-offset_right = 44.0
-offset_bottom = 11.5
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginCon/StatsCon/BarCon/ManaBar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginCon/StatsCon/BarCon/ManaBar/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_rbgbu")
+theme_override_font_sizes/font_size = 25
 text = "Mana"
 
-[node name="ManaBuffTimer" type="Timer" parent="."]
-wait_time = 10.0
-one_shot = true
+[node name="SoundFX" type="Node2D" parent="."]
 
-[node name="DamageBuffTimer" type="Timer" parent="."]
-wait_time = 10.0
-one_shot = true
+[node name="Music" type="AudioStreamPlayer2D" parent="SoundFX"]
+stream = ExtResource("10_52nh4")
+bus = &"Music"
 
-[node name="MovespeedBuffTimer" type="Timer" parent="."]
-wait_time = 10.0
-one_shot = true
+[node name="OnQuest" type="AudioStreamPlayer2D" parent="SoundFX"]
+bus = &"SoundFX"
 
-[connection signal="timeout" from="ManaBuffTimer" to="." method="_on_mana_buff_timer_timeout"]
-[connection signal="timeout" from="DamageBuffTimer" to="." method="_on_damage_buff_timer_timeout"]
-[connection signal="timeout" from="MovespeedBuffTimer" to="." method="_on_movespeed_buff_timer_timeout"]
+[node name="OnDone" type="AudioStreamPlayer2D" parent="SoundFX"]
+stream = ExtResource("11_740b3")
+bus = &"SoundFX"
+
+[node name="OnAccept" type="AudioStreamPlayer2D" parent="SoundFX"]
+stream = ExtResource("12_1mujy")
+bus = &"SoundFX"
+
+[node name="OnFailed" type="AudioStreamPlayer2D" parent="SoundFX"]
+stream = ExtResource("13_gqs8g")
+
+[node name="Moving" type="AudioStreamPlayer2D" parent="SoundFX"]
+bus = &"SoundFX"
+
+[node name="Firing" type="AudioStreamPlayer2D" parent="SoundFX"]
+bus = &"SoundFX"
+
+[connection signal="finished" from="SoundFX/Music" to="." method="_on_music_finished"]

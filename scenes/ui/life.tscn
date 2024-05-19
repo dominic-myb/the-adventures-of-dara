@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://clv7r2xshumu7"]
+
+[ext_resource type="Texture2D" uid="uid://bu20reyjk072v" path="res://art/player/heart.png" id="1_5bs5w"]
+[ext_resource type="Script" path="res://scripts/ui/life.gd" id="1_emxxa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjnwd"]
+atlas = ExtResource("1_5bs5w")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vvbu"]
+atlas = ExtResource("1_5bs5w")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ne4cs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjnwd")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vvbu")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}]
+
+[node name="Life" type="Node2D"]
+script = ExtResource("1_emxxa")
+
+[node name="Heart1" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ne4cs")
+animation = &"1"
+
+[node name="Heart2" type="AnimatedSprite2D" parent="."]
+position = Vector2(96, 32)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ne4cs")
+animation = &"1"
+
+[node name="Heart3" type="AnimatedSprite2D" parent="."]
+position = Vector2(160, 32)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ne4cs")
+animation = &"1"

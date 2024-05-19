@@ -309,7 +309,9 @@ script = ExtResource("1_wy7px")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_a6g4t")
-animation = &"fire_0"
+animation = &"fire_1"
+frame = 9
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.25)

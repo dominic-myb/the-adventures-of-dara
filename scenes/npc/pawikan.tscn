@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://db3gceu562d4t"]
+[gd_scene load_steps=11 format=3 uid="uid://db3gceu562d4t"]
 
 [ext_resource type="Texture2D" uid="uid://d3df4gj6hg4f4" path="res://art/npc/pawikan/pawikan.png" id="1_di8eo"]
 [ext_resource type="Script" path="res://scripts/npc/pawikan.gd" id="1_lewd4"]
+[ext_resource type="PackedScene" uid="uid://c58756h4643av" path="res://scenes/quests/arrow_guide.tscn" id="3_7lf5e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p3emc"]
 radius = 87.367
@@ -59,3 +60,7 @@ shape = SubResource("CircleShape2D_p3emc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2hr2d")
+
+[node name="ArrowGuide" parent="." instance=ExtResource("3_7lf5e")]
+visible = false
+position = Vector2(0, -72)

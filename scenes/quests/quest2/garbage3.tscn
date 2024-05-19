@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0nadnaddmgjg"]
+
+[ext_resource type="Script" path="res://scripts/quests/garbage.gd" id="1_5a4jg"]
+[ext_resource type="Texture2D" uid="uid://b1v8sunb566kl" path="res://art/quests/quest2/Bone fish.png" id="2_25rmg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nrvt0"]
+radius = 14.5602
+
+[node name="Garbage3" type="CharacterBody2D" groups=["Garbage"]]
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("1_5a4jg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nrvt0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_25rmg")

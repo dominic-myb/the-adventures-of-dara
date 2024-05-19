@@ -1,13 +1,13 @@
 extends Node2D
 
 signal done(num: int)
-signal failed()
+signal failed(num: int)
 
-const garbage1 = preload("res://scenes/quests/garbage1.tscn")
-const garbage2 = preload("res://scenes/quests/garbage2.tscn")
-const garbage3 = preload("res://scenes/quests/garbage3.tscn")
-const garbage4 = preload("res://scenes/quests/garbage4.tscn")
-const garbage5 = preload("res://scenes/quests/garbage5.tscn")
+const garbage1 = preload("res://scenes/quests/quest2/garbage1.tscn")
+const garbage2 = preload("res://scenes/quests/quest2/garbage2.tscn")
+const garbage3 = preload("res://scenes/quests/quest2/garbage3.tscn")
+const garbage4 = preload("res://scenes/quests/quest2/garbage4.tscn")
+const garbage5 = preload("res://scenes/quests/quest2/garbage5.tscn")
 
 var garbage = []
 var timeout: bool = false
@@ -29,8 +29,14 @@ var pawikan : CharacterBody2D
 @onready var area_time = $TimeInsideArea
 @onready var quest_time = $QuestTime
 
+@onready var col1 = $QuestArea/CollisionShape2D
+@onready var col2 = $GarbageDetector/CollisionShape2D
+
 func _ready():
-	toggle_guide(true)
+	visible = false
+	toggle_guide(false)
+	col1.set_disabled(true)
+	col2.set_disabled(true)
 	pawikan = get_tree().get_first_node_in_group("Pawikan")
 	basket = get_tree().get_first_node_in_group("Basket")
 	failed.connect(on_quest_failed)
@@ -63,7 +69,6 @@ func toggle_guide(_show: bool):
 		pos_2.play("default")
 		pos_3.play("default")
 		pos_4.play("default")
-	
 
 func is_divisible_by_five(_num):
 	if _num % 5 == 0:
@@ -118,11 +123,10 @@ func check_score(_points: int, _total_spawned: int):
 	else:
 		return false
 
-func on_quest_failed():
+func on_quest_failed(_num: int):
 	garbage_counter = 0
 	basket.points = 0
 	started = false
-	
 
 func _on_quest_area_body_entered(body):
 	if body.is_in_group("Player") and not started:
@@ -151,7 +155,8 @@ func _on_quest_time_timeout():
 		basket.hide()
 		#pawikan.bubble_enabled = false
 	else:
-		failed.emit()
+		failed.emit(1)
+	# make this local to scene not an instance
 	
 	# reference the total garbage spawned / basket.points
 	# if 75% == pass else == on_quest_failed

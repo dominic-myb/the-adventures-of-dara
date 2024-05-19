@@ -1,5 +1,6 @@
+res://scenes/portal/portal_to_end.tscn
+res://scripts/quests/quest2.gd
+res://scripts/quests/quest5.gd
+res://scripts/portal/portal_to_end.gd
 res://scenes/main_scenes/world_earth.tscn
-res://scenes/projectiles/water.tscn
-res://scenes/quests/quest4/house.tscn
-res://scenes/player/player2.tscn
-res://scenes/npc/lola.tscn
+res://scripts/managers/earth_quest_manager.gd

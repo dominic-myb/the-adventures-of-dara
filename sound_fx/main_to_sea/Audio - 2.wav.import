@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://gc00s5h26qyn"
+path="res://.godot/imported/Audio - 2.wav-e48296473fd699e8f3e445c01c0106a6.sample"
+
+[deps]
+
+source_file="res://sound_fx/main_to_sea/Audio - 2.wav"
+dest_files=["res://.godot/imported/Audio - 2.wav-e48296473fd699e8f3e445c01c0106a6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

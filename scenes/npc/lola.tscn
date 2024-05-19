@@ -1,13 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://dux04tqhpywx6"]
+[gd_scene load_steps=9 format=3 uid="uid://dux04tqhpywx6"]
 
 [ext_resource type="Script" path="res://scripts/npc/lola.gd" id="1_55rsh"]
-[ext_resource type="Texture2D" uid="uid://chlnr2sluxbj1" path="res://art/npc/lola.png" id="1_jmr0s"]
+[ext_resource type="Texture2D" uid="uid://jvoiobq5clre" path="res://art/npc/lola/lola-idle.png" id="2_lkvjs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7b358"]
+atlas = ExtResource("2_lkvjs")
+region = Rect2(0, 0, 111, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eid3x"]
+atlas = ExtResource("2_lkvjs")
+region = Rect2(111, 0, 111, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo374"]
+atlas = ExtResource("2_lkvjs")
+region = Rect2(222, 0, 111, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0v0s"]
+atlas = ExtResource("2_lkvjs")
+region = Rect2(333, 0, 111, 150)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t7kke"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_jmr0s")
+"texture": SubResource("AtlasTexture_7b358")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eid3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wo374")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0v0s")
 }],
 "loop": true,
 "name": &"idle",

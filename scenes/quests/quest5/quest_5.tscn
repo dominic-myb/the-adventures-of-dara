@@ -1,0 +1,117 @@
+[gd_scene load_steps=11 format=3 uid="uid://7k2brwpn68tg"]
+
+[ext_resource type="Texture2D" uid="uid://becf4bxj6g4ix" path="res://art/quests/quest5/food_land/sili.png" id="1_1pw8i"]
+[ext_resource type="Script" path="res://scripts/quests/quest_5.gd" id="1_w33y2"]
+[ext_resource type="Texture2D" uid="uid://cpujl07mlir2u" path="res://art/quests/quest5/food_land/flour.png" id="2_bl8xp"]
+[ext_resource type="Texture2D" uid="uid://1yspbi7kbsou" path="res://art/quests/quest5/food_land/paminta.png" id="3_bcwni"]
+[ext_resource type="Texture2D" uid="uid://xyy8qc7n57kn" path="res://art/quests/quest5/food_land/brownsugar.png" id="5_iyu5h"]
+[ext_resource type="Texture2D" uid="uid://bnao8ejri8ofv" path="res://art/quests/quest5/food_land/pepper.png" id="6_jyfn0"]
+[ext_resource type="Texture2D" uid="uid://ddcwdq7uxynhj" path="res://art/quests/quest5/food_land/water.png" id="7_t6b7b"]
+[ext_resource type="Texture2D" uid="uid://c1xjumxkj5jw6" path="res://art/quests/quest5/food_land/salt.png" id="8_ymnib"]
+[ext_resource type="Texture2D" uid="uid://bfknr12ht2on1" path="res://art/quests/quest5/food_land/oil.png" id="9_gdghj"]
+[ext_resource type="Texture2D" uid="uid://12cv4uvfqxcu" path="res://art/quests/quest5/food_land/nut.png" id="10_lhf28"]
+
+[node name="Quest5" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_w33y2")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="img_1" type="TextureButton" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+texture_normal = ExtResource("2_bl8xp")
+stretch_mode = 0
+
+[node name="img_2" type="TextureButton" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+texture_normal = ExtResource("3_bcwni")
+stretch_mode = 0
+
+[node name="img_3" type="TextureButton" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+texture_normal = ExtResource("1_1pw8i")
+stretch_mode = 0
+
+[node name="img_4" type="TextureButton" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+texture_normal = ExtResource("5_iyu5h")
+stretch_mode = 0
+
+[node name="img_5" type="TextureButton" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+texture_normal = ExtResource("6_jyfn0")
+stretch_mode = 0
+
+[node name="img_6" type="TextureButton" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+texture_normal = ExtResource("7_t6b7b")
+stretch_mode = 0
+
+[node name="img_7" type="TextureButton" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+texture_normal = ExtResource("8_ymnib")
+stretch_mode = 0
+
+[node name="img_8" type="TextureButton" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+texture_normal = ExtResource("9_gdghj")
+stretch_mode = 0
+
+[node name="img_9" type="TextureButton" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+texture_normal = ExtResource("10_lhf28")
+stretch_mode = 0
+
+[connection signal="pressed" from="MarginContainer/GridContainer/img_1" to="." method="_on_img_1_pressed"]
+[connection signal="pressed" from="MarginContainer/GridContainer/img_2" to="." method="_on_img_2_pressed"]
+[connection signal="pressed" from="MarginContainer/GridContainer/img_3" to="." method="_on_img_3_pressed"]
+[connection signal="pressed" from="MarginContainer/GridContainer/img_4" to="." method="_on_img_4_pressed"]
+[connection signal="pressed" from="MarginContainer/GridContainer/img_5" to="." method="_on_img_5_pressed"]
+[connection signal="pressed" from="MarginContainer/GridContainer/img_6" to="." method="_on_img_6_pressed"]
+[connection signal="pressed" from="MarginContainer/GridContainer/img_7" to="." method="_on_img_7_pressed"]
+[connection signal="pressed" from="MarginContainer/GridContainer/img_8" to="." method="_on_img_8_pressed"]
+[connection signal="pressed" from="MarginContainer/GridContainer/img_9" to="." method="_on_img_9_pressed"]

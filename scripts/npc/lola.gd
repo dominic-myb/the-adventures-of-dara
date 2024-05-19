@@ -14,3 +14,4 @@ func _sprite_orientation():
 		anim.flip_h = false
 	elif player.global_position.x < position.x:
 		anim.flip_h = true
+	anim.play("idle")

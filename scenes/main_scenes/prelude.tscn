@@ -1,17 +1,17 @@
 [gd_scene load_steps=18 format=3 uid="uid://b6ld2fe6wk6lo"]
 
-[ext_resource type="Script" path="res://scripts/prelude/prelude.gd" id="1_dgf5d"]
-[ext_resource type="Texture2D" uid="uid://biv0v38uqw5n3" path="res://art/pic_prelude/scene1.jpg" id="2_6lqom"]
-[ext_resource type="Texture2D" uid="uid://bxswpyspdachr" path="res://art/pic_prelude/scene2.jpg" id="3_jnclv"]
-[ext_resource type="Texture2D" uid="uid://dm2r48nw1ablk" path="res://art/pic_prelude/background.png" id="3_pe2q7"]
-[ext_resource type="Texture2D" uid="uid://ct0hkigalgk7y" path="res://art/pic_prelude/scene3.jpg" id="4_of3k0"]
-[ext_resource type="Texture2D" uid="uid://drgf1f412lpv2" path="res://art/pic_prelude/scene4.jpg" id="5_xjanh"]
-[ext_resource type="Texture2D" uid="uid://d0ur8cu4tdgxr" path="res://art/pic_prelude/scene5.jpg" id="6_o1blw"]
-[ext_resource type="AudioStream" uid="uid://do8tyaclebrro" path="res://sound_fx/prelude/Audio - 1.wav" id="8_euum1"]
-[ext_resource type="AudioStream" uid="uid://bty0madasw4ot" path="res://sound_fx/prelude/Audio - 2.wav" id="9_jmn5r"]
-[ext_resource type="AudioStream" uid="uid://14tqt7e8gn1c" path="res://sound_fx/prelude/Audio - 3.wav" id="10_2uta2"]
-[ext_resource type="AudioStream" uid="uid://dj34eg5jfpc5h" path="res://sound_fx/prelude/Audio - 4.wav" id="11_glpaj"]
-[ext_resource type="AudioStream" uid="uid://n31lrqkqjiiy" path="res://sound_fx/prelude/Audio - 5.wav" id="12_nxfda"]
+[ext_resource type="Script" path="res://scripts/transition_anim/prelude.gd" id="1_dgf5d"]
+[ext_resource type="Texture2D" uid="uid://biv0v38uqw5n3" path="res://art/transitions_anim/main_to_sea/scene1.jpg" id="2_6lqom"]
+[ext_resource type="Texture2D" uid="uid://bxswpyspdachr" path="res://art/transitions_anim/main_to_sea/scene2.jpg" id="3_jnclv"]
+[ext_resource type="Texture2D" uid="uid://dm2r48nw1ablk" path="res://art/transitions_anim/background.png" id="3_pe2q7"]
+[ext_resource type="Texture2D" uid="uid://ct0hkigalgk7y" path="res://art/transitions_anim/main_to_sea/scene3.jpg" id="4_of3k0"]
+[ext_resource type="Texture2D" uid="uid://drgf1f412lpv2" path="res://art/transitions_anim/main_to_sea/scene4.jpg" id="5_xjanh"]
+[ext_resource type="Texture2D" uid="uid://d0ur8cu4tdgxr" path="res://art/transitions_anim/main_to_sea/scene5.jpg" id="6_o1blw"]
+[ext_resource type="AudioStream" uid="uid://cdmhci8c7v7sv" path="res://sound_fx/main_to_sea/Audio - 1.wav" id="8_euum1"]
+[ext_resource type="AudioStream" uid="uid://gc00s5h26qyn" path="res://sound_fx/main_to_sea/Audio - 2.wav" id="9_jmn5r"]
+[ext_resource type="AudioStream" uid="uid://cekod68grtqdf" path="res://sound_fx/main_to_sea/Audio - 3.wav" id="10_2uta2"]
+[ext_resource type="AudioStream" uid="uid://dx6tthnnl8ovi" path="res://sound_fx/main_to_sea/Audio - 4.wav" id="11_glpaj"]
+[ext_resource type="AudioStream" uid="uid://coid68vap5nem" path="res://sound_fx/main_to_sea/Audio - 5.wav" id="12_nxfda"]
 [ext_resource type="Texture2D" uid="uid://bsthvuakeh677" path="res://art/ui/_new_button_sprites/laktaw-btn.png" id="13_sfo0p"]
 [ext_resource type="Texture2D" uid="uid://dk6qmhjgljbk1" path="res://art/ui/_new_button_sprites/laktaw-press.png" id="14_s1pig"]
 
@@ -152,7 +152,7 @@ tracks/10/keys = {
 
 [sub_resource type="Animation" id="Animation_51x3n"]
 resource_name = "prelude"
-length = 118.0
+length = 120.0
 step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -257,7 +257,7 @@ tracks/8/path = NodePath("scene_5:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(76, 76.2, 76.4, 76.6, 117, 117.2, 117.4, 117.6),
+"times": PackedFloat32Array(76, 76.2, 76.4, 76.6, 118.6, 118.8, 119, 119.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.666667), Color(1, 1, 1, 0.333333), Color(1, 1, 1, 0)]
@@ -467,4 +467,4 @@ texture_normal = ExtResource("13_sfo0p")
 texture_pressed = ExtResource("14_s1pig")
 stretch_mode = 5
 
-[connection signal="pressed" from="VBoxContainer/Skip" to="." method="_on_skip_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
