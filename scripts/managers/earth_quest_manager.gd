@@ -1,6 +1,8 @@
 extends Node
 # ADD ALL THE UI, DESIGNS THAT WILL BE APPEARING IN THE GAME IF
 # UNLOCKED, LOCKED, ACCEPT, DONE, [ENABLE, DISABLE] BASE ON Q NUM
+# ISSUE: GETTING THE QUEST OF BATA FROM LOLA2
+# IF THE GAME IS DONE RESET STATS
 signal accepted(_num: int)
 signal unlocked(_num: int)
 signal failed(_num: int)
@@ -11,6 +13,7 @@ const PLAYER_IMG = preload("res://art/player/player-img.png")
 const LOLA_IMG = preload("res://art/npc/lola/lola-img.png")
 const BATA_IMG = preload("res://art/npc/bata/bata-img.png")
 const RECIPE = preload("res://scenes/quests/quest5/recipe.tscn")
+const QUEST_5 = preload("res://scenes/quests/quest5/quest_5.tscn")
 
 enum QUEST_STATUS{
 	LOCKED, UNLOCKED, ACCEPTED, DONE
@@ -54,7 +57,6 @@ var active_npc: int
 @onready var interact = $"../CanvasLayer/ActionButtons/Interact"
 @onready var recipe_pos = $"../Quest/RecipePos"
 @onready var bounds = $"../Bounds"
-@onready var quest_5 = $"../CanvasLayer/Quest5"
 
 @onready var game_over = $"../CanvasLayer/GameOver"
 @onready var retry = $"../CanvasLayer/GameOver/MarginContainer/VBoxContainer/HBoxContainer/Retry"
@@ -77,6 +79,7 @@ func _ready():
 	accepted.connect(quest_accepted)
 	accepted.connect(quest)
 	zero_hp.connect(on_zero_hp)
+	unlocked.connect(quest_unlocked)
 	# connect 2 quest done
 
 func buttons_connect():
@@ -139,6 +142,13 @@ func on_skip_pressed():
 		has_active_quest = true
 	player.can_move = true
 
+func quest_unlocked(_num: int):
+	
+	if _num == 3:
+		pass
+	elif _num == 4:
+		pass
+
 func quest(_num: int):
 	
 	if Game.PLAYER_QUEST_LEVEL == 3 and quest_accepted(_num):
@@ -154,10 +164,12 @@ func quest(_num: int):
 		get_tree().get_first_node_in_group("QuestItems").add_child(recipe)
 		
 	elif Game.PLAYER_QUEST_LEVEL == 5 and quest_accepted(_num):
-		quest_5.visible = true
+		#quest_5.visible = true
+		var quest_5 = QUEST_5.instantiate()
 		quest_5.on_shuffle()
 		quest_5.connect("done", quest_done)
 		quest_5.connect("failed", quest_failed)
+		get_tree().get_first_node_in_group("Canvas").add_child(quest_5)
 		action_buttons.visible = false
 
 func quest_accepted(_num: int):
@@ -171,8 +183,6 @@ func quest_failed(_num: int):
 		if Game.PLAYER_QUEST_LEVEL == 3:
 			house.disconnect("done", quest_done)
 		elif Game.PLAYER_QUEST_LEVEL == 5:
-			quest_5.disconnect("done", quest_done)
-			quest_5.disconnect("failed", quest_failed)
 			action_buttons.visible = true
 		has_active_quest = false
 		NPC_QUEST_STATUS[_num]["status"] = QUEST_STATUS.UNLOCKED
@@ -189,6 +199,7 @@ func quest_done(_num: int):
 		if Game.PLAYER_QUEST_LEVEL == 6:
 			action_buttons.visible = true
 		done.emit(_num)
+		unlocked.emit(_num+1)
 
 func on_zero_hp():
 	if Game.player_hp == 0:
@@ -213,6 +224,8 @@ func on_retry():
 	elif Game.PLAYER_QUEST_LEVEL == 4:
 		player.global_position = pos_2.global_position
 	elif Game.PLAYER_QUEST_LEVEL == 5:
+		player.global_position = pos_3.global_position
+	elif Game.PLAYER_QUEST_LEVEL == 6:
 		player.global_position = pos_3.global_position
 	player.visible = true
 	game_over.visible = false
@@ -294,24 +307,40 @@ func convo_manager():
 		]
 	elif active_npc == NPCS.LOLA2 and NPC_QUEST_STATUS[active_npc]["status"] == QUEST_STATUS.UNLOCKED:
 		lines = [
-			"LOLA2"
+			"Dara hanapin mo ang aking itinatagong resipi",
+			"Matatagpuaan mo ang resipi sa mataas na lugar",
+			"Gagawin kopo ang aking makakaya inay"
 		]
 		pictures = [
-			LOLA_IMG
+			LOLA_IMG,
+			PLAYER_IMG,
+			PLAYER_IMG
 		]
 	elif active_npc == NPCS.LOLA2 and NPC_QUEST_STATUS[active_npc]["status"] == QUEST_STATUS.ACCEPTED:
 		lines = [
-			"LOLA2"
+			"Matatagpuaan mo ang resipi sa mataas na lugar",
+			"Gagawin kopo ang aking makakaya inay"
 		]
 		pictures = [
-			LOLA_IMG
+			LOLA_IMG,
+			PLAYER_IMG
 		]
 	elif active_npc == NPCS.LOLA2 and NPC_QUEST_STATUS[active_npc]["status"] == QUEST_STATUS.DONE:
 		lines = [
-			"LOLA2"
+			"Inay natagpuan kona po ang resipi na iyong ipinapahanap",
+			"Mabuti naman Dara.",
+			"Ang resipi naiyan ay ipapamana ko na saiyo",
+			"Pangalagaan mo ang resipi na iyan dahil iyan ang ipinagmamalaking pagkain ng ating bayan!",
+			"Opo inay!",
+			"Papahalagahan kopo itong resipi na ito at ipapamana sa susunod na henerasyon."
 		]
 		pictures = [
-			LOLA_IMG
+			PLAYER_IMG,
+			LOLA_IMG,
+			LOLA_IMG,
+			LOLA_IMG,
+			PLAYER_IMG,
+			PLAYER_IMG
 		]
 	elif active_npc == NPCS.BATA and NPC_QUEST_STATUS[active_npc]["status"] == QUEST_STATUS.UNLOCKED:
 		lines = [

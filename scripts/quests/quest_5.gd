@@ -39,7 +39,27 @@ var recipes : Array[String] = [
 func _ready():
 	enable_btns = false
 	on_shuffle()
+	failed.connect(on_quest_failed)
 	pressing.connect(what_is_currently_pressing)
+	connect_buttons()
+
+func connect_buttons():
+	for i in range(1, 10):
+		var button_name = "img_%d" % i
+		var texture_button = get_node("MarginContainer/GridContainer/"+button_name)
+		var method_name = "_on_img_%d"%i+"_pressed"
+		if texture_button == TextureButton:
+			if not texture_button.is_connected("pressed", method_name):
+				texture_button.disconnect("pressed", method_name)
+
+func disconnect_buttons():
+	for i in range(1, 10):
+		var button_name = "img_%d" % i
+		var texture_button = get_node("MarginContainer/GridContainer/"+button_name)
+		var method_name = "_on_img_%d"%i+"_pressed"
+		if texture_button == TextureButton:
+			if texture_button.is_connected("pressed", method_name):
+				texture_button.disconnect("pressed", method_name)
 
 func _on_img_1_pressed():
 	touch_counter += 1
@@ -140,13 +160,32 @@ func button_checker(_img_1: TextureButton):
 		_img_1.texture_normal = GREEN
 		return true
 
+func on_quest_failed(_num: int):
+	if _num == 5:
+		#enable_btns = false
+		#touch_counter = 0
+		#points = 0
+		#if pressing.is_connected(what_is_currently_pressing):
+			#pressing.disconnect(what_is_currently_pressing)
+		#for i in range(1, 10):
+			#var button_name = "img_%d" % i
+			#var texture_button = get_node("MarginContainer/GridContainer/"+button_name)
+			#if texture_button is TextureButton:
+				#if texture_button.disabled:
+					#texture_button.disabled = false
+				#texture_button.texture_pressed = null
+				#if texture_button.toggle_mode == true:
+					#texture_button.toggle_mode = false
+		#disconnect_buttons()
+		#connect_buttons()
+		#pressing.connect(what_is_currently_pressing)
+		#on_shuffle()
+
+		queue_free()
 func on_all_button_disable(_value: bool):
-	img_1.disabled = _value
-	img_2.disabled = _value
-	img_3.disabled = _value
-	img_4.disabled = _value
-	img_5.disabled = _value
-	img_6.disabled = _value
-	img_7.disabled = _value
-	img_8.disabled = _value
-	img_9.disabled = _value
+	for i in range(1, 10):
+		var _button_name = "img_%d" % i
+		var texture_button = get_node("MarginContainer/GridContainer/" + _button_name)
+		if texture_button is TextureButton:
+			if not texture_button.disabled:
+				texture_button.disabled = true

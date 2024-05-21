@@ -1,6 +1,4 @@
-res://scenes/portal/portal_to_end.tscn
+res://scenes/main_scenes/world_earth.tscn
 res://scripts/quests/quest2.gd
 res://scripts/quests/quest5.gd
-res://scripts/portal/portal_to_end.gd
-res://scenes/main_scenes/world_earth.tscn
-res://scripts/managers/earth_quest_manager.gd
+res://global/game.gd

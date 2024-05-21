@@ -20,7 +20,6 @@ var QUEST_STATUS = {
 }
 
 func _ready():
-	#Utils.loadGame()
 	player_mana = player_max_mana
 
 func _process(delta):

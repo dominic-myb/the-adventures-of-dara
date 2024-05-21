@@ -1,1 +1,1 @@
-{"PLAYER_QUEST_LEVEL":3,"QUEST_STATUS":{"Q1":false,"Q2":false,"Q3":false,"Q4":false,"Q5":false,"Q6":false},"is_played":false,"player_damage":2,"player_hp":3,"player_mana":100,"player_mana_regen_rate":0.0166666666666667,"player_max_mana":100,"player_movespeed":600}
+{"PLAYER_QUEST_LEVEL":3,"QUEST_STATUS":{"Q1":false,"Q2":false,"Q3":false,"Q4":false,"Q5":false,"Q6":false},"is_played":false,"player_damage":2,"player_hp":3,"player_mana":100,"player_mana_regen_rate":0,"player_max_mana":100,"player_movespeed":600}

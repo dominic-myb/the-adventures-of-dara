@@ -2255,7 +2255,7 @@ position = Vector2(-1813, 36)
 [node name="Player" type="Node2D" parent="."]
 
 [node name="Player" parent="Player" instance=ExtResource("2_5iwtj")]
-position = Vector2(886, -1688)
+position = Vector2(190, -149)
 
 [node name="Camera2D" type="Camera2D" parent="Player/Player"]
 limit_left = 0

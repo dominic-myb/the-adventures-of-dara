@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://5lju2laor44v"]
+[gd_scene load_steps=39 format=3 uid="uid://5lju2laor44v"]
 
 [ext_resource type="PackedScene" uid="uid://cib075akgepjl" path="res://scenes/player/player2.tscn" id="1_23obd"]
 [ext_resource type="Script" path="res://scripts/managers/earth_quest_manager.gd" id="1_dr6ya"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://lgxydtjm2j84" path="res://scenes/ui/game_over.tscn" id="29_f7615"]
 [ext_resource type="PackedScene" uid="uid://clv7r2xshumu7" path="res://scenes/ui/life.tscn" id="30_j52ir"]
 [ext_resource type="PackedScene" uid="uid://ci5tvqr41ohnt" path="res://scenes/ui/timer_display.tscn" id="31_argt6"]
+[ext_resource type="PackedScene" uid="uid://7k2brwpn68tg" path="res://scenes/quests/quest5/quest_5.tscn" id="32_nymua"]
 [ext_resource type="PackedScene" uid="uid://d31v7v7b3d0j" path="res://scenes/portal/portal_to_end.tscn" id="34_48lxf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w3kd4"]
@@ -1516,7 +1517,7 @@ limit_bottom = 826
 [node name="NPC" type="Node2D" parent="."]
 
 [node name="Lola" parent="NPC" instance=ExtResource("4_0n1rx")]
-position = Vector2(3003, 252)
+position = Vector2(2978, 246)
 
 [node name="Bata" parent="NPC" instance=ExtResource("7_m1cu7")]
 position = Vector2(3213, 680)
@@ -1533,7 +1534,7 @@ position = Vector2(2673, 232)
 [node name="RecipePos" type="Marker2D" parent="Quest"]
 position = Vector2(268, 21)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." groups=["Canvas"]]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ActionButtons" type="Node2D" parent="CanvasLayer"]
 
@@ -1666,6 +1667,9 @@ offset_right = 143.0
 offset_bottom = 67.0
 
 [node name="TimerDisplay" parent="CanvasLayer" groups=["Time"] instance=ExtResource("31_argt6")]
+visible = false
+
+[node name="Quest5" parent="CanvasLayer" instance=ExtResource("32_nymua")]
 visible = false
 
 [node name="Water" type="Node2D" parent="." groups=["Water"]]

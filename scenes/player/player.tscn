@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://bpl33trwfxdat" path="res://art/ui/buttons/attack-btn.png" id="7_fqfew"]
 [ext_resource type="FontFile" uid="uid://bph4vobtaswbg" path="res://font/manaspc.ttf" id="8_rbgbu"]
 [ext_resource type="AudioStream" uid="uid://dghbcaamlvovx" path="res://sound_fx/sea_ingame/in_game_music.wav" id="10_52nh4"]
-[ext_resource type="AudioStream" uid="uid://d0ftrme57xv0h" path="res://sound_fx/sea_ingame/quest_done2.wav" id="11_740b3"]
+[ext_resource type="AudioStream" uid="uid://d0ftrme57xv0h" path="res://sound_fx/sea_ingame/quest_done.wav" id="11_a7qko"]
 [ext_resource type="PackedScene" uid="uid://baeteg3v0ka3x" path="res://scenes/ui/mana_bar.tscn" id="11_h2xh8"]
 [ext_resource type="AudioStream" uid="uid://6txrb1hvq4kj" path="res://sound_fx/sea_ingame/quest_accept.wav" id="12_1mujy"]
-[ext_resource type="AudioStream" uid="uid://r5ryg8j5bas" path="res://sound_fx/sea_ingame/quest_failed1.wav" id="13_gqs8g"]
+[ext_resource type="AudioStream" uid="uid://r5ryg8j5bas" path="res://sound_fx/sea_ingame/quest_failed.wav" id="13_frs6t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_emyft"]
 atlas = ExtResource("2_4vi7q")
@@ -547,7 +547,7 @@ bus = &"Music"
 bus = &"SoundFX"
 
 [node name="OnDone" type="AudioStreamPlayer2D" parent="SoundFX"]
-stream = ExtResource("11_740b3")
+stream = ExtResource("11_a7qko")
 bus = &"SoundFX"
 
 [node name="OnAccept" type="AudioStreamPlayer2D" parent="SoundFX"]
@@ -555,7 +555,7 @@ stream = ExtResource("12_1mujy")
 bus = &"SoundFX"
 
 [node name="OnFailed" type="AudioStreamPlayer2D" parent="SoundFX"]
-stream = ExtResource("13_gqs8g")
+stream = ExtResource("13_frs6t")
 
 [node name="Moving" type="AudioStreamPlayer2D" parent="SoundFX"]
 bus = &"SoundFX"

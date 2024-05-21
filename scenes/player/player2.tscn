@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://c1kaj6gjtip0y" path="res://art/player/dara_earth/dara_move.png" id="3_2awti"]
 [ext_resource type="AudioStream" uid="uid://dghbcaamlvovx" path="res://sound_fx/sea_ingame/in_game_music.wav" id="6_bdmpb"]
 [ext_resource type="AudioStream" uid="uid://6txrb1hvq4kj" path="res://sound_fx/sea_ingame/quest_accept.wav" id="7_inwa5"]
-[ext_resource type="AudioStream" uid="uid://d0ftrme57xv0h" path="res://sound_fx/sea_ingame/quest_done2.wav" id="8_q2w2i"]
-[ext_resource type="AudioStream" uid="uid://r5ryg8j5bas" path="res://sound_fx/sea_ingame/quest_failed1.wav" id="9_ot7xm"]
+[ext_resource type="AudioStream" uid="uid://d0ftrme57xv0h" path="res://sound_fx/sea_ingame/quest_done.wav" id="8_q2w2i"]
+[ext_resource type="AudioStream" uid="uid://r5ryg8j5bas" path="res://sound_fx/sea_ingame/quest_failed.wav" id="9_ot7xm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c366x"]
 atlas = ExtResource("2_f7i82")

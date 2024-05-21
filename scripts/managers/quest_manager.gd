@@ -78,9 +78,6 @@ var on: bool = true
 @onready var dalag = $"../NPC/Dalag"
 
 func _ready():
-	unlocked.connect(quest_unlocked)
-	if Game.PLAYER_QUEST_LEVEL == 0:
-		unlocked.emit(0)
 	quest_items.hide()
 	accepted.connect(quest)
 	zero_hp.connect(on_zero_hp)
@@ -400,17 +397,17 @@ func quest(_num: int):
 		pearl.connect("done", quest_done)
 		pearl.connect("failed", quest_failed)
 
-func quest_unlocked(_num: int):
-	if NPC_QUEST_STATUS[NPC.DALAG]["status"] == QUEST_STATUS.UNLOCKED and Game.PLAYER_QUEST_LEVEL == 0:
-		# DALAG
-		#dalag.guide_enabled = true
-		pass
-	elif NPC_QUEST_STATUS[NPC.PAWIKAN]["status"] == QUEST_STATUS.UNLOCKED and Game.PLAYER_QUEST_LEVEL == 1:
-		# PAWIKAN
-		pass
-	elif NPC_QUEST_STATUS[NPC.KABIBE]["status"] == QUEST_STATUS.UNLOCKED and Game.PLAYER_QUEST_LEVEL == 2:
-		# PAWIKAN
-		pass
+#func quest_unlocked(_num: int):
+	#if NPC_QUEST_STATUS[NPC.DALAG]["status"] == QUEST_STATUS.UNLOCKED and Game.PLAYER_QUEST_LEVEL == 0:
+		## DALAG
+		##dalag.guide_enabled = true
+		#pass
+	#elif NPC_QUEST_STATUS[NPC.PAWIKAN]["status"] == QUEST_STATUS.UNLOCKED and Game.PLAYER_QUEST_LEVEL == 1:
+		## PAWIKAN
+		#pass
+	#elif NPC_QUEST_STATUS[NPC.KABIBE]["status"] == QUEST_STATUS.UNLOCKED and Game.PLAYER_QUEST_LEVEL == 2:
+		## PAWIKAN
+		#pass
 
 func on_home():
 	pass
@@ -462,8 +459,8 @@ func quest_done(num: int):
 	done.emit(num)
 	print_debug("QUEST: DONE!")
 	if num < 2:
-		unlocked.emit(num+1)
 		NPC_QUEST_STATUS[num+1]["status"] = QUEST_STATUS.UNLOCKED
+		#unlocked.emit(num+1)
 
 func quest_failed(_num: int):
 	has_active_quest = false
